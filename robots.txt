@@ -1,0 +1,6 @@
+# A Robots file for yerya
+
+User-agent: *
+
+Disallow: /Public/
+Disallow: /Uploads/
