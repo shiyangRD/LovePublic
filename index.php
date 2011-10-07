@@ -12,7 +12,7 @@
 	//定义运行碎片路径
 	define('RUNTIME_PATH',ONLINE_PATH.'runtime/');  
     //定义是否产生框架编译
-	define('NO_CACHE_RUNTIME',True);
+	define('NO_CACHE_RUNTIME',TRUE);
     //定义框架日志文件路径 
 	define('LOG_PATH',ONLINE_PATH.'runtime/Log/Frame/'); 
     
