@@ -6,6 +6,7 @@
  * bootstrap
  * DOM access code according to different
  */
+//dsfkasdflkdsj
 
 YUI().use('node', function (Y) {
 
