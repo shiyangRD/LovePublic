@@ -194,8 +194,8 @@
 }
 
 .block {
-    width:160px;
-    height:160px;
+    width:0;
+    height:0;
     overflow:hidden;
     float:left;
     background:#232323;
