@@ -117,33 +117,33 @@ YUI().use('node', function (Y) {
                             ));
                         };
                         blankBlock.setStyle('height', '70px');
-                    }
-                    else {
-                        blankBlock.setStyle('height', '90px');
-                        blankBlock.setContent('网络故障，数据不可用，貌似服务器找妹纸去了……');
-                    };
     /*
      * Animation of boxes,after the render method
      */
-                    var all  = Y.all('.block');
-                    var size = all.size();
-                    var i   = this.origin-1;
-                    function anim () {
-                        i+=1;
-                        if (i<size) {
-                            all.item(i).transition({
-                                duration : 0.3,
-                                easing   : 'ease-in-out',
-                                opacity  : 1 
-                                //width    : '160px',
-                                //height   : '160px'
-                            }, function (){anim()});
-                        }
-                        else {
-                            return false;
-                        }
+                        var all  = Y.all('.block');
+                        var size = all.size();
+                        var i   = this.origin-1;
+                        function anim () {
+                            i+=1;
+                            if (i<size) {
+                                all.item(i).transition({
+                                    duration : 0.12,
+                                    easing   : 'ease-in-out',
+                                    opacity  : 1 
+                                    //width    : '160px',
+                                    //height   : '160px'
+                                }, function (){anim()});
+                            }
+                            else {
+                                return false;
+                            }
+                        };
+                        anim();
+                    }
+                    else {
+                        blankBlock.setStyle('height', '90px');
+                        blankBlock.setContent('没有更多了');
                     };
-                    anim();
                 }
             });
 
