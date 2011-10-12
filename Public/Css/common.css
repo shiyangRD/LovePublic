@@ -203,16 +203,26 @@
 
 #boxWrap {
     padding:30px 0;
+    height:700px;
 }
 
 .loading {
     width:960px;
-    height:650px;
     background:url(../Images/ajax-loader-big.gif) no-repeat center;
 }
 
 #blankBlock {
     _display:none;
+    position:fixed;
+    padding-top:3px;
+    bottom:0;
+    width:100%;
+    height:70px;
+    text-align:center;
+    font-weight:bold;
+    color:#000;
+    text-shadow:-1px -1px 1px #6DBCBA;
+    background:#298380;
 }
 
 #botBar {
@@ -249,6 +259,10 @@
     margin:0 5px 0 5px;
     padding:0 5px 0 5px;
     text-shadow:1px 1px 1px #333;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 #toolM a:hover {
@@ -256,10 +270,6 @@
     background:#0b4745;
     color:#d4e4e4;
     text-shadow:1px 1px 1px #232323;
-    -webkit-transition: all 0.5s ease-in;
-    -moz-transition: all 0.5s ease-in;
-    -o-transition: all 0.5s ease-in;
-    transition: all 0.5s ease-in;
 }
 
 #toolS {
@@ -274,13 +284,19 @@
 }
 
 #toolS input {
-    width:210px;
+    width:185px;
+    -webkit-width:210px;
     height:30px;
-    padding:0 10px 0 25px;
+    padding:0 0 0 25px;
     _padding:0;
     display:block;
     border-radius:22px;
+    border:none;
     background:#ccc;
+    -webkit-transition: all 0.3s tease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 #toolS input:focus {
@@ -291,10 +307,6 @@
 
 #toolS input:hover {
     background:#eee;
-    -webkit-transition: all 0.3s ease-in;
-    -moz-transition: all 0.3s ease-in;
-    -o-transition: all 0.3s ease-in;
-    transition: all 0.3s ease-in;
 }
 
 #makeB {

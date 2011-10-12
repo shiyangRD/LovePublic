@@ -10,7 +10,7 @@
 YUI().use('node', function (Y) {
 
     /*
-     * sub scroll menu in index page
+     * Sub scroll menu in index page
      */
 
     var menu = Y.one("#topBar");
@@ -44,37 +44,86 @@ YUI().use('node', function (Y) {
     };
 
     /*
-     * handle box 
+     * Handle box 
      */
 
-    var boxWrap = Y.one("#boxWrap");
+    var boxWrap    = Y.one("#boxWrap");
+    var blankBlock = Y.one("#blankBlock"); 
+    var body       = Y.one('body');
     if ( boxWrap != null ) {
     /*
      * Extending Base for Box MVC
      */
-        YUI().use('model', 'view', 'transition', function (Y) {
+        YUI().use('model', 'view', 'controller', 'transition', 'io', function (Y) {
     /*
-     * update box
+     * Message and Notice
+     * Class
      */
-            Y.UpdateBox = Y.Base.create('UpdateBox', Y.View, [], {
-                data : '["../Images/block01.png","../Images/block01.png","../Images/block02.png","../Images/block03.png","../Images/block04.png","../Images/block06.png","../Images/block02.png","../Images/block02.png","../Images/block03.png","../Images/block04.png","../Images/block06.png","../Images/block02.png","../Images/block03.png","../Images/block04.png","../Images/block06.png","../Images/block07.png","../Images/block07.png","../Images/block04.png","../Images/block06.png","../Images/block07.png","../Images/block07.png","../Images/block02.png","../Images/block03.png","../Images/block04.png","../Images/block06.png","../Images/block07.png","../Images/block08.png","../Images/block05.png","../Images/block06.png","../Images/block07.png","../Images/block08.png","../Images/block06.png","../Images/block06.png","../Images/block07.png","../Images/block08.png","../Images/block07.png","../Images/block08.png","../Images/block09.png","../Images/block10.png","../Images/block11.png","../Images/block12.png","../Images/block13.png","../Images/block14.png","../Images/block15.png","../Images/block16.png","../Images/block17.png","../Images/block18.png"]',
-                json : function (index) {
-                    var res   = eval('('+this.data+')'),
-                        index = index || 0;
-                    this.set('imagePath',res[index]);
-                    return res.length;
+
+    /*
+     * Model: Update box
+     * 'uri'   : property,  Storage request link;
+     * 'req'   : method,    Send XHR with page number, and get response data;
+     * 'format': method,    Format JSON type data to js object;
+     */
+            Y.UpdateBox = Y.Base.create('UpdateBox', Y.Model, [], {
+                that   : this,
+
+                uri    : '../box.php?page=',
+
+                req    : function (page) {
+                    var uri  = this.uri+page;
+
+                    var that = this;
+
+                    var cfg  = {
+                        method : 'GET',
+                        on     : {
+                            start    : function () {
+                                boxWrap.addClass('loading');
+                                blankBlock.setStyle('height', '90px');
+                            },
+                            complete : function (id, o) {
+                                that.data = o.responseText;
+                                boxWrap.removeClass('loading');
+                            },
+                            failure  : function () {
+                                blankBlock.setStyle('height', '90px');
+                                blankBlock.setContent('网络故障，请检查网络链接');
+                            }
+                        }
+                    };
+
+                    var request = Y.io(uri, cfg);
+                },
+    /*
+     * Format JSON to array,bake it by format(i)
+     */
+
+                format : function (index) {
+                    try{
+                        var res   = Y.JSON.parse(this.data);
+                            index = index || 0;
+                        this.set('imagePath',res[index]);
+                        return res.length;
+                    }
+                    catch(error) {
+                        return 0;
+                    };
                 }
+
             }, {
-                ATTRS : {
+                ATTRS  : {
                     imagePath : {
-                        value: '../Images/tempBlock.png'
+                        value: '/Public/Images/tempBlock.png'
                     }
                 }
             });
 
     /*
-     * render box
+     * Render box by View's mehod render()
      */
+
             Y.RenderBox = Y.Base.create('renderBox', Y.View, [], {
 
                 container   : boxWrap,
@@ -84,22 +133,35 @@ YUI().use('node', function (Y) {
                 initializer : function () {
                     var model = this.model;
                 },
-                
-                render      : function () {
-                    var origin = Y.all('.block').size();
-                        len = this.model.json();
-                        len = len + origin;
 
-                    for (var i=origin; i<len; i++) {
-                        this.model.json(i);
-                        this.container.insert(Y.Lang.sub(
-                            this.template, this.model.getAttrs(['imagePath'])
-                        ));
+                origin      : 1,
+
+                render      : function (page) {
+                    var page = page,
+                        len  = this.model.format(); 
+                        
+                    this.origin = page*len;
+
+                    if (len != 0) {
+
+                        for (var i=0; i<len; i++) {
+                            this.model.format(i);
+                            this.container.insert(Y.Lang.sub(
+                                this.template, this.model.getAttrs(['imagePath'])
+                            ));
+                        };
+                        blankBlock.setStyle('height', '70px');
+                    }
+                    else {
+                        blankBlock.setStyle('height', '90px');
+                        blankBlock.setContent('网络故障，数据不可用，貌似服务器找妹纸去了……');
                     };
-
+    /*
+     * Animation of boxes,after the render method
+     */
                     var all = Y.all('.block');
-                    len = all.size()-origin;
-                    var i = origin-1;
+                        len = all.size()-this.origin;
+                    var i   = this.origin-1;
                     function anim () {
                         i+=1;
                         if (i<len) {
@@ -118,11 +180,55 @@ YUI().use('node', function (Y) {
                 }
             });
 
-        var boxModel = new Y.UpdateBox(),
-            boxView  = new Y.RenderBox({model: boxModel});
+    /*
+     * Handle render and data of boxes
+     */
+            Y.HandleBox = Y.Base.create('handleBox', Y.Base, [], {
+                view   : '',
 
-        boxView.render();
+                model  : '',
+
+                page   : 0,
+
+                handle : function () {
+                    var page = this.page;
+                    var that = this;
+                    this.model.req(page);
+                    Y.on('io:success', function (){
+                        that.view.render(page);
+                    });
+                    
+                    Y.on('scroll', function () {
+                        var scrlH = boxWrap.get('docScrollY'),
+                            docH  = body.get('docHeight'),
+                            scrnH = body.get('winHeight'),
+                            bool;
+
+                        ( scrlH + scrnH == docH ) ? bool = 1 : bool = 0;
+
+                        if ( bool ==1) {
+                            page+=1;
+                            that.model.req(page);
+                            Y.on('io:success', function (){
+                                that.view.render(page);
+                            });
+                        }
+                        else {
+                            return false;
+                        };
+                    });
+                },
+
+                init   : function (view, model) {
+                    this.view = view;
+                    this.model= model;
+                } 
+            });
+            var boxM = new Y.UpdateBox();
+            var boxV = new Y.RenderBox({model: boxM});
+            var boxC = new Y.HandleBox();
+                boxC.init(boxV, boxM);
+                boxC.handle();
         });
     };
-
 });
