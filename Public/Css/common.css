@@ -194,11 +194,12 @@
 }
 
 .block {
-    width:0;
-    height:0;
+    width:160px;
+    height:160px;
     overflow:hidden;
     float:left;
     background:#232323;
+    opacity:0;
 } 
 
 #boxWrap {

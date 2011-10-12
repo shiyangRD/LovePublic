@@ -67,35 +67,6 @@ YUI().use('node', function (Y) {
      * 'format': method,    Format JSON type data to js object;
      */
             Y.UpdateBox = Y.Base.create('UpdateBox', Y.Model, [], {
-                that   : this,
-
-                uri    : '../box.php?page=',
-
-                req    : function (page) {
-                    var uri  = this.uri+page;
-
-                    var that = this;
-
-                    var cfg  = {
-                        method : 'GET',
-                        on     : {
-                            start    : function () {
-                                boxWrap.addClass('loading');
-                                blankBlock.setStyle('height', '90px');
-                            },
-                            complete : function (id, o) {
-                                that.data = o.responseText;
-                                boxWrap.removeClass('loading');
-                            },
-                            failure  : function () {
-                                blankBlock.setStyle('height', '90px');
-                                blankBlock.setContent('网络故障，请检查网络链接');
-                            }
-                        }
-                    };
-
-                    var request = Y.io(uri, cfg);
-                },
     /*
      * Format JSON to array,bake it by format(i)
      */
@@ -111,7 +82,6 @@ YUI().use('node', function (Y) {
                         return 0;
                     };
                 }
-
             }, {
                 ATTRS  : {
                     imagePath : {
@@ -130,11 +100,7 @@ YUI().use('node', function (Y) {
 
                 template    : '<div class="block"><img src="{imagePath}" /></div>',
 
-                initializer : function () {
-                    var model = this.model;
-                },
-
-                origin      : 1,
+                origin      : 0,
 
                 render      : function (page) {
                     var page = page,
@@ -159,17 +125,18 @@ YUI().use('node', function (Y) {
     /*
      * Animation of boxes,after the render method
      */
-                    var all = Y.all('.block');
-                        len = all.size()-this.origin;
+                    var all  = Y.all('.block');
+                    var size = all.size();
                     var i   = this.origin-1;
                     function anim () {
                         i+=1;
-                        if (i<len) {
+                        if (i<size) {
                             all.item(i).transition({
-                                duration : 0.12,
+                                duration : 0.3,
                                 easing   : 'ease-in-out',
-                                width    : '160px',
-                                height   : '160px'
+                                opacity  : 1 
+                                //width    : '160px',
+                                //height   : '160px'
                             }, function (){anim()});
                         }
                         else {
@@ -190,13 +157,41 @@ YUI().use('node', function (Y) {
 
                 page   : 0,
 
+                uri    : '../box.php?page=',
+
+                req    : function (page) {
+                    var page = page;
+                    
+                    var uri  = this.uri+page;
+
+                    var that = this;
+
+                    var cfg  = {
+                        method : 'GET',
+                        on     : {
+                            start    : function () {
+                                boxWrap.addClass('loading');
+                                blankBlock.setStyle('height', '90px');
+                            },
+                            complete : function (id, o) {
+                                that.model.data = o.responseText;
+                                that.view.render(page);
+                                boxWrap.removeClass('loading');
+                            },
+                            failure  : function () {
+                                blankBlock.setStyle('height', '90px');
+                                blankBlock.setContent('网络故障，请检查网络链接');
+                            }
+                        }
+                    };
+
+                    Y.io(uri, cfg);
+                },
+
                 handle : function () {
                     var page = this.page;
                     var that = this;
-                    this.model.req(page);
-                    Y.on('io:success', function (){
-                        that.view.render(page);
-                    });
+                    this.req(page)
                     
                     Y.on('scroll', function () {
                         var scrlH = boxWrap.get('docScrollY'),
@@ -208,10 +203,7 @@ YUI().use('node', function (Y) {
 
                         if ( bool ==1) {
                             page+=1;
-                            that.model.req(page);
-                            Y.on('io:success', function (){
-                                that.view.render(page);
-                            });
+                            that.req(page);
                         }
                         else {
                             return false;
