@@ -20,50 +20,35 @@ YUI().use('node', function (Y) {
         var accS  = Y.one("#accS");
         YUI().use('event', 'transition', function (Y) {
     /*
-     * fixed the top menu in browser
+     * Fixed the top menu in browser
      */
             Y.on('scroll', function (Y) {
                 ( menu.get("docScrollY") <= hh ) ? menu.removeClass("topBarFixed") : menu.addClass("topBarFixed");
             });
 
     /*
-     * toggle account menu
+     * Toggle menu : account and message
      */
-            Y.one("#accS").on('click', function (Y) {
-                accul.show();
-                accS.addClass("accSDown");
-
-            });
-            Y.one("#mainWrap").on('click', function (e) {
-                if ( e.target.get('id') != 'accS' ) {
-                    accul.hide();
-                    accS.removeClass("accSDown");
-                };
-            });
+            Y.one("#accS").on('mousemove', function (Y) { accul.show(); accS.addClass("accSDown"); });
+            Y.on('click', function (e) { if ( e.target.get('id') != 'accS' ) { accul.hide(); accS.removeClass("accSDown"); }; });
         });
     };
 
     /*
      * Handle box 
+     * Extending Base for Box MVC
      */
-
     var boxWrap    = Y.one("#boxWrap");
     var blankBlock = Y.one("#blankBlock"); 
     var body       = Y.one('body');
-    if ( boxWrap != null ) {
-    /*
-     * Extending Base for Box MVC
-     */
-        YUI().use('model', 'view', 'controller', 'transition', 'io', function (Y) {
-    /*
-     * Message and Notice
-     * Class
-     */
+    var refrB     = Y.one('#refrB a');
 
+    if ( boxWrap != null ) {
+        YUI().use('model', 'view', 'transition', 'io', function (Y) {
     /*
      * Model: Update box
      * 'uri'   : property,  Storage request link;
-     * 'req'   : method,    Send XHR with page number, and get response data;
+     * 
      * 'format': method,    Format JSON type data to js object;
      */
             Y.UpdateBox = Y.Base.create('UpdateBox', Y.Model, [], {
@@ -149,6 +134,8 @@ YUI().use('node', function (Y) {
 
     /*
      * Handle render and data of boxes
+     * 'req'   : method,    Send XHR with page number, and get response data, put data to this.model.data, go this.render
+     * 'uri'   : property,  Initial the XHR's uri
      */
             Y.HandleBox = Y.Base.create('handleBox', Y.Base, [], {
                 view   : '',
@@ -216,11 +203,24 @@ YUI().use('node', function (Y) {
                     this.model= model;
                 } 
             });
+    /*
+     * Instantiated M V C
+     */
             var boxM = new Y.UpdateBox();
             var boxV = new Y.RenderBox({model: boxM});
             var boxC = new Y.HandleBox();
                 boxC.init(boxV, boxM);
-                boxC.handle();
+    /*
+     * Run this Contoller
+     */
+            boxC.handle();
+    /*
+     * Refresh the page
+     */
+            refrB.on('click', function () {
+                boxWrap.setContent('');
+                boxC.req(0);
+            });
         });
     };
 });

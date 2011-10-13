@@ -119,11 +119,11 @@
     background:#232323;
 }
 
-#accN {
-    float:left;
+#accM:hover {
+    background:#000;
 }
 
-#accN a {
+#accM a {
     color:#fff;
     display:block;
     float:left;
@@ -131,56 +131,55 @@
     line-height:28px;
 }
 
-#accN a:hover {
+#accM a:hover {
     text-decoration:none;
-    border-bottom:2px #a60004 solid;
 }
 
 #accS {
     float:left;
-    width:38px;
+    width:30px;
     height:30px;
-    background:url(../Images/accS.png);
+    background:url(../Images/accS.png) center;
     cursor:pointer;
     position:absolute;
     right:0;
 }
 
 .accSDown {
-    background:#fff!important;
-    border-top-left-radius:4px;
-    border-top-right-radius:4px;
-    border-left:2px #eee solid;
-    border-right:2px #eee solid;
-    border-top:2px #eee solid;
-    margin-top:15px;
-    height:15px!important;
+    background:url(../Images/accSDown.png) center!important;
 }
 
 #accul {
     position:absolute;
     right:0;
     top:30px;
-    width:126px;
-    padding:5px 0 0 0;
-    background:#fff;
-    border-left:2px #eee solid;
-    border-right:2px #eee solid;
-    border-bottom:2px #eee solid;
+    width:156px;
+    padding:12px 0 0 0;
+    background:#fff url(../Images/accul.png) right top no-repeat;
+    border-left:2px #fff solid;
+    border-right:2px #fff solid;
+    border-bottom:2px #fff solid;
     border-bottom-left-radius:4px;
     border-bottom-right-radius:4px;
     box-shadow:2px 4px 5px rgba(0,0,0,0.5);
 }
 
 #accul li {
-    padding:0 20px 0 20px;
     background:#fff;
 }
 
+#accul a {
+    padding:5px 5px 5px 15px;
+    display:block;
+    height:17px;
+    line-height:15px;
+}
+
 #accul a:hover {
+    background:#298380;
     text-decoration:none;
-    color:#232323;
-    text-shadow:1px 1px 1px #777;
+    color:#fff;
+    text-shadow:1px 1px 1px #232323;
 }
 
 #content {
@@ -204,7 +203,7 @@
 
 #boxWrap {
     padding:30px 0;
-    height:700px;
+    height:500px;
 }
 
 .loading {
@@ -214,7 +213,7 @@
 
 #blankBlock {
     _display:none;
-    position:fixed;
+    position:relative;
     padding-top:3px;
     bottom:0;
     width:100%;
@@ -288,12 +287,12 @@
     width:185px;
     -webkit-width:210px;
     height:30px;
-    padding:0 0 0 25px;
+    padding:0 10px 0 25px;
     _padding:0;
     display:block;
     border-radius:22px;
     border:none;
-    background:#ccc;
+    background:#a6c8c7;
     -webkit-transition: all 0.3s tease-in-out;
     -moz-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
@@ -307,7 +306,7 @@
 
 
 #toolS input:hover {
-    background:#eee;
+    background:#e2eeee;
 }
 
 #makeB {
@@ -332,6 +331,19 @@
     -o-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out;
 }
+
+#makeBul {
+    width:410px;
+    height:260px;
+    position:absolute;
+    z-index=100;
+    left:-145px;
+    bottom:80px;
+    background:#fff;
+    border:1px #fff solid;
+    border-radius:6px;
+    box-shadow:2px 4px 5px rgba(0,0,0,0.5);
+} 
 
 #refrB a {
     display:block;
