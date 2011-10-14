@@ -6,7 +6,12 @@
 /*
 * Contain : global.css
 */
-@import url(global.css);
+@import url(core/global.css);
+
+/*
+* Contain : jQuery UI css
+*/
+@import url(core/jquery-ui-1.8.16.css);
 
 /*
 * Wiget Css goes here
