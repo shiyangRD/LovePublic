@@ -65,18 +65,19 @@
                             <path fill="none" stroke="#999999" d="M10,12L15,17" style="stroke-width: 2px; " stroke-width="2px"></path>
                         </svg>
                     </div>
-                    <input type="search" title="搜索你想要的格子" placeholder="搜索格子" />
+                    <input id="toolSinput" type="text" title="搜索你想要的格子" placeholder="搜索格子" />
                 </form>
             </div>
             <div id="makeB">
-                <a href="javascript:void(0);">定制格子</a>
-                <ul id="makeBul">
+                <a href="#customize">定制格子</a>
+                <ul id="makeBul" style="display:none;">
+                    <div class="cancel">X</div>
                     <li></li>
                     <li></li>
                     <li></li>
                     <li></li>
                 </ul>
-                <img id="makeBarr" src="../Images/makeBarr.png" alt="" />
+                <img id="makeBarr" style="display:none;" src="../Images/makeBarr.png" alt="" />
             </div>
             <div id="addB">
                 <a href="javascript:void(0);">添加格子</a>

@@ -13,11 +13,11 @@ YUI().use('node', function (Y) {
      * Sub scroll menu in index page
      */
 
-    var menu = Y.one("#topBar");
+    var menu  = Y.one("#topBar");
+    var hh    = parseInt(Y.one("#header").getStyle("height"));
+    var accul = Y.one("#accul");
+    var accS  = Y.one("#accS");
     if (menu != null) {
-        var hh    = parseInt(Y.one("#header").getStyle("height"));
-        var accul = Y.one("#accul");
-        var accS  = Y.one("#accS");
         YUI().use('event', 'transition', function (Y) {
     /*
      * Fixed the top menu in browser
@@ -29,8 +29,7 @@ YUI().use('node', function (Y) {
     /*
      * Toggle menu : account and message
      */
-            Y.one("#accS").on('mousemove', function (Y) { accul.show(); accS.addClass("accSDown"); });
-            Y.on('click', function (e) { if ( e.target.get('id') != 'accS' ) { accul.hide(); accS.removeClass("accSDown"); }; });
+            accS.on('mousemove', function (Y) { accul.show(); accS.addClass("accSDown"); });
         });
     };
 
@@ -41,7 +40,11 @@ YUI().use('node', function (Y) {
     var boxWrap    = Y.one("#boxWrap");
     var blankBlock = Y.one("#blankBlock"); 
     var body       = Y.one('body');
-    var refrB     = Y.one('#refrB a');
+    var refrB      = Y.one('#refrB a');
+    var makeB      = Y.one('#makeB a');
+    var makeBcancel= Y.one('#makeB .cancel');
+    var makeBul    = Y.one('#makeBul');
+    var makeBarr   = Y.one('#makeBarr');
 
     if ( boxWrap != null ) {
         YUI().use('model', 'view', 'transition', 'io', function (Y) {
@@ -94,7 +97,6 @@ YUI().use('node', function (Y) {
                     this.origin = page*len;
 
                     if (len != 0) {
-
                         for (var i=0; i<len; i++) {
                             this.model.format(i);
                             this.container.insert(Y.Lang.sub(
@@ -124,6 +126,7 @@ YUI().use('node', function (Y) {
                             }
                         };
                         anim();
+                        blankBlock.setContent('');
                     }
                     else {
                         blankBlock.setStyle('height', '90px');
@@ -159,6 +162,7 @@ YUI().use('node', function (Y) {
                             start    : function () {
                                 boxWrap.addClass('loading');
                                 blankBlock.setStyle('height', '90px');
+                                blankBlock.setContent('loading');
                             },
                             complete : function (id, o) {
                                 that.model.data = o.responseText;
@@ -218,9 +222,31 @@ YUI().use('node', function (Y) {
      * Refresh the page
      */
             refrB.on('click', function () {
-                boxWrap.setContent('');
-                boxC.req(0);
+                window.location.href = "./";
             });
+    /*
+     * Customize the box page
+     */
+            makeB.on('click', function (Y) {
+                makeB.addClass('makeBDown');
+                makeBul.show();
+                makeBarr.show();
+            });
+            makeBcancel.on('click', function (Y) {
+                makeB.removeClass('makeBDown');
+                makeBul.hide();
+                makeBarr.hide();
+            });
+
         });
     };
+    /*
+     * Delegation all cancel click event
+     */
+    Y.on('click', function (e) {
+        var id = e.target.get('id');
+        if ( id != 'accS' ) {
+            accul.hide(); accS.removeClass("accSDown"); 
+        };
+    });
 });
