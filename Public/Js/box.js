@@ -46,9 +46,22 @@ $(function () {
     if ( boxWrap[0]) {
         // Initial Render
         var renderBox = function (data) {
-            boxWrap.data("boxes")= $.parseJSON(data);
-            console.dir(boxWrap.data("boxes"));
-            
+            // Box data
+            var data = $.parseJSON(adsfadsf);
+            alert(data)
+
+            // Box information
+            var type = 0,
+                title,
+                author = "TA",
+                time_edit,
+                homepage,
+                thumb = "../Images/tempBlock.png",
+                description,
+                num_like = 0,
+                gridid;
+
+            // Render the box
         };
 
         // Instantiate Box

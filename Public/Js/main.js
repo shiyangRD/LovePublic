@@ -65,8 +65,14 @@ $(function () {
             makeBarr.hide();
         });
     };
-$.getScript("../Js/box.js", function() {
-    alert("get box.js")
-});
-});
 
+/**
++----------------------------------------------------------------
+* Load script by dependency
++----------------------------------------------------------------
+*/
+    // Handle all box behavior
+    var boxWrap = $("#boxWrap");
+    if ( boxWrap[0]) $.getScript("../Js/box.js", function(){});
+
+});
