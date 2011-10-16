@@ -44,7 +44,7 @@ $(function () {
 */
     var boxWrap = $("#boxWrap");
     if ( boxWrap[0]) {
-        // Initial Render
+        // Initial Render Page
         var renderBox = function (data) {
             // Box data
             var data = $.parseJSON(data);
@@ -80,6 +80,9 @@ $(function () {
                 updateBox.req("?page=" + page);
             };
         });
+
+        // Open one box
+        var openBox = new Box("", openBoxRender);
 
     };
 });

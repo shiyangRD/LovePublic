@@ -190,7 +190,6 @@
     background:#f0f4f2 url(../Images/ajax-loader-small.gif) no-repeat center;
     width:162px;
     min-height:200px;
-    float:left;
     border:none;
     border-radius:6px;
     opacity:1;
@@ -377,6 +376,7 @@
 
 #openBoxContent {
     min-height:300px;
+    background:url(../Images/ajax-loader-small.gif) no-repeat center;
 }
 
 #openBoxMenu {
