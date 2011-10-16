@@ -1,13 +1,15 @@
 <?php
 for($i=0;$i<=71;$i++){
-    $b["$i"] = '/Public/Images/block'."$i".'.png';
-   // array(
-        //"type"   => 1,
-        //"image"  => '/Public/Images/block'."$i".'png',
-        //"title"  => 'Hello'."$i".' world~',
-        //"author" => 'Smallwolf',
-        //"text"   => 'This is a text for test'
-    //);
+    
+    $b["$i"] = array(
+        "type"   => 1,
+        "thumb"  => '/Public/Images/block'."$i".'.png',
+        "title"  => '世界你好'."$i".' world~',
+        "author" => 'Smallwolf',
+        "description"   => 'This is a text for test',
+        "time_edit" => date("m月d"),
+        "num_like" => 12
+    );
 }
 
 

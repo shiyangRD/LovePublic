@@ -73,6 +73,9 @@ $(function () {
 */
     // Handle all box behavior
     var boxWrap = $("#boxWrap");
-    if ( boxWrap[0]) $.getScript("../Js/box.js", function(){});
+    if ( boxWrap[0]) {
+        $.getScript("../Js/plugin/jquery.masonry.min.js");
+        $.getScript("../Js/box.js");
+    }; 
 
 });
