@@ -187,8 +187,7 @@
 }
 
 .box {
-    background:#f0f4f2;
-    background-image:url(../Images/ajax-loader-small.gif) no-repeat center;
+    background:#f0f4f2 url(../Images/ajax-loader-small.gif) no-repeat center;
     width:162px;
     min-height:200px;
     float:left;
@@ -302,6 +301,168 @@
     background:url(../Images/ajax-loader-big.gif) no-repeat center;
 }
 
+#openBox {
+    _display:none;
+    top:50px;
+    left:5px;
+    position:absolute;
+    z-index:2;
+    width:566px;
+    height:auto;
+    overflow:auto;
+    padding-bottom:1px;
+    margin-bottom:-1px;
+    background:#fff;
+    border:none;
+    border-radius:6px;
+    box-shadow:1px 1px 5px rgba(30, 30, 30, 0.75);
+}
+
+#openBoxHeader {
+    width:566px;
+    height:40px;
+}
+
+#openBoxAuthor {
+    background:url(../Images/openBoxAuthor.png) no-repeat center bottom;
+    min-width:110px;
+    height:39px;
+    position:relative;
+    left:15px;
+    float:left;
+}
+
+#openBoxAuthorName {
+    top:0;
+    padding:0 5px 0 0;
+    min-width:110px;
+    height:30px;
+    border:none;
+    border-bottom-left-radius:6px;
+    border-bottom-right-radius:6px;
+    background:#115b58;
+}
+
+#openBoxAuthorName a:hover {
+    text-decoration:none;
+}
+
+#openBoxAuthorName img {
+    float:left;
+}
+
+#openBoxAuthorName span {
+    line-height:30px;
+    margin:0 0 0 10px;
+    color:#fff;
+}
+
+#openBoxCancel {
+    width:30px;
+    height:20px;
+    position:absolute;
+    right:0;
+    top:15px;
+    background:url(../Images/openBoxCancel.png) left;
+    cursor:pointer;
+}
+
+#openBoxCancel:hover {
+    background-position:-30px 0;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+#openBoxContent {
+    min-height:300px;
+}
+
+#openBoxMenu {
+    width:566px;
+    font-size:12px;
+    color:#ccc;
+}
+
+#openBoxMenu a {
+    color:#ccc;
+    padding:0 5px 0 5px;
+}
+
+#openBoxMenu a:hover {
+    color:#232323;
+    text-decoration:none;
+}
+
+#tags {
+    position:relative;
+    left:18px;
+}
+
+#openBoxLike {
+    position:absolute;
+    right:18px;
+}
+
+#openBoxCommentAdd {
+    width:516px;
+    margin-top:16px;
+    padding:12px 10px;
+    background:#f0f4f2;
+    border:none;
+    border-top-left-radius:6px;
+    border-top-right-radius:6px;
+    position:relative;
+    left:15px;
+}
+
+#openBoxCommentAddText {
+    width:516px;
+    height:30px;
+    border:none;
+    border-radius:6px;
+    -webkit-transition: all 0.13s ease-in-out;
+    -moz-transition: all 0.13s ease-in-out;
+    -o-transition: all 0.13s ease-in-out;
+    transition: all 0.13s ease-in-out;
+}
+
+#openBoxCommentAddText:focus {
+    width:506px;
+    height:60px;
+    padding:5px;
+    font-size:14px;
+    color:#232323;
+}
+
+#openBoxCommentList {
+    padding-bottom:15px;
+    float:left;
+}
+
+#openBoxCommentListul li {
+    width:516px;
+    margin:1px 0 0 0;
+    padding:10px;
+    background:#f0f4f2;
+    position:relative;
+    left:15px;
+    float:left;
+    font-size:12px;
+    color:#484848;
+}
+
+.openBoxAvatar {
+    padding:0 10px 0 0;
+    float:left;
+}
+
+.openBoxCommentContent {
+    width:470px;
+    float:left;
+}
+
 #blankBlock {
     _display:none;
     position:relative;
@@ -329,6 +490,7 @@
     margin:0 auto;
     background:url(../Images/boxTool.png) left no-repeat;
     background-color:#0D5552;
+    z-index:15;
 }
 
 #boxTool div, #boxTool li {
