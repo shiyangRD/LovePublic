@@ -49,15 +49,6 @@ $(function () {
             // Box data
             var data = $.parseJSON(data);
 
-            // Box information
-            var type = 0,
-                title = "无题",
-                author = "TA",
-                thumb = "../Images/tempBlock.png",
-                description = "",
-                time_edit = "未知时间",
-                num_like = 0;
-
             // Render the box
             boxWrap.masonry({
                 itemSelector : '.box',
@@ -69,11 +60,10 @@ $(function () {
                 if ( data[i].type = 1) {
                     var templateImage = '<div class="box" gridid="' + data[i].gridid + '"><img src="' + data[i].thumb + '" /><span class="title">' + data[i].title + '</span><a href="' + data[i].homepage + '" class="author">' + data[i].author + '</a><span class="time">' + data[i].time_edit + '</span><span class="like"></span><span class="num_like">' + data[i].num_like + '</span></div>';
                         templateImage = $(templateImage);
-                    boxWrap.append( templateImage ).masonry('appended', templateImage, true);
+                    boxWrap.append( templateImage ).masonry('appended', templateImage);
                 };
                 $(window).resize();
             };
-            $(window).resize();
 
         };
 
@@ -84,6 +74,7 @@ $(function () {
 
         // Scroll control 
         $(window).scroll(function () {
+            $(window).resize();
             if ( $(document).height() == $(window).scrollTop() + $(window).height()) {
                 page += 1;
                 updateBox.req("?page=" + page);
