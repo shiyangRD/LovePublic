@@ -73,6 +73,8 @@ $(function () {
                 };
                 $(window).resize();
             };
+            $(window).resize();
+
         };
 
         // Instantiate Box

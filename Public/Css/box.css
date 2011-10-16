@@ -45,7 +45,7 @@
 
 #menu {
     position:absolute;
-    left:0;
+    left:120px;
     height:30px;
 }
 
@@ -55,7 +55,7 @@
 
 #mul a {
     display:block;
-    padding:0 20px 0 20px;
+    padding:0 25px 0 25px;
     color:#FFF;
     line-height:28px;
     -webkit-transition: all 0.2s ease-in-out;
