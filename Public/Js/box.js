@@ -89,8 +89,16 @@ $(function () {
 +----------------------------------------------------------------
 */
         // Open box template
-        var openBox       = $("#openBox"),
-            openBoxCancel = $("#openBoxCancel");
+        var openBox             = $("#openBox"),
+            openBoxCancel       = $("#openBoxCancel"),
+            openBoxAuthorAvatar = $("#openBoxAuthorAvatar");
+            openBoxAuthorName   = $("#openBoxAuthorName span");
+            openBoxContent      = $("#openBoxContentContent");
+            tags                = $("#tags");
+            openBoxCommentNum   = $("#openBoxCommentNum");
+            openBoxColletNum    = $("#openBoxColletNum");
+            openBoxComment      = $("#openBoxComment");
+            openBoxCommentListul= $("#openBoxCommentListul");
 
         // Grid ID, and the box
         var gridid, box;
@@ -100,10 +108,39 @@ $(function () {
             // Determine the box
             if ( $(box).attr('id') == "boxWrap") return false;
             
-            
-            // One box data
-            var data = $.parseJSON(data) || null;
+            // Parse box data
+            var originDATA = $.parseJSON(data) || null;
 
+            try{
+                var status = originDATA.status;
+                var info   = originDATA.info;
+                var DATA   = originDATA.data.grid;
+                var comment= originDATA.data.comment;
+            } 
+            catch(e) {
+                // Todo
+
+                //alert("网络错误，数据不可用");
+            };
+
+            // Data to template 
+            var commentTemplate;
+            openBoxAuthorAvatar.attr("src", DATA.avatar);
+            openBoxAuthorName.text( DATA.author );
+            openBoxContent.html( DATA.content );
+            // Todo : 标签
+            //tags.append( DATA.tags )
+            // Debug : 热度
+            openBoxHot.text( DATA.num_comment + DATA.num_collect + DATA.num_like );
+            openBoxCommentNum.text( DATA.num_comment );
+            openBoxColletNum.text( DATA.num_collect );
+            // Todo : 评论
+            for ( var i in comment) {
+                commentTemplate = '<li><div></div class="openBoxAvatar"><a href="' + /* Todo : 个人主页地址*/ + '"><img src="' + comment[i].thumb + '" /></a><div class="openBoxCommentContent"><a class="author" href="' + /* Todo : 个人主页地址 */ + '">' + + '</a><span>' + comment[i].content + '</span><a class="reply" author="" href="#">回复</a></div></li>';
+                openBoxCommentListul.append( commentTemplate );
+            };
+            
+            
             // Current box offset
             var top   = $(box).offset().top,
                 left  = $(box).offset().left,
