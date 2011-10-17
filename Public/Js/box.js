@@ -103,7 +103,7 @@ $(function () {
                 width = $(window).width();
 
             // Scroll page to the box
-            $("body").animate({ scrollTop : top - 40 }, 650);
+            $("html, body").animate({ scrollTop : top - 40 }, 650);
 
             // Open box position
             if ( left < width/2 ) {
@@ -133,7 +133,7 @@ $(function () {
                 gridid = tar.attr("gridid");
                 box = tar[0].parentNode;
 
-            // Test
+            // Debug & Test
             openBoxRender();
 
             if ( gridid != undefined) openBoxHandle.req("?gridid=" + gridid);

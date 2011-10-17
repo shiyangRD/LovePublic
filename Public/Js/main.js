@@ -11,7 +11,7 @@ $(function () {
 * Get body node
 +----------------------------------------------------------------
 */
-    var body = (window.opera) ? ( document.compatMode == "CSS1Compat" ? $('html') : $('body') : $('html, body'));
+    var body = (window.opera) ? ( document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html, body');
 
 /**
 +----------------------------------------------------------------
