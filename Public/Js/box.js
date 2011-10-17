@@ -58,7 +58,7 @@ $(function () {
             for ( var i in data) {
                 // Template of Image Box
                 if ( data[i].type = 1) {
-                    var templateImage = '<div class="box" gridid="' + data[i].gridid + '"><img src="' + data[i].thumb + '" /><span class="title">' + data[i].title + '</span><a href="' + data[i].homepage + '" class="author">' + data[i].author + '</a><span class="time">' + data[i].time_edit + '</span><span class="like"></span><span class="num_like">' + data[i].num_like + '</span></div>';
+                    var templateImage = '<div class="box"><img gridid="' + data[i].gridid + '" src="' + data[i].thumb + '" /><span class="title">' + data[i].title + '</span><a href="' + data[i].homepage + '" class="author">' + data[i].author + '</a><span class="time">' + data[i].time_edit + '</span><span class="like"></span><span class="num_like">' + data[i].num_like + '</span></div>';
                         templateImage = $(templateImage);
                     boxWrap.append( templateImage ).masonry('appended', templateImage);
                 };
@@ -80,9 +80,64 @@ $(function () {
                 updateBox.req("?page=" + page);
             };
         });
+/**
++----------------------------------------------------------------
+* Open box action
++----------------------------------------------------------------
+*/
+        // Open box template
+        var openBox       = $("#openBox"),
+            openBoxCancel = $("#openBoxCancel");
 
-        // Open one box
-        var openBox = new Box("", openBoxRender);
+        // Grid ID, and the box
+        var gridid, box;
+
+        // Render the open Box
+        var openBoxRender = function ( data) {
+            // One box data
+            var data = $.parseJSON(data) || null;
+
+            // Current box offset
+            var top   = $(box).offset().top,
+                left  = $(box).offset().left,
+                width = $(window).width();
+
+            // Scroll page to the box
+            $("body").animate({ scrollTop : top - 40 }, 650);
+
+            // Open box position
+            if ( left < width/2 ) {
+                openBox.show();
+                openBox.offset({ top: top, left: left});
+                
+            } else {
+                var sLeft = left+182-566;
+                openBox.show();
+                openBox.offset({ top: top, left: sLeft});
+            };
+
+            // Cancel click 
+            openBoxCancel.click(function () {
+                openBox.fadeOut("fast");
+            });
+
+        };
+
+        // Instantiate Box
+        var openBoxHandle = new Box("/grid/show/", openBoxRender);
+
+        // Handle open Box
+        boxWrap.delegate(".box", "click", function (e) {
+            // Event Object target
+            var tar = $( e.target);
+                gridid = tar.attr("gridid");
+                box = tar[0].parentNode;
+
+            // Test
+            openBoxRender();
+
+            if ( gridid != undefined) openBoxHandle.req("?gridid=" + gridid);
+        });
 
     };
 });

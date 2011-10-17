@@ -301,7 +301,7 @@
 }
 
 #openBox {
-    _display:none;
+    display:none;
     top:50px;
     left:5px;
     position:absolute;
@@ -362,16 +362,12 @@
     position:absolute;
     right:0;
     top:15px;
-    background:url(../Images/openBoxCancel.png) left;
+    background:url(../Images/openBoxCancel.png);
     cursor:pointer;
 }
 
 #openBoxCancel:hover {
-    background-position:-30px 0;
-    -webkit-transition: all 0.2s ease-in-out;
-    -moz-transition: all 0.2s ease-in-out;
-    -o-transition: all 0.2s ease-in-out;
-    transition: all 0.2s ease-in-out;
+    background:url(../Images/openBoxCancelRed.png);
 }
 
 #openBoxContent {
