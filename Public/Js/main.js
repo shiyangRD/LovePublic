@@ -85,4 +85,10 @@ $(function () {
         $.getScript("../Js/box.js");
     }; 
 
+    // Handle all box behavior
+    var S_box = $("#S_box");
+    if ( S_box[0]) {
+        $.getScript("../Js/chat.js");
+    }; 
+
 });
