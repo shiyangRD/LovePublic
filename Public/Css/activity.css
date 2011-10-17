@@ -1,0 +1,146 @@
+/*
++-------------------------------------------
+*activity.html content part
++-------------------------------------------
+*/
+#Y_content{
+	width:950px;
+	padding-top:55px;
+	height:650px;
+	margin:0 auto;
+	margin-top:50px;
+	background:#fff;
+}
+
+#Y_contentLeft{
+	width:150px;
+	padding-left:50px;
+	float:left;
+	margin-top:20px;
+}
+
+#Y_contentLeft li{
+	width:120px;
+	border-bottom:1px solid #ccc;
+	padding:10px 0;
+}
+
+#Y_contentLeft li img{
+	position:relative;
+	top:2px;
+	display:block;
+	float:left;
+	width:22px;
+	height:22px;
+}
+#Y_contentLeft ul a{
+	display:block;
+	width:90px;
+	text-align:center;
+	font-size:18px;
+	color:#000;
+	margin-left:25px;
+	text-shadow:1px 1px #c0c0c0;;
+	-webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+	-moz-border-radius:6px;
+	-khtml-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+}
+#Y_contentLeft ul a:hover{
+	text-decoration:none;
+	background:#ccc;
+}
+
+#Y_leftTip{
+	width:140px;
+	height:168px;
+	margin-top:20px;
+	background:url(../Images/Y_leftPic.png);
+}
+
+#Y_tip{
+	width:110px;
+	height:40px;
+	margin:0 auto;
+	background:#fff;
+	-moz-border-radius:6px;
+	-khtml-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	position:relative;
+	top:20px;
+}
+#Y_contentRight{
+	width:720px;
+	padding-right:30px;
+	height:600px;
+	float:left;
+	
+}
+
+#Y_banner{
+	width:699px;
+	height:25px;
+}
+
+#Y_banner ul{
+	position:absolute;
+	right:0;
+}
+#Y_banner li{
+	width:101px;
+	border-left:1px solid #ccc;
+	float:left;
+	text-align:center;
+}
+
+#Y_banner a{
+	font-size:14px;
+	display:block;
+	width:101px;
+	height:20px;
+	padding-bottom:5px;
+	color:#000;
+	-webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+	-moz-border-radius:6px;
+	-khtml-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+}
+
+#Y_banner a:hover{
+	text-decoration:none;
+	background:#AAD5FF;
+}
+#Y_presents{
+	width:702px;
+	height:auto;
+	overflow:auto;
+	padding-bottom:1px;
+	margin-bottom:-1px;
+	padding-top:20px;
+	padding-left:20px;
+	border-left:1px solid #84C1FF;
+}
+#Y_presents li{
+	width:92px;
+	height:130px;
+	padding-right:25px;
+	float:left;
+	text-align:center;
+}
+
+#Y_presents img{
+	border:1px solid #ccc;
+}
+
+#Y_presents a{
+	color:#0099CC;
+}
