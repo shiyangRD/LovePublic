@@ -125,21 +125,24 @@ $(function () {
 
             // Data to template 
             var commentTemplate;
+            var tagTemplate;
             openBoxAuthorAvatar.attr("src", DATA.avatar);
             openBoxAuthorName.text( DATA.author );
             openBoxContent.html( DATA.content );
             // Todo : 标签
-            //tags.append( DATA.tags )
+            tags.append( DATA.tags )
+            for ( var i in DATA.tag ) {
+                tagTemplate = '<a href="' + DATA.tag[i].url + '">#' + DATA.tag[i].name+ '</a>';
+            };
             // Debug : 热度
             openBoxHot.text( DATA.num_comment + DATA.num_collect + DATA.num_like );
             openBoxCommentNum.text( DATA.num_comment );
             openBoxColletNum.text( DATA.num_collect );
             // Todo : 评论
             for ( var i in comment) {
-                commentTemplate = '<li><div></div class="openBoxAvatar"><a href="' + /* Todo : 个人主页地址*/ + '"><img src="' + comment[i].thumb + '" /></a><div class="openBoxCommentContent"><a class="author" href="' + /* Todo : 个人主页地址 */ + '">' + + '</a><span>' + comment[i].content + '</span><a class="reply" author="" href="#">回复</a></div></li>';
+                commentTemplate = '<li><div></div class="openBoxAvatar"><a href="/home/home/index/id/' + comment[i].userid + '"><img src="' + comment[i].thumb + '" /></a><div class="openBoxCommentContent"><a class="author" href="/home/home/index/id/' + comment[i].userid + '/">' + + '</a><span>' + comment[i].content + '</span><a class="reply" author="" href="#">回复</a></div></li>';
                 openBoxCommentListul.append( commentTemplate );
             };
-            
             
             // Current box offset
             var top   = $(box).offset().top,
@@ -182,6 +185,13 @@ $(function () {
 
             if ( gridid != undefined) openBoxHandle.req("?gridid=" + gridid);
         });
+
+/**
++----------------------------------------------------------------
+* Send comment action 
++----------------------------------------------------------------
+*/
+        // 
 
     };
 });
