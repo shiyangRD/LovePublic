@@ -46,6 +46,9 @@ $(function () {
     if ( boxWrap[0]) {
         // Initial Render Page
         var renderBox = function (data) {
+            //Determine the box 
+            //if ( box.id == 'boxWrap') return false;
+
             // Box data
             var data = $.parseJSON(data);
 
@@ -94,6 +97,10 @@ $(function () {
 
         // Render the open Box
         var openBoxRender = function ( data) {
+            // Determine the box
+            if ( $(box).attr('id') == "boxWrap") return false;
+            
+            
             // One box data
             var data = $.parseJSON(data) || null;
 
