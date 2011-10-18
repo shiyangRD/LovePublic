@@ -1,4 +1,4 @@
-#S_box{
+#boxWrap_1{
   padding-top:30px;
 }
 #S_box1{
@@ -62,7 +62,7 @@
     height:64%;
     padding-top:40px;
 }
-.S_tips a{
+.S_tips a.green{
     display:block;
     padding-left:10px;
     height:30px;
@@ -225,4 +225,42 @@ a.S-bmBar{
 }
 .S_footer a:hover{
 	text-decoration:underline;
+}
+
+/*Layer*/
+.S_outlayer{
+	position:absolute;
+	top:20px;
+	z-index:10;
+	left:-510px;
+	width:510px;
+	border:1px solid #ccc;
+	background-color:#fff;
+	display:none;
+}
+#S_perList{
+	margin:0;
+	padding:10px;
+}
+#S_perList li{
+	display:block;
+	float:left;
+	width:155px;
+	height:30px;
+	line-height:30px;
+	margin:4px;
+}
+#S_perList li a{
+	background-color:#f9f9f9;
+	display:block;
+	text-decoration:none;
+}
+#S_perList li a img{
+	float:left;
+	width:30px;
+	height:30px;
+	margin-right:6px;
+}
+#S_perList li a:hover {
+	background:#e6e6e6 url(../Images/talk.png) right no-repeat;
 }

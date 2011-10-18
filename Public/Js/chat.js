@@ -36,6 +36,15 @@ $(function(){
 		$(this).hover(function(){
 			$(".items").eq(i).click();
 		})						  
+   });
+   
+   //Handle show carePer
+   $('#S_boxList li').each(function(i){
+   	  $(this).hover(function(){
+	  	  $(this).find(".S_outlayer").show();
+	  },function(){
+	  	  $(this).find(".S_outlayer").hide();
+	  })
    })
 })
 
