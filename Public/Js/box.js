@@ -182,9 +182,6 @@ $(function () {
                 gridid = tar.attr("gridid");
                 box = tar[0].parentNode;
 
-            // Debug & Test
-            openBoxRender();
-
             if ( gridid != undefined) openBoxHandle.req("?gridid=" + gridid);
         });
 
@@ -211,10 +208,17 @@ $(function () {
             };
 
             if ( status == 1) {
-                // Todo 插入当前评论到评论列表中
+                // Todo 成功  插入当前评论到评论列表中
+                var addData = openBoxCommentAddText.text();
+                // Todo 获得当前用户的头像，昵称，个人主页地址
+                // Todo 插入评论
+
+                // 清空输入框
+                openBoxCommentAddText.text("");
                 
             } else {
                 // Todo 评论失败，网络连接失败
+                openBoxCommentButton.val("可能由于网络原因，提交失败了，请重试");
                 return false;
             };
         };
@@ -225,7 +229,7 @@ $(function () {
             openBoxCommentListul.delegate( ".reply", "click", function (event) {
                 var author = $(event.target).attr("author");
 
-                openBoxCommentAddText.append("@" + author + ":")
+                openBoxCommentAddText.text("@" + author + ":")
                 openBoxCommentAddText.focus();
                 openBoxCommentAddText.append(" ");
             });
@@ -234,15 +238,29 @@ $(function () {
             openBoxCommentAddText.focus(function () {
                 openBoxCommentButton.fadeIn("fast");
             });
-            openBoxCommentAddText.blur(function () {
-                openBoxCommentButton.hide();
-            });
 
         };
         editReply();
 
         // Instantiate Box
         var replyBox = new Box("/grid/comment/", addReply);
+        
+        // Handle : send the reply
+        openBoxCommentButton.click(function () {
+        alert(openBoxCommentAddText.val())
+            var commentDATA = openBoxCommentAddText.val();
+            if ( commentDATA != "" ) {
+                var paraments = "?gridid=" + gridid + "&comment=" + commentDATA ;
+                replyBox.req( paraments );
+            } else {
+                alert("没有填写内容哦，亲");
+            };
+        });
 
+/**
++----------------------------------------------------------------
+* Make a new box
++----------------------------------------------------------------
+*/
     };
 });

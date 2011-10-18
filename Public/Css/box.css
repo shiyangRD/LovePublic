@@ -301,8 +301,7 @@
 }
 
 #openBox {
-    /* Todo : 调试 */
-    _display:none;
+    display:none;
     top:50px;
     left:5px;
     position:absolute;
@@ -433,6 +432,8 @@
     padding:5px;
     font-size:14px;
     color:#232323;
+    box-shadow:0 0 5px rgba(0, 0, 0, 0.2);
+    outline:none;
 }
 
 #openBoxCommentButton {
@@ -446,8 +447,8 @@
 	background:#ebebeb -webkit-gradient(linear, 0 0, 0 100%, from(#fafafa), to(#e5e5e5));
 	background:#ebebeb -moz-linear-gradient(top, #fafafa,#e5e5e5);
     position:relative;
-    left:450px;
     top:5px;
+    left:450px;
     -webkit-transition: all 0.13s ease-in-out;
     -moz-transition: all 0.13s ease-in-out;
     -o-transition: all 0.13s ease-in-out;
