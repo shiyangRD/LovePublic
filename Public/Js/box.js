@@ -89,16 +89,18 @@ $(function () {
 +----------------------------------------------------------------
 */
         // Open box template
-        var openBox             = $("#openBox"),
-            openBoxCancel       = $("#openBoxCancel"),
-            openBoxAuthorAvatar = $("#openBoxAuthorAvatar");
-            openBoxAuthorName   = $("#openBoxAuthorName span");
-            openBoxContent      = $("#openBoxContentContent");
-            tags                = $("#tags");
-            openBoxCommentNum   = $("#openBoxCommentNum");
-            openBoxColletNum    = $("#openBoxColletNum");
-            openBoxComment      = $("#openBoxComment");
-            openBoxCommentListul= $("#openBoxCommentListul");
+        var openBox               = $("#openBox"),
+            openBoxCancel         = $("#openBoxCancel"),
+            openBoxAuthorAvatar   = $("#openBoxAuthorAvatar");
+            openBoxAuthorName     = $("#openBoxAuthorName span");
+            openBoxContent        = $("#openBoxContentContent");
+            tags                  = $("#tags");
+            openBoxCommentNum     = $("#openBoxCommentNum");
+            openBoxColletNum      = $("#openBoxColletNum");
+            openBoxComment        = $("#openBoxComment");
+            openBoxCommentAddText = $("#openBoxCommentAddText");
+            openBoxCommentListul  = $("#openBoxCommentListul");
+            openBoxCommentButton  = $("#openBoxCommentButton");
 
         // Grid ID, and the box
         var gridid, box;
@@ -140,7 +142,7 @@ $(function () {
             openBoxColletNum.text( DATA.num_collect );
             // Todo : 评论
             for ( var i in comment) {
-                commentTemplate = '<li><div></div class="openBoxAvatar"><a href="/home/home/index/id/' + comment[i].userid + '"><img src="' + comment[i].thumb + '" /></a><div class="openBoxCommentContent"><a class="author" href="/home/home/index/id/' + comment[i].userid + '/">' + + '</a><span>' + comment[i].content + '</span><a class="reply" author="" href="#">回复</a></div></li>';
+                commentTemplate = '<li><div></div class="openBoxAvatar"><a href="/home/home/index/id/' + comment[i].userid + '"><img src="' + comment[i].thumb + '" /></a><div class="openBoxCommentContent"><a class="author" href="/home/home/index/id/' + comment[i].userid + '/">' + comment[i].author + '</a><span>' + comment[i].content + '</span><a class="reply" author="' + comment[i].author + '" href="#">回复</a></div></li>';
                 openBoxCommentListul.append( commentTemplate );
             };
             
@@ -191,7 +193,56 @@ $(function () {
 * Send comment action 
 +----------------------------------------------------------------
 */
-        // 
+        // Add reply
+        var addReply = function ( data ) {
+            // Parse box data
+            var originDATA = $.parseJSON( data ) || null;
+
+            try{
+                var status = originDATA.status;
+                var info   = originDATA.info;
+                var DATA   = originDATA.data;
+                var comment= originDATA.data.comment;
+            } 
+            catch(e) {
+                // Todo
+
+                //alert("网络错误，数据不可用");
+            };
+
+            if ( status == 1) {
+                // Todo 插入当前评论到评论列表中
+                
+            } else {
+                // Todo 评论失败，网络连接失败
+                return false;
+            };
+        };
+
+        // Edit of add reply
+        var editReply = function () {
+            // Click reply Action
+            openBoxCommentListul.delegate( ".reply", "click", function (event) {
+                var author = $(event.target).attr("author");
+
+                openBoxCommentAddText.append("@" + author + ":")
+                openBoxCommentAddText.focus();
+                openBoxCommentAddText.append(" ");
+            });
+
+            // Textarea button Action
+            openBoxCommentAddText.focus(function () {
+                openBoxCommentButton.fadeIn("fast");
+            });
+            openBoxCommentAddText.blur(function () {
+                openBoxCommentButton.hide();
+            });
+
+        };
+        editReply();
+
+        // Instantiate Box
+        var replyBox = new Box("/grid/comment/", addReply);
 
     };
 });

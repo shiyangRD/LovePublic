@@ -301,7 +301,8 @@
 }
 
 #openBox {
-    display:none;
+    /* Todo : 调试 */
+    _display:none;
     top:50px;
     left:5px;
     position:absolute;
@@ -414,6 +415,8 @@
 }
 
 #openBoxCommentAddText {
+    color:#ccc;
+    font-family:arial,sans-serif;
     width:516px;
     height:30px;
     border:none;
@@ -430,6 +433,33 @@
     padding:5px;
     font-size:14px;
     color:#232323;
+}
+
+#openBoxCommentButton {
+    display:none;
+    color:#444;
+    cursor:pointer;
+    border-radius:2px;
+    border:1px solid #AAA;
+    padding:3px 12px;
+    box-shadow:0 1px 3px rgba(0, 0, 0, 0.1);
+	background:#ebebeb -webkit-gradient(linear, 0 0, 0 100%, from(#fafafa), to(#e5e5e5));
+	background:#ebebeb -moz-linear-gradient(top, #fafafa,#e5e5e5);
+    position:relative;
+    left:450px;
+    top:5px;
+    -webkit-transition: all 0.13s ease-in-out;
+    -moz-transition: all 0.13s ease-in-out;
+    -o-transition: all 0.13s ease-in-out;
+    transition: all 0.13s ease-in-out;
+}
+
+
+#openBoxCommentButton:hover {
+    color:#222;
+	background:#ebebeb -webkit-gradient(linear, 0 0, 0 100%, from(#fefefe), to(#e9e9e9));
+	background:#ebebeb -moz-linear-gradient(top, #fefefe,#e9e9e9);
+    box-shadow:0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 #openBoxCommentList {
