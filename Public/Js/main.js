@@ -91,4 +91,10 @@ $(function () {
         $.getScript("../Js/chat.js");
     }; 
 
+    // Activity controller
+    var Y_content = $("#Y_content");
+    if ( Y_content[0]) {
+        $.getScript("../Js/activity.js");
+    };
+
 });
