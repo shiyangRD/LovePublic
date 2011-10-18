@@ -223,7 +223,7 @@ a.S-bmBar{
 	text-decoration:none;
 	color:#323232;
 }
-.S_footer a:hover{
+.S_footer a:hover {
 	text-decoration:underline;
 }
 
@@ -261,6 +261,6 @@ a.S-bmBar{
 	height:30px;
 	margin-right:6px;
 }
-#S_perList li a:hover {
+#S_perList li a:hover{
 	background:#e6e6e6 url(../Images/talk.png) right no-repeat;
 }
