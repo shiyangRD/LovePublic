@@ -682,13 +682,13 @@
     */
 	background:rgba(255, 255, 255, 0.55); /*-webkit-gradient(linear, 0 0, 0 100%, from(rgba(255, 255, 255, 0.1)), to(rgba(255, 255, 255, 0.75)));*/
     position:absolute;
-    top:-30px;
+    top:-31px;
     left:0;
     line-height:30px!important;
 }
 
 #makeBoption a {
-    background:#fff;
+    background:rgba(255, 255, 255, 0.95);
     line-height:30px;
     display:block;
     float:right;
@@ -704,7 +704,8 @@
 #makeBoption a:hover {
     color:#298380;
     text-decoration:none;
-    background:#fff url(../Images/makeBoption.png) no-repeat left;
+    background:rgba(255, 255, 255, 0.95) url(../Images/makeBoption.gif) no-repeat left center;
+    background-position-x:7px;
     /*
 	background:rgba(255, 255, 255, 0.5) -webkit-gradient(linear, 0 0, 0 100%, from(rgba(200, 200, 200, 1)), to(rgba(255, 255, 255, 1)));
 	background:rgba(255, 255, 255, 0.5) -moz-linear-gradient(top, rgba(255, 255, 255, 0.1),rgba(255, 255, 255, 0.75));
