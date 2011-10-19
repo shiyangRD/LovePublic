@@ -44,32 +44,10 @@ $(function () {
                 accS.removeClass("accSDown");
                 accul.slideUp('fast');
             };
-        });
-    };
 
-/**
-+----------------------------------------------------------------
-* Control the behavior of block'tool
-+----------------------------------------------------------------
-*/
-    var boxTool     = $("#boxTool");
-    var makeB       = $("#makeB a");
-    var makeBul     = $("#makeBul");
-    var makeBarr    = $("#makeBarr");
-    var makeBcancel = $("#makeB .cancel")
-    if ( boxTool[0]) {
-        // Customize block Submenu control
-        makeB.click(function () {
-            makeB.addClass("makeBDown");
-            makeBul.fadeIn(200);
-            makeBarr.show();
-        });
-
-        // Cancel Customize block dialog
-        makeBcancel.click(function () {
-            makeB.removeClass("makeBDown");
-            makeBul.hide();
-            makeBarr.hide();
+            if ( tar != "addBa") {
+                $("#makeBoption").hide();
+            };
         });
     };
 

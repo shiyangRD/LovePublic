@@ -258,4 +258,37 @@ $(function () {
         });
 
     };
+
+/**
++----------------------------------------------------------------
+* Control the behavior of block'tool
++----------------------------------------------------------------
+*/
+    var boxTool     = $("#boxTool");
+    var makeB       = $("#makeB a");
+    var makeBoption = $("#makeBoption");
+    var makeBul     = $("#makeBul");
+    var makeBcancel = $("#makeB .cancel")
+    var makeBarr    = $("#makeBarr");
+    var addB        = $("#addB a");
+
+    if ( boxTool[0]) {
+        // Customize block Submenu control
+        makeB.click(function () {
+            makeB.addClass("makeBDown");
+            makeBul.fadeIn(200);
+        });
+
+        // Cancel Customize block dialog
+        makeBcancel.click(function () {
+            makeB.removeClass("makeBDown");
+            makeBul.hide();
+        });
+
+        // Add a new box, controller menu
+        addB.click(function () {
+            makeBoption.fadeIn("fast");
+        });
+    };
+
 });

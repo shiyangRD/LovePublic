@@ -645,8 +645,8 @@
 
 #makeBarr {
     position:absolute;
-    top:-10px;
-    left:28px;
+    top:30px;
+    right:100px;
 }
 
 #refrB a {
@@ -667,4 +667,41 @@
 
 #refrB a:active {
     background:url(../Images/refrB.png) no-repeat;
+}
+
+#makeBoption {
+    /* Debug */
+    display:none;
+    width:950px;
+    height:30px;
+    border-top-left-radius:3px;
+    border-top-right-radius:3px;
+    border-top:1px solid #fff;
+    background:;
+	background:rgba(255, 255, 255, 0.5) -webkit-gradient(linear, 0 0, 0 100%, from(rgba(255, 255, 255, 0.1)), to(rgba(255, 255, 255, 0.75)));
+	background:rgba(255, 255, 255, 0.5) -moz-linear-gradient(top, rgba(255, 255, 255, 0.1),rgba(255, 255, 255, 0.75));
+    box-shadow:0 -2px 3px rgba(0, 0, 0, 0.2);
+    position:absolute;
+    top:-30px;
+    left:0;
+    line-height:30px!important;
+}
+
+#makeBoption a {
+    background:#fff;
+    line-height:30px;
+    display:block;
+    float:right;
+    width:70px;
+    height:30px;
+    text-align:center;
+    font-size:16px;
+    color:#484848;
+}
+
+#makeBoption a:hover {
+    color:#298380;
+    text-decoration:none;
+	background:rgba(255, 255, 255, 0.5) -webkit-gradient(linear, 0 0, 0 100%, from(rgba(200, 200, 200, 1)), to(rgba(255, 255, 255, 1)));
+	background:rgba(255, 255, 255, 0.5) -moz-linear-gradient(top, rgba(255, 255, 255, 0.1),rgba(255, 255, 255, 0.75));
 }
