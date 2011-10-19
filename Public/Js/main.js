@@ -46,6 +46,7 @@ $(function () {
             };
 
             if ( tar != "addBa") {
+                $("#addBa").removeClass("addBDown");
                 $("#makeBoption").hide();
             };
         });

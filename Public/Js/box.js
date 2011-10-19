@@ -288,6 +288,7 @@ $(function () {
         // Add a new box, controller menu
         addB.click(function () {
             makeBoption.fadeIn("fast");
+            addB.addClass("addBDown");
         });
     };
 
