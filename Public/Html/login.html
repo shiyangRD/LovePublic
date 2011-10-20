@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+  <link media="all" rel="stylesheet" href="../Css/login.css" type="text/css" />
+  <script type="text/javascript" src="../Js/core/jquery-1.6.4.min.js"></script>
+  <script type="text/javascript" src="../Js/plugin/jquery.validate.js"></script>
+ 
+    	<script type="text/javascript">
+		
+            $(document).ready(function() {
+
+		// highlight 
+		var elements = $("input[type!='submit'], textarea, select");
+		elements.focus(function(){
+			$('.L_label-name').addClass('L_highlight');
+		});
+		elements.blur(function(){
+			$('.L_label-name').removeClass('L_highlight');
+		});
+        elements.focus(function(){
+            $('#L_cemail').append("<span>输入一个常用的邮箱吧</span>");
+		});
+
+				
+        $("#L_login-form").validate({
+rules:{
+password:{
+    required:true,
+},
+email:{
+    required:true,
+    email:true,
+},
+},
+messages:{
+password:{
+    required:"请输入密码",
+
+    },
+email:{
+required:"请输入邮箱",
+email:"邮箱格式错误",
+}
+},
+
+            });
+	});
+	</script>
+
+
+  <title>叶儿芽首页</title>
+</head>
+<body>
+    <div id="L_wrap">
+        <div id="L_content">
+            <div id="L_login-register">
+                  <button  class="L_show" type="image"></button>
+                  <button class="L_login-button" type="image" href="_left.html"><a href="_left.html" id="L_slide-register">fsd</a></button>
+            </div>
+            <div class="L_logo"></div>
+            <form action="#" method="post" id="L_login-form">
+                 <div class="L_rg-item">
+                      <label for="cemail" class="L_label-name">邮箱</label>
+                      <input  id="L_cemail" name="email" class=" L_required email cdw" style="font-size:20px;margin-top:-23px;margin-left:4px" />
+                  </div>
+                  <div class="L_rg-item">
+                      <label for="password" class="L_label-name">密码</label>
+                      <input id="L_password" name="password" class="L_cdw" type="password" style="font-size:20px;margin-top:-23px;margin-left:4px"  />
+                  </div>
+                <p class="L_login-setting">
+                <label for="remember-login">
+                    <input id="L_remember-password" type="checkbox" name="persistent" value="1" checked="checked" />记住密码
+                </label>
+                <a href="#" title="密码忘了？" class="L_login-feget-pwd">密码忘了？</a>
+                </p>
+                <div class="L_login-form-item">
+                    <button id="L_login-submit" tabindex="3" type="submit"></button>
+                </div>
+            </form>
+        </div>
+        </div> 
+</body>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#slide-register").pageSlide({width:"1000px",direction: "left" });
+
+        });
+</script>
+</html>
