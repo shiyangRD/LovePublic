@@ -4,3 +4,24 @@
 *coded by smallfish
 +-------------------------------------------------
 */
+#Y_conDiary{
+	width:950px;
+	height:640px;
+	margin:0 auto;
+	background:#fff;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	-o-border-radius:5px;
+	margin-top:50px;
+	margin-bottom:20px;
+}
+
+
+#Y_banner h1{
+	color:#5EBFBD;
+	width:200px;
+	font-weight:bold;
+	font-size:21px;
+	margin-left:15px;
+	margin-top:20px;
+}
