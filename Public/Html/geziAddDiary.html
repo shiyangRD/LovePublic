@@ -41,13 +41,60 @@
         </div>
     </div>
 	<div id="Y_conDiary">
-		<div id="Y_banner">
+		<div id="Y_diaBanner">
 			<h1>写一篇日记</h1>
-			
+			<ul>
+				<li><a href="#">+&nbsp;图片</a></li>
+				<li><a href="#">+&nbsp;视频</a></li>
+				<li><a href="#">+&nbsp;音乐</a></li>
+			</ul>
+		</div>
+		<div id="Y_diaAddTitle">
+			<p><a>+&nbsp;标题</a></p>
+			<input type="text" value=" " id="Y_input"/>
+		</div>
+		<div id="Y_diaEitor">
+			<div id="Y_diaCkEidtor">
+				<form action="#" method="get">
+					<textarea style="width:686px;height:410px;" name="editor1" class="ckeditor"></textarea>
+					<ul>
+						<li><a href="#" class="Y_green">保存为草稿</a></li>
+						<li><a href="#">放弃</a></li>
+						<li><a href="#">在首页预览</a></li>
+						<li><a href="#">在个人主页预览</a></li>
+						<li class="Y_bg"><input type="submit" value="发布" class="Y_fabu" /></li>
+					</ul>
+				</form>
+			</div>
+			<div id="Y_diaTag">
+				<div id="Y_selectBox1" class="Y_selectCommon">所有人可见</div>
+				<div id="Y_selectMenu1">
+					<div id="Y_searchBox">
+						<input type="text" value="" />
+						<img src="../Images/Y_searchPic.png" />
+					</div>
+				</div>
+				<div id="Y_selectBox2" class="Y_selectCommon">现在发布</div>
+				<p><a>+&nbsp;标签</a></p>
+				<div id="Y_creatTag">
+					<textarea>在这里添加分隔符，用逗号或空格分隔</textarea>
+					<div id="Y_addedTag">
+						<h3>常用标签</h3>
+						<ul>
+							<li><a href="#">落叶</a></li>
+							<li><a href="#">秋天</a></li>
+							<li><a href="#">凉</a></li>
+							<li><a href="#">荒寂</a></li>
+							<li><a href="#">成都的秋天</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </body>
 <script src="../Js/core/jquery-1.6.4.min.js" type="text/javascript"> </script>
 <script src="../Js/core/jquery-ui-1.8.16.min.js" type="text/javascript"> </script>
 <script src="../Js/main.js" type="text/javascript"> </script>
+<script src="../Js/plugin/ckeditor/ckeditor.js" type="text/javascript"> </script>
 </html>

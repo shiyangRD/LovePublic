@@ -75,5 +75,11 @@ $(function () {
     if ( Y_content[0]) {
         $.getScript("../Js/activity.js");
     };
-
+	
+	//load geziAddDiary.js
+	var Y_conDiary = $('#Y_conDiary');
+	if (Y_conDiary[0]) {
+		$.getScript("../Js/plugin/ckeditor/ckeditor.js");
+		$.getScript("../Js/geziAddDiary.js");
+	}
 });
