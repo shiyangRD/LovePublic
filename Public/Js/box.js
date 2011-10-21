@@ -49,8 +49,20 @@ $(function () {
             //Determine the box 
             //if ( box.id == 'boxWrap') return false;
 
-            // Box data
-            var data = $.parseJSON(data);
+            // Parse box data
+            var originDATA = $.parseJSON(data) || null;
+
+            try{
+                var status = originDATA.status;
+                var info   = originDATA.info;
+                var DATA   = originDATA.data;
+                var comment= originDATA.data.comment;
+            } 
+            catch(e) {
+                // Todo
+
+                //alert("网络错误，数据不可用");
+            };
 
             // Render the box
             boxWrap.masonry({
@@ -58,10 +70,10 @@ $(function () {
                 isAnimated   : true
             });
 
-            for ( var i in data) {
+            for ( var i in DATA) {
                 // Template of Image Box
-                if ( data[i].type = 1) {
-                    var templateImage = '<div class="box"><img gridid="' + data[i].gridid + '" src="' + data[i].thumb + '" /><span class="title">' + data[i].title + '</span><a href="' + data[i].homepage + '" class="author">' + data[i].author + '</a><span class="time">' + data[i].time_edit + '</span><span class="like"></span><span class="num_like">' + data[i].num_like + '</span></div>';
+                if ( DATA[i].type = 1) {
+                    var templateImage = '<div class="box"><img gridid="' + DATA[i].gridid + '" src="' + DATA[i].thumb + '" /><span class="title">' + data[i].title + '</span><a href="' + DATA[i].homepage + '" class="author">' + DATA[i].author + '</a><span class="time">' + DATA[i].time_edit + '</span><span class="like"></span><span class="num_like">' + DATA[i].num_like + '</span></div>';
                         templateImage = $(templateImage);
                     boxWrap.append( templateImage ).masonry('appended', templateImage);
                 };
@@ -72,7 +84,7 @@ $(function () {
 
         // Instantiate Box
         var page = 0;
-        var updateBox = new Box("../box.php", renderBox);
+        var updateBox = new Box("/grid/showList/", renderBox);
         updateBox.req("?page=0");
 
         // Scroll control 
