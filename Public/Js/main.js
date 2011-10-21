@@ -8,13 +8,6 @@ $(function () {
 
 /**
 +----------------------------------------------------------------
-* Get body node
-+----------------------------------------------------------------
-*/
-    var body = (window.opera) ? ( document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html, body');
-
-/**
-+----------------------------------------------------------------
 * Control the behavior of all the menu
 +----------------------------------------------------------------
 */
@@ -44,11 +37,32 @@ $(function () {
                 accS.removeClass("accSDown");
                 accul.slideUp('fast');
             };
+        });
+    };
 
-            if ( tar != "addBa") {
-                $("#addBa").removeClass("addBDown");
-                $("#makeBoption").hide();
-            };
+/**
++----------------------------------------------------------------
+* Control the behavior of block'tool
++----------------------------------------------------------------
+*/
+    var boxTool     = $("#boxTool");
+    var makeB       = $("#makeB a");
+    var makeBul     = $("#makeBul");
+    var makeBarr    = $("#makeBarr");
+    var makeBcancel = $("#makeB .cancel")
+    if ( boxTool[0]) {
+        // Customize block Submenu control
+        makeB.click(function () {
+            makeB.addClass("makeBDown");
+            makeBul.fadeIn(200);
+            makeBarr.show();
+        });
+
+        // Cancel Customize block dialog
+        makeBcancel.click(function () {
+            makeB.removeClass("makeBDown");
+            makeBul.hide();
+            makeBarr.hide();
         });
     };
 
@@ -63,23 +77,22 @@ $(function () {
         $.getScript("../Js/plugin/jquery.masonry.min.js");
         $.getScript("../Js/box.js");
     }; 
-
-    // Handle all box behavior
-    var S_box = $("#S_box");
-    if ( S_box[0]) {
-        $.getScript("../Js/chat.js");
-    }; 
-
-    // Activity controller
-    var Y_content = $("#Y_content");
-    if ( Y_content[0]) {
-        $.getScript("../Js/activity.js");
-    };
+    
+    //Handle chat Layer
+    var bottomBar=$('#boxWrap_1');
+    if(bottomBar[0]){
+        $.getScript("chat.js");
+    }
 	
-	//load geziAddDiary.js
-	var Y_conDiary = $('#Y_conDiary');
-	if (Y_conDiary[0]) {
-		$.getScript("../Js/plugin/ckeditor/ckeditor.js");
-		$.getScript("../Js/geziAddDiary.js");
-	}
+	//handle chat window
+	//var chatBox=$('.S_chat_record');
+	//if(chatBox[0]){
+	//	$.getScript("chat.js");
+	//	$.getScript('../Js/plugin/documentation.js');
+	//	$.getScript('../Js/plugin/jquery.MetaData.js');
+	//	$.getScript('../Js/plugin/jquery.rating.js');
+	//}
+	
 });
+
+

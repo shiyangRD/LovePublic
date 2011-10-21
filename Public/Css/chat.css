@@ -1,11 +1,4 @@
-@charset "utf-8";
-/**
-+-----------------------------------------------------
-* chat choose of chat choose  page
-+-----------------------------------------------------
-*/
-
-#S_box{
+#boxWrap_1{
   padding-top:30px;
 }
 #S_box1{
@@ -43,19 +36,19 @@
     float:left;
     height:46px;
 }
-#S_BoxTop1{
+#S-BoxTop1{
     width:33%;
 }
-#S_BoxTop2{
+#S-BoxTop2{
     width:26%;
     margin:0 3px;
 }
-#S_BoxTop2 img{
+#S-BoxTop2 img{
     margin:50px;
     height:127px;
     width:157px;
 }
-#S_BoxTop3{
+#S-BoxTop3{
     width:39%;
 }
 .S_perBox{
@@ -136,7 +129,7 @@
 	-khtml-opacity: 1;
 	opacity: 1;
 }
-.S_downGreen{
+.S-downGreen{
 	color:#28837F;
 	font-size:16px;
 }
@@ -161,7 +154,7 @@
 .S_bottomBar .bmList{
 	height:60px;
 }
-a.S_bmBar{
+a.S-bmBar{
    display:inline-block;
    height:60px;
    width:190px;
@@ -271,4 +264,570 @@ a.S_bmBar{
 #S_perList li a:hover {
 	background:#e6e6e6 url(../Images/talk.png) right no-repeat;
 }
-/*End layer*/
+
+/*face show*/
+/*end face  show*/
+.S_face{
+	width:210px;
+	position:absolute;
+	top:-100px;
+	left:40px;
+	display:none;
+	z-index:6;
+	background-color:#f9f9f9;
+}
+.S_face ul li{
+	display:block;
+	width:25px;
+	float:left;
+	height:25px;
+}
+.S_face ul li img{
+	cursor:pointer;
+}
+/*TalkContent*/
+#S_layout{
+   width:544px;
+   min-height:496px;
+   margin:10px auto;
+}
+#talkbox{
+    width:100%;
+    height:100%;
+    background-color:#f3f3f3;
+}
+.S_Box2{
+    height:55px;
+    width:100%;
+	position:relative;
+	top:0;
+	left:0;
+	z-index:10;
+}
+.S_talkper{
+    height:55px;
+	position:absolute;
+	left:0;
+	z-index:3;
+}
+.S_all{
+    width:170px;
+    height:55px;
+	float:left;
+    background-color:#58A39F;
+}
+.S_banner{
+    float:left;
+    width:31px;
+    height:55px;
+    background:url('../Images/originstatus.png') no-repeat;
+}
+.S_banner img{
+    height:55px;
+}
+.S_photo{
+    background-color:#e3e3e3;
+    width:40px;
+    height:40px;
+    float:left;
+    margin-top:4px;
+    margin-left:5px;
+}
+.S_tbg{
+    height:100%;
+    width:40px;
+    float:left;
+}
+.S_all img{
+    width:40px;
+    height:40px;
+    position:relative;
+    display:block;
+    z-index:5;
+    left:5px;
+    top:5px;
+}
+.S_perCon{
+    float:left;
+    color:#fff;
+    width:104px;
+    height:55px;
+    padding-left:10px;
+}
+.S_perCon span{
+    color:#fff;
+    line-height:26px;
+}
+.S_hiddenBox{
+    display:none;
+    width:60px;
+    height:100%;
+    float:left;
+}
+.S_hiddenBox a{
+    display:block;
+    height:21px;
+    line-height:21px;
+    width:60px;
+    margin-top:18px;
+    text-align:center;
+}
+
+.S_hiddenBox  a:hover {
+    background:url('../Images/carehover.png') no-repeat;
+    text-decoration:none;
+}
+.S_bannerList{
+    float:right;
+    height:27px;
+    width:262px;
+	position:relative;
+	z-index:6;
+}
+.S_bannerList ul li{
+    display:inline-block;
+    width:82px;
+    float:left;
+    line-height:27px;
+    text-align:center;
+    position:relative;
+    height:100%;
+	z-index:8;
+    background:url(../Images/barclick.png) no-repeat;
+}
+.S_bannerList ul li a:hover {
+	text-decoration:none;
+	position:relative;
+	top:1px;
+	left:1px;
+}
+#S_item1{
+    left:40px;
+}
+#S_item2{
+    left:26px;
+}
+#S_item3{
+    left:16px;
+}
+.S_bannerList span a{
+    text-decoration:none;
+    color:#fff;
+	text-align:right;
+}
+/*Chat Box*/
+.S_tcBox{
+    margin-top:15px;
+    margin-bottom:15px;
+}
+.S_tc .S_tcBox{
+    margin-left:10px;
+}
+.S_mc .S_tcBox{
+    margin-left:22px;
+}
+.S_Stop1{
+    height:6px;
+    font-size:0px;
+    overflow:hidden;
+    background:url('../Images/tt1.png') no-repeat;
+}
+.S_Stop2{
+    height:6px;
+    font-size:0px;
+    overflow:hidden;
+    background:url('../Images/tt2.png') no-repeat;
+}
+.S_Smid1,.S_Smid2{
+    line-height:30px;
+    *margin-top:-10px;
+}
+.S_Smid1{
+    padding-left:20px;
+    min-height:30px;
+    background:url('../Images/tm1.png') repeat-y;
+}
+.S_Smid2{
+    padding-left:20px;
+    min-height:30px;
+    background:url('../Images/tm2.png') repeat-y;
+}
+.S_Sbom1{
+    height:24px;
+    background:url('../Images/tb1.png') no-repeat;
+}
+.S_Sbom2{
+    height:24px;
+    background:url('../Images/tb2.png') no-repeat;
+}
+/*End chat show Box*/
+
+/*chat write Box bar*/
+.S_tContent{
+    width:544px;
+    height:155px;
+    background-color:#58A39F;
+}
+.S_tbar{
+    height:30px;
+}
+.S_tbar ul li{
+    display:inline-block;
+    float:left;
+    z-index:4;
+}
+.S_tbar ul li a, .S_record a{
+    display:inline-block;
+    color:#fff;
+    z-index:6;
+    height:30px;
+	line-height:30px;
+    padding:0 5px;
+	overflow:hidden;
+}
+#photo{/*Uoload file*/
+	position:relative;
+	top:131px;
+	opacity:0;
+	filter:alpha(opacity=0);
+	-moz-opacity:0;
+	-khtml-opacity: 0;
+}
+.S_tbar img {
+    margin-top:5px;
+    display:block;
+    margin-left:5px;
+}
+.S_record{
+    float:right;
+    margin-right:10px;
+}
+.S_record a:hover, .S_tbar li a:hover,.S_tbbar a:hover {
+    text-decoration:none;
+    background-color:#0D5552;
+}
+/*End chat write Box bar*/
+
+/*write box*/
+.S_taBox{
+    background-color:#f3f3f3;
+}
+.S_taBox form{
+    margin:0;
+    padding:0;
+    height:94px;
+}
+.S_taBox textarea,.S_div_box{
+    width:542px;
+    height:94px;
+    border:0;
+    z-index:1;
+    overflow:hidden;
+}
+/*End write Box*/
+
+/*Msg send*/
+.S_tbbar{
+    height:30px;
+}
+.S_tbbar a{
+    margin:0 5px;
+    display:inline-block;
+    float:right;
+    color:#fff;
+    line-height:28px;
+    height:100%;
+}
+.S_font1{
+    font-size:15px;
+}
+.S_tbbar span img{
+    margin-top:8px;
+	margin-right:10px;
+	cursor:pointer;
+}
+.white{
+    color:#fff;
+}
+/*End msg send*/
+
+/*Begin font chage*/
+.S_fontbox{
+    position:absolute;
+    top:-24px;
+    color:#000;
+    z-index:8;
+    *left:-1px;
+    width:160px;
+    display:none;
+}
+#S_div_box{
+    height:84px;
+	overflow-y:scroll;
+	width:544px;
+	word-wrap : break-word;
+	float:left;
+}
+#fontFamily{
+    width:100px;
+}
+#fontSize{
+    width:40px;
+}
+#S_boxShow{
+	float:right;
+	position:relative;
+}
+.S_style{
+	border:1px solid #ccc;
+	width:80px;
+	height:40px;
+	position:absolute;
+	z-index:5;
+	left:-10px;
+	top:-30px;
+	display:none;
+	background-color:#FFF;
+}
+.S_style a{
+	height:20px;
+	display:block;
+	margin:0;
+	color:#666;
+	width:100%;
+	font-size:10px;
+	line-height:20px;
+	text-align:center;
+}
+.S_selected{
+	background-color:#ccc;
+	color:#fff;
+}
+.S_style a:hoveri {
+	color:#fff;
+	background-color:#CCC;
+}
+
+/*Show all Items style*/
+.S_pershow{
+	width:146px;
+	clear:both;
+	height:334px;
+	position:absolute;
+	display:none;
+	z-index:4;
+	top:32px;
+	left:396px;
+	background-color:#FFF;
+	border:1px solid #A6C8C7;
+}
+.S_pershow .S_list_show_box{
+	height:100%;
+	overflow:hidden;
+}
+/*Items one*/
+.S_list_show_box span a{
+	display:block;
+	height:12px;
+	font-family:"微软雅黑";
+}
+#S_showMe{
+	background:#FFF;
+	position:relative;
+	z-index:2;
+	margin-bottom:-2px;
+}
+.S_list_show_box p a:hover {
+	background-color:#58A39F;
+}
+.S_pershow .S_list_show_box img{
+	margin:2px auto;
+	display:block;
+}
+/*End first Items*/
+/*secound Items on Top*/
+.S_list_show_box table tr{
+	height:16px;
+}
+.S_list_show_box table tr td{
+	font-family:"微软雅黑";
+	padding:4px 0 0 4px;
+	color:#666;
+}
+.blank{
+	height:14px;
+}
+.S_box3{
+	background-color:#f3f3f3;
+	width:140px;
+	font-size:12px;
+	margin-top:6px;
+	font-family:"微软雅黑";
+}
+.S_xg_list{
+	height:106px;
+	clear:both;
+	border-top:1px solid #a6c8c7;
+	border-bottom:1px solid #a6c8c7;
+}
+#S_list li{
+	display:inline-block;
+	height:20px;
+	line-height:20px;
+	float:left;
+}
+#S_list li a{
+	display:inline-block;
+	width:40px;
+	margin:2px 4px 0 3px;
+	padding-left:1px;
+	font-family:"微软雅黑";
+}
+#S_list li a:hover {
+	text-decoration:none;
+	background:url(../Images/hoverxingge.png) no-repeat;
+	color:#fff;
+}
+.S_sub{
+	width:110px;
+	margin:10px auto;	
+}
+.S_sub a{
+	display:inline-block;
+	height:26px;
+	width:40px;
+	margin:0 5px;
+	line-height:26px;
+	text-align:center;
+	color:#fff;
+	border-radius:5px;
+	background-color:#a6c8c7;
+}
+.S_sub a:hover {
+	background-color:#58a39f;
+	text-decoration:none;
+}
+/*End secoud Top*/
+
+/*Third items*/
+#S_perInfo tr{
+	height:22px;
+	line-height:22px;
+}
+#S_commemt{
+	padding:0;
+	margin:0;
+}
+.S_oneline{
+	margin-top:10px;
+}
+.S_oneline,.S_oneline span{
+	line-height:22px;
+	font-family:"微软雅黑";
+	color:#666;
+	padding-left:5px;
+}
+/*End third items*/
+/*End show Items style*/
+
+/* chat Record*/
+.S_chat_record{
+	display:none;
+	width:544px;
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:15;
+	height:496px;
+	background:url(../Images/recordBar.png) right no-repeat;
+}
+.S_chatCont_box_layout{
+	width:493px;
+	border:1px solid #a6c8c7;
+	border-right:0;
+	background-color:#FFF;
+	height:494px;
+}
+#S_topbar_box{
+	height:41px;
+	margin-top:14px;
+	margin-bottom:16px;
+}	
+#S_topbar_box span{
+	text-align:center;
+	display:inline-block;
+}
+#S_topbar_box .close{
+	width:31px;
+	position:relative;
+	top:10px;
+	left:300px;
+}
+#S_topbar_box .close a{
+	display:block;
+	height:31px;
+	margin-top:6px;
+	background:url(../Images/close.png) no-repeat;
+}
+#S_topbar_box .S_chat_tips{
+	font-size:20px;
+	height:100%;
+	line-height:41px;
+	color:#fff;
+	width:180px;
+	background-color:#a6c8c7;
+}
+.S_record_content{
+	width:476px;
+	margin-right:-10px;
+	position:relative;
+	z-index:17;
+	left:10px;
+	top:0;
+	height:396px;
+	border:1px solid #a6c8c7;
+	overflow-y:auto;
+	 scrollbar-face-color:#58a39f /*滚动条3D表面（ThreedFace）的颜色*/
+	 scrollbar-highlight-color:#58a39f; /*滚动条3D界面的亮边（ThreedHighlight）颜色*/
+	 scrollbar-shadow-color:#58a39f; /*滚动条3D界面的暗边（ThreedShadow）颜色*/
+	 scrollbar-3dlight-color:#58a39f; /*滚动条亮边框颜色*/
+	 scrollbar-arrow-color:#58a39f; /*滚动条方向箭头的颜色 */
+	 scrollbar-track-color:#58a39f; /*滚动条的拖动区域(TrackBar)颜色*/
+	 scrollbar-darkshadow-color:#58a39f; /*滚动条暗边框（ThreedDarkShadow）颜色*/
+}
+.S_record_content p{
+	line-height:20px;
+	color:#666;
+	font-size:12px;
+	word-wrap:break-word;
+	overflow:hidden;
+}
+.S_record_content_list{
+	width:100%;
+}
+.S_record_content_list h4{
+	margin-top:4px;
+	font-weight:700;
+	margin-left:20px;
+	height:20px;
+	line-height:20px;
+	font-size:12px;
+}
+	
+.S_me h4{
+	color:#53a89f;
+}
+.S_he h4{
+	color:#d64346;
+}
+.S_Record_boxList{
+	border-top:1px dashed #ccc;
+}
+.S_record_content_list h4 span{
+	font-weight:normal;
+	margin-left:5px;
+}
+#t_1
+/*End chat record*/
+
+/*End Content*/

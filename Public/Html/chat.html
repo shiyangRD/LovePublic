@@ -1,0 +1,350 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="../Css/common.css" />
+ <link href="../Css/documentation.css" type="text/css" rel="stylesheet"/>
+ <link href="../Css/jquery.rating.css" type="text/css" rel="stylesheet"/>
+</head>
+<body id='S_layout' onload='setDivCanEdit()'>
+    <div id="talkbox">
+   		 <!-- chat record-->
+    	<div class="S_chat_record">
+    		<div class="S_chatCont_box_layout">
+            	<div id="S_topbar_box">
+                  <span class="S_chat_tips">聊天记录</span>
+                  <span class="close"><a href="javascript:void(0);" id="close"></a></span>
+                </div>
+                <div class="S_record_content">
+                   <div class="S_record_content_list">
+                   	  <p id="date">2011/08/31</p>
+                      <div class="S_Record_boxList">
+                        <ul>
+                      	   <li class="S_me">
+                         	 <h4>冰冻的鱼:<span>09:31</span></h4>
+                         	 <p>来了多少人？</p>
+                          </li>
+                      	   <li class="S_he">
+                         	 <h4>我是一只小小鸟:<span>09:31</span></h4>
+                         	 <p>来了多少人</p>
+                          </li>
+                      	   <li class="S_me">
+                         	 <h4>冰冻的鱼:<span>09:31</span></h4>
+                         	 <p>大概？</p>
+                          </li>
+                      	   <li class="S_he">
+                         	 <h4>我是一只小小鸟:<span>09:31</span></h4>
+                         	 <p>不清楚</p>
+                          </li>
+                        </ul>
+                      </div>
+                   </div>
+                   <div class="S_record_content_list">
+                   	  <p id="date">2011/08/31</p>
+                      <div class="S_Record_boxList">
+                        <ul>
+                      	   <li class="S_me">
+                         	 <h4>冰冻的鱼:<span>09:31</span></h4>
+                         	 <p>来了多少人？</p>
+                          </li>
+                      	   <li class="S_he">
+                         	 <h4>我是一只小小鸟:<span>09:31</span></h4>
+                         	 <p>来了多少人</p>
+                          </li>
+                      	   <li class="S_me">
+                         	 <h4>冰冻的鱼:<span>09:31</span></h4>
+                         	 <p>大概？</p>
+                          </li>
+                      	   <li class="S_he">
+                         	 <h4>我是一只小小鸟:<span>09:31</span></h4>
+                         	 <p>不清楚</p>
+                          </li>
+                        </ul>
+                      </div>
+                   </div>
+                   <div class="S_record_content_list">
+                   	  <p id="date">2011/08/31</p>
+                      <div class="S_Record_boxList">
+                        <ul>
+                      	   <li class="S_me">
+                         	 <h4>冰冻的鱼:<span>09:31</span></h4>
+                         	 <p>来了多少人？</p>
+                          </li>
+                      	   <li class="S_he">
+                         	 <h4>我是一只小小鸟:<span>09:31</span></h4>
+                         	 <p>来了多少人</p>
+                          </li>
+                      	   <li class="S_me">
+                         	 <h4>冰冻的鱼:<span>09:31</span></h4>
+                         	 <p>大概？</p>
+                          </li>
+                      	   <li class="S_he">
+                         	 <h4>我是一只小小鸟:<span>09:31</span></h4>
+                         	 <p>不清楚</p>
+                          </li>
+                        </ul>
+                      </div>
+                   </div>
+                </div>
+            </div>
+   	    </div>
+        <!--End chat record-->
+        <div class="S_Box2">
+            <div class="S_talkper">
+              <div class='S_all'>
+                <div class="S_photo"><img src='../Images/per1.png'/></div>
+                <div class="S_perCon">
+                    <span class="S_name">啥冷雨</span><br/>
+                    <span class="care">231</span>个人关注 
+                </div>
+                <div class='S_hiddenBox'>
+                    <a href='#' class='white'>+关注</a>
+                </div>
+              </div>
+              <div class="S_banner"></div>
+            </div> 
+            <div class="S_bannerList">
+               <ul id="S_itemList">
+                <li id="S_item1"><a href='#' class="white">个人秀</a></li>
+                <li id="S_item2"><a href='#' class="white">个人信息</a></li>
+                <li id="S_item3"><a href='#' class="white">评价</a></li>
+               </ul>
+            </div>
+            <!--hidden items-->
+            <div class="S_pershow">
+               <!-- hidden item0-->
+            	<div  id="list" class="S_list_show_box">
+              	   <img src="../Images/per8.png" />
+                   <p><a href="#" id="S_showMe"><img src="../Images/S_up.png" /></a></p>
+                   <div><img style="z-index:1; position:relative;" src="../Images/S_down_me.png" /></div>
+                </div>
+               <!--End hidden item0-->
+               <!-- hidden item1-->
+                <div class="S_list_show_box">
+                	<div class="blank"></div>
+                  <form id="S_commemt" action="#" method="post">
+              	    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                      <tr>
+                       	 <td>整体感觉：</td>
+                      </tr>
+                      <tr>
+                       	 <td style="padding-left:38px"><form name="api-readonly" id="name">
+                          <input type="radio" class="star {split:2}" name="api-readonly-test" value="1"/>
+                          <input type="radio" class="star {split:2}" name="api-readonly-test" value="2"/>
+                          <input type="radio" class="star {split:2}" name="api-readonly-test" value="3"/>
+                          <input type="radio" class="star {split:2}" name="api-readonly-test" value="4"/>
+                          <input type="radio" class="star {split:2}" name="api-readonly-test" value="5"/>
+                          <input type="radio" class="star {split:2}" name="api-readonly-test" value="6"/>
+                          <input type="radio" class="star {split:2}" name="api-readonly-test" value="7"/>
+                          <input type="radio" class="star {split:2}" name="api-readonly-test" value="8"/>
+                          <input type="radio" class="star {split:2}" name="api-readonly-test" value="9"/>
+                          <input type="radio" class="star {split:2}" name="api-readonly-test" value="10"/>
+                         </form>
+						</td>
+                     </tr>
+                     <tr>
+                        <td>对方诚意</td>
+                     </tr>
+                     <tr>
+                        <td style="padding-left:38px"><form name="api-readonly1" id="name2">
+                          <input type="radio" class="star {split:2}" name="api-readonly-test" value="1"/>
+                          <input type="radio" class="star {split:2}" name="api-readonly-test" value="2"/>
+                          <input type="radio" class="star {split:2}" name="api-readonly-test" value="3"/>
+                          <input type="radio" class="star {split:2}" name="api-readonly-test" value="4"/>
+                          <input type="radio" class="star {split:2}" name="api-readonly-test" value="5"/>
+                          <input type="radio" class="star {split:2}" name="api-readonly-test" value="6"/>
+                          <input type="radio" class="star {split:2}" name="api-readonly-test" value="7"/>
+                          <input type="radio" class="star {split:2}" name="api-readonly-test" value="8"/>
+                          <input type="radio" class="star {split:2}" name="api-readonly-test" value="9"/>
+                          <input type="radio" class="star {split:2}" name="api-readonly-test" value="10"/>
+                         </form></td>
+                      </tr>
+                      <tr>
+                      	<td>对方性格：</td>
+                      </tr>
+                      <tr>
+                      	<td height="30px" width="136px">
+                        	<div class="S_box3">
+                        		乐观，开朗，有活力，有朝气，热情
+                       	    </div>
+                        </td>
+                      </tr>
+                    </table> 
+                    <div class="S_xg_list">
+                    	<ul id='S_list'>
+                        	<li><a href="#">乐观</a></li>
+                            <li><a href="#">外向</a></li>
+                            <li><a href="#">热情</a></li>
+                            <li><a href="#">悲观</a></li>
+                            <li><a href="#">冷漠</a></li>
+                            <li><a href="#">开朗</a></li>
+                            <li><a href="#">温柔</a></li>
+                            <li><a href="#">好学</a></li>
+                            <li><a href="#">冷静</a></li>
+                            <li><a href="#">敏感</a></li>
+                            <li><a href="#">沉稳</a></li>
+                            <li><a href="#">天真</a></li>
+                            <li><a href="#">活泼</a></li>
+                            <li><a href="#">可爱</a></li>     
+                       </ul>
+                    </div>
+                    <div class="S_sub">
+                    	<a href="#">提交</a>
+                        <a href="#">重置</a>
+                    </div>
+                  </form>
+                </div>
+                 <!--End hidden item1-->
+                  <!--hidden item2-->
+                <div class="S_list_show_box">
+                	<div class="blank"></div>
+              	   <table border="0" cellpadding="0" cellspacing="0" id='S_perInfo'>
+                   	  <tr>
+                      	<td>姓名：</td><td>西门吹雪</td>
+                      </tr>
+                   	  <tr>
+                      	<td>等级：</td><td>99级</td>
+                      </tr>
+                   </table>
+                   <div class="S_oneline">正在被<span>231</span>个人所关注</div>
+                   <div class="S_oneline">信用评分：<span>9.7</span>分</div>
+                   <div class="S_oneline">是否实名验证：<span>是</span></div>
+                   <div class="S_oneline">所在地：<span>四川省/成都市/金牛区</span></div>
+                   <div class="S_oneline">最经常在线时间：<br/><span>13:30——19:16</span></div>
+                </div>
+                 <!--End hidden item2-->
+            </div>
+        </div>
+        <!--Begin Chat list -->
+        <div class='S_t'>
+          <ul> 
+              <li class="S_tc">  
+                <div class="S_tcBox">
+                    <div class='S_Stop1'></div>
+                    <div class="S_Smid1">asdasd</div>
+                    <div class="S_Sbom1"></div>  
+                </div>   
+              </li>
+              <li class="S_mc">
+                 <div class="S_tcBox">
+                    <div class='S_Stop2'></div>
+                    <div class="S_Smid2">asdasd</div>
+                    <div class="S_Sbom2"></div>  
+                </div>             
+              </li>
+              <li class="S_tc">
+                  <div class="S_tcBox">
+                    <div class='S_Stop1'></div>
+                    <div class="S_Smid1">asdasd</div>
+                    <div class="S_Sbom1"></div>  
+                </div>            
+              </li>
+              <li class="S_mc">
+                 <div class="S_tcBox">
+                    <div class='S_Stop2'></div>
+                    <div class="S_Smid2">asdasd</div>
+                    <div class="S_Sbom2"></div>  
+                </div>
+              </li>
+          </ul>
+        </div>
+        <!--End chat list-->
+        <div class='S_tContent'>
+            <div class="S_tbar">
+               <ul>
+                   <li><a href='#' id='font'><img src="../Images/font.png" alt="字体" /></a>
+                        <div class='S_fontbox'>
+                            <select id="fontFamily" name="">
+                              <option value="宋体">宋体</option>
+                              <option value="楷体">楷体</option>
+                              <option value="仿宋">仿宋</option>
+                              <option value="微软雅黑">微软雅黑</option>
+                              <option value="黑体">黑体</option>
+                            </select>
+                            <select id="fontSize">
+                              <option value="10">10</option>
+                              <option value="12">12</option>
+                              <option value="14">14</option>
+                              <option value="16">16</option>
+                              <option value="18">18</option>
+                              <option value="20">20</option>
+                              <option value="22">22</option>
+                              <option value="24">24</option>
+                            </select>
+                        </div>
+                   </li>
+                <li><a href='#'  id="faseList"><img  src="../Images/face.png" alt="表情" /></a>
+                	<div class="S_face">
+                    	<ul>
+                        	<li><img src="../Images/face/1.gif" alt="谄笑" /></li>
+                            <li><img src="../Images/face/2.gif" alt="吃饭" /></li>
+                            <li><img src="../Images/face/3.gif" alt="调皮" /></li>
+                            <li><img src="../Images/face/4.gif" alt="尴尬" /></li>
+                            <li><img src="../Images/face/5.gif" alt="汗" /></li>
+                            <li><img src="../Images/face/6.gif" alt="伤心" /></li>
+                            <li><img src="../Images/face/7.gif" alt="哭 " /></li>
+                            <li><img src="../Images/face/8.gif" alt="囧" /></li>
+                            <li><img src="../Images/face/9.gif" alt="惊恐" /></li>
+                            <li><img src="../Images/face/10.gif" alt="酷" /></li>
+                            <li><img src="../Images/face/11.gif" alt="流口水" /></li>
+                            <li><img src="../Images/face/12.gif" alt="色迷迷" /></li>
+                            <li><img src="../Images/face/13.gif" alt="生病" /></li>
+                            <li><img src="../Images/face/14.gif" alt="淘气" /></li>
+                            <li><img src="../Images/face/15.gif" alt="生气" /></li>
+                            <li><img src="../Images/face/16.gif" alt="烧香" /></li>
+                            <li><img src="../Images/face/17.gif" alt="害羞" /></li>
+                            <li><img src="../Images/face/18.gif" alt="大笑" /></li>
+                            <li><img src="../Images/face/19.gif" alt="Hold得住" /></li>
+                            <li><img src="../Images/face/20.gif" alt="好味道" /></li>
+                            <li><img src="../Images/face/21.gif" alt="住口" /></li>
+                            <li><img src="../Images/face/22.gif" alt="叹气" /></li>
+                            <li><img src="../Images/face/23.gif" alt="微笑" /></li>
+                            <li><img src="../Images/face/24.gif" alt="给力" /></li>
+                            <li><img src="../Images/face/25.gif" alt="抠鼻" /></li>
+                            <li><img src="../Images/face/26.gif" alt="困" /></li>
+                            <li><img src="../Images/face/27.gif" alt="惊讶" /></li>
+                            <li><img src="../Images/face/28.gif" alt="晕" /></li>
+                            <li><img src="../Images/face/29.gif" alt="书呆子" /></li>
+                            <li><img src="../Images/face/30.gif" alt="喜欢" /></li>
+                            <li><img src="../Images/face/31.gif" alt="吐" /></li>
+                            <li><img src="../Images/face/32.gif" alt="奸诈" /></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href='#' id='upload'><img src='../Images/record.png' alt='图片'/></a></li>
+                </ul>
+                <span class='S_record'><a href='#' id="record">聊天记录</a></span>
+                <input type='file' id='photo' />
+            </div>
+            <div class="S_taBox">
+                <form action="#">
+                  <script type="text/javascript">  
+                      //设置div 可编辑  
+                   function setDivCanEdit() {  
+                      document.getElementById("S_div_box").contentEditable = true;//使DIV可编辑  
+                      document.execCommand('2D-Position', true, true);   
+                   }  
+                  </script>
+                    <div id='S_div_box' class='.S_div_box'></div>
+                    <textarea id="S_tBox" rows="6" cols='30' style='display:none;'></textarea>
+                </form>
+            </div>
+            <div class='S_tbbar'>
+                <span id="S_boxShow"><img src='../Images/send.png' alt='切换发送方式'>
+                	<div class="S_style">
+                    	<a href="#" class="S_selected">按&nbsp;Enter</a>
+                        <a href="#">按&nbsp;Ctrl+Enter</a>
+                    </div>
+                </span>
+                <a href='#' class='S_font1'>&nbsp;&nbsp;发&nbsp;送&nbsp;&nbsp;</a>
+            </div>
+        </div>
+    </div>
+<script src="../Js/core/jquery-1.6.4.min.js" type="text/javascript"> </script>
+<script type="text/javascript" src='../Js/chat.js'></script>
+<script type="text/javascript" src='../Js/plugin/documentation.js'></script>
+<script type="text/javascript" src='../Js/plugin/jquery.MetaData.js'></script>
+<script type="text/javascript" src='../Js/plugin/jquery.rating.js'></script>
+</body>
+</html>

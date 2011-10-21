@@ -44,13 +44,19 @@ $(function () {
 */
     var boxWrap = $("#boxWrap");
     if ( boxWrap[0]) {
-        // Initial Render Page
+        // Initial Render
         var renderBox = function (data) {
-            //Determine the box 
-            //if ( box.id == 'boxWrap') return false;
-
             // Box data
             var data = $.parseJSON(data);
+
+            // Box information
+            var type = 0,
+                title = "无题",
+                author = "TA",
+                thumb = "../Images/tempBlock.png",
+                description = "",
+                time_edit = "未知时间",
+                num_like = 0;
 
             // Render the box
             boxWrap.masonry({
@@ -61,13 +67,12 @@ $(function () {
             for ( var i in data) {
                 // Template of Image Box
                 if ( data[i].type = 1) {
-                    var templateImage = '<div class="box"><img gridid="' + data[i].gridid + '" src="' + data[i].thumb + '" /><span class="title">' + data[i].title + '</span><a href="' + data[i].homepage + '" class="author">' + data[i].author + '</a><span class="time">' + data[i].time_edit + '</span><span class="like"></span><span class="num_like">' + data[i].num_like + '</span></div>';
+                    var templateImage = '<div class="box" gridid="' + data[i].gridid + '"><img src="' + data[i].thumb + '" /><span class="title">' + data[i].title + '</span><a href="' + data[i].homepage + '" class="author">' + data[i].author + '</a><span class="time">' + data[i].time_edit + '</span><span class="like"></span><span class="num_like">' + data[i].num_like + '</span></div>';
                         templateImage = $(templateImage);
                     boxWrap.append( templateImage ).masonry('appended', templateImage);
                 };
                 $(window).resize();
             };
-
         };
 
         // Instantiate Box
@@ -77,219 +82,11 @@ $(function () {
 
         // Scroll control 
         $(window).scroll(function () {
-            $(window).resize();
             if ( $(document).height() == $(window).scrollTop() + $(window).height()) {
                 page += 1;
                 updateBox.req("?page=" + page);
             };
         });
-/**
-+----------------------------------------------------------------
-* Open box action
-+----------------------------------------------------------------
-*/
-        // Open box template
-        var openBox               = $("#openBox"),
-            openBoxCancel         = $("#openBoxCancel"),
-            openBoxAuthorAvatar   = $("#openBoxAuthorAvatar");
-            openBoxAuthorName     = $("#openBoxAuthorName span");
-            openBoxContent        = $("#openBoxContentContent");
-            tags                  = $("#tags");
-            openBoxCommentNum     = $("#openBoxCommentNum");
-            openBoxColletNum      = $("#openBoxColletNum");
-            openBoxComment        = $("#openBoxComment");
-            openBoxCommentAddText = $("#openBoxCommentAddText");
-            openBoxCommentListul  = $("#openBoxCommentListul");
-            openBoxCommentButton  = $("#openBoxCommentButton");
-
-        // Grid ID, and the box
-        var gridid, box;
-
-        // Render the open Box
-        var openBoxRender = function ( data) {
-            // Determine the box
-            if ( $(box).attr('id') == "boxWrap") return false;
-            
-            // Parse box data
-            var originDATA = $.parseJSON(data) || null;
-
-            try{
-                var status = originDATA.status;
-                var info   = originDATA.info;
-                var DATA   = originDATA.data.grid;
-                var comment= originDATA.data.comment;
-            } 
-            catch(e) {
-                // Todo
-
-                //alert("网络错误，数据不可用");
-            };
-
-            // Data to template 
-            var commentTemplate;
-            var tagTemplate;
-            openBoxAuthorAvatar.attr("src", DATA.avatar);
-            openBoxAuthorName.text( DATA.author );
-            openBoxContent.html( DATA.content );
-            // Todo : 标签
-            tags.append( DATA.tags )
-            for ( var i in DATA.tag ) {
-                tagTemplate = '<a href="' + DATA.tag[i].url + '">#' + DATA.tag[i].name+ '</a>';
-            };
-            // Debug : 热度
-            openBoxHot.text( DATA.num_comment + DATA.num_collect + DATA.num_like );
-            openBoxCommentNum.text( DATA.num_comment );
-            openBoxColletNum.text( DATA.num_collect );
-            // Todo : 评论
-            for ( var i in comment) {
-                commentTemplate = '<li><div></div class="openBoxAvatar"><a href="/home/home/index/id/' + comment[i].userid + '"><img src="' + comment[i].thumb + '" /></a><div class="openBoxCommentContent"><a class="author" href="/home/home/index/id/' + comment[i].userid + '/">' + comment[i].author + '</a><span>' + comment[i].content + '</span><a class="reply" author="' + comment[i].author + '" href="#">回复</a></div></li>';
-                openBoxCommentListul.append( commentTemplate );
-            };
-            
-            // Current box offset
-            var top   = $(box).offset().top,
-                left  = $(box).offset().left,
-                width = $(window).width();
-
-            // Scroll page to the box
-            $("html, body").animate({ scrollTop : top - 40 }, 650);
-
-            // Open box position
-            if ( left < width/2 ) {
-                openBox.show();
-                openBox.offset({ top: top, left: left});
-                
-            } else {
-                var sLeft = left+182-566;
-                openBox.show();
-                openBox.offset({ top: top, left: sLeft});
-            };
-
-            // Cancel click 
-            openBoxCancel.click(function () {
-                openBox.fadeOut("fast");
-            });
-
-        };
-
-        // Instantiate Box
-        var openBoxHandle = new Box("/grid/show/", openBoxRender);
-
-        // Handle open Box
-        boxWrap.delegate(".box", "click", function (e) {
-            // Event Object target
-            var tar = $( e.target);
-                gridid = tar.attr("gridid");
-                box = tar[0].parentNode;
-
-            if ( gridid != undefined) openBoxHandle.req("?gridid=" + gridid);
-        });
-
-/**
-+----------------------------------------------------------------
-* Send comment action 
-+----------------------------------------------------------------
-*/
-        // Add reply
-        var addReply = function ( data ) {
-            // Parse box data
-            var originDATA = $.parseJSON( data ) || null;
-
-            try{
-                var status = originDATA.status;
-                var info   = originDATA.info;
-                var DATA   = originDATA.data;
-                var comment= originDATA.data.comment;
-            } 
-            catch(e) {
-                // Todo
-
-                //alert("网络错误，数据不可用");
-            };
-
-            if ( status == 1) {
-                // Todo 成功  插入当前评论到评论列表中
-                var addData = openBoxCommentAddText.text();
-                // Todo 获得当前用户的头像，昵称，个人主页地址
-                // Todo 插入评论
-
-                // 清空输入框
-                openBoxCommentAddText.text("");
-                
-            } else {
-                // Todo 评论失败，网络连接失败
-                openBoxCommentButton.val("可能由于网络原因，提交失败了，请重试");
-                return false;
-            };
-        };
-
-        // Edit of add reply
-        var editReply = function () {
-            // Click reply Action
-            openBoxCommentListul.delegate( ".reply", "click", function (event) {
-                var author = $(event.target).attr("author");
-
-                openBoxCommentAddText.text("@" + author + ":")
-                openBoxCommentAddText.focus();
-                openBoxCommentAddText.append(" ");
-            });
-
-            // Textarea button Action
-            openBoxCommentAddText.focus(function () {
-                openBoxCommentButton.fadeIn("fast");
-            });
-
-        };
-        editReply();
-
-        // Instantiate Box
-        var replyBox = new Box("/grid/comment/", addReply);
-        
-        // Handle : send the reply
-        openBoxCommentButton.click(function () {
-        alert(openBoxCommentAddText.val())
-            var commentDATA = openBoxCommentAddText.val();
-            if ( commentDATA != "" ) {
-                var paraments = "?gridid=" + gridid + "&comment=" + commentDATA ;
-                replyBox.req( paraments );
-            } else {
-                alert("没有填写内容哦，亲");
-            };
-        });
 
     };
-
-/**
-+----------------------------------------------------------------
-* Control the behavior of block'tool
-+----------------------------------------------------------------
-*/
-    var boxTool     = $("#boxTool");
-    var makeB       = $("#makeB a");
-    var makeBoption = $("#makeBoption");
-    var makeBul     = $("#makeBul");
-    var makeBcancel = $("#makeB .cancel")
-    var makeBarr    = $("#makeBarr");
-    var addB        = $("#addB a");
-
-    if ( boxTool[0]) {
-        // Customize block Submenu control
-        makeB.click(function () {
-            makeB.addClass("makeBDown");
-            makeBul.fadeIn(200);
-        });
-
-        // Cancel Customize block dialog
-        makeBcancel.click(function () {
-            makeB.removeClass("makeBDown");
-            makeBul.hide();
-        });
-
-        // Add a new box, controller menu
-        addB.click(function () {
-            makeBoption.fadeIn("fast");
-            addB.addClass("addBDown");
-        });
-    };
-
 });

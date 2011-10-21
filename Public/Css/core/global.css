@@ -26,11 +26,9 @@ div {
 a {
 	text-decoration:none;
 	color:#666;
-    cursor:pointer;
 	}
 a:hover {
 	text-decoration:underline;
-    cursor:pointer;
 	}
 a img {
 	border:none;	
