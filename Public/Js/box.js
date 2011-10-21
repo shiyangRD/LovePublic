@@ -73,7 +73,7 @@ $(function () {
             for ( var i in DATA) {
                 // Template of Image Box
                 if ( DATA[i].type = 1) {
-                    var templateImage = '<div class="box"><img gridid="' + DATA[i].gridid + '" src="' + DATA[i].thumb + '" /><span class="title">' + data[i].title + '</span><a href="' + DATA[i].homepage + '" class="author">' + DATA[i].author + '</a><span class="time">' + DATA[i].time_edit + '</span><span class="like"></span><span class="num_like">' + DATA[i].num_like + '</span></div>';
+                    var templateImage = '<div class="box"><img gridid="' + DATA[i].gridid + '" src="' + DATA[i].thumb + '" /><span class="title">' + DATA[i].title + '</span><a href="' + DATA[i].homepage + '" class="author">' + DATA[i].author + '</a><span class="time">' + DATA[i].time_edit + '</span><span class="like"></span><span class="num_like">' + DATA[i].num_like + '</span></div>';
                         templateImage = $(templateImage);
                     boxWrap.append( templateImage ).masonry('appended', templateImage);
                 };
