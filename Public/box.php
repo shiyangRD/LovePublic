@@ -8,6 +8,7 @@ for($i=0;$i<=71;$i++){
         "author" => 'Smallwolf',
         "description"   => 'This is a text for test',
         "time_edit" => date("m月d"),
+        "gridid" => $i,
         "num_like" => 12
     );
 }

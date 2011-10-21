@@ -14,7 +14,4 @@ CKEDITOR.editorConfig = function( config )
         ['Strike', 'RemoveFormat']
     ];
 	// config.uiColor = '#AADC6E';
-	config.height = 360;
-	config.width = 686;
-	config.resize_enabled = false;
 };

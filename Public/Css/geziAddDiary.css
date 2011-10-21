@@ -6,17 +6,14 @@
 */
 #Y_conDiary{
 	width:910px;
-	min-height:600px;
-	height:auto;
-	overflow:auto;
-	margin-bottom:1px;
-	padding-bottom:-1px;
+	height:600px;
 	margin:0 auto;
 	background:#fff;
 	-moz-border-radius:5px;
 	-webkit-border-radius:5px;
 	-o-border-radius:5px;
 	margin-top:50px;
+	margin-bottom:20px;
 	padding:20px;
 }
 
@@ -57,7 +54,6 @@
 }
 
 #Y_diaAddTitle p{
-	width:auto;
 	padding-top:8px;
 	height:25px;
 	text-indent:0;
@@ -102,9 +98,9 @@
 
 #Y_diaCkEidtor{
 	width:686px;
+	height:470px;
 	float:left;
 }
-
 #Y_diaCkEidtor ul{
 	margin-top:25px;
 	position:absolute;
@@ -112,8 +108,8 @@
 }
 #Y_diaCkEidtor li{
 	float:left;
-	height:26px;
-	line-height:26px;
+	height:28px;
+	line-height:28px;
 	margin:0 0 0 20px;
 }
 .Y_green{
@@ -132,7 +128,7 @@
 	border:1px solid #5AC655;
 	color:#fff;
 	font-size:18px;
-	padding:0 20px;
+	padding:1px 20px;
 	font-family:"微软雅黑", "宋体",Verdana, Geneva, sans-serif;
 }
 .Y_bg:hover{
@@ -204,7 +200,7 @@
 	margin-top:15px;
 }
 #Y_diaTag p{
-	width:100px;
+	width:190px;
 	height:30px;
 	margin-top:20px;
 	text-indent:0;
@@ -231,98 +227,32 @@
 	overflow:auto;
 	padding-bottom:1px;
 	margin-bottom:1px;
-	border:1px solid #ccc;
-	display:none;
-	margin-top:20px;
+	border:1px solid #ccc;	
 }
 
 
-#Y_tagInput{
+#Y_creatTag textarea{
 	border:none;
 	width:195px;
-	min-height:90px;
-	height:auto;
-	overflow:auto;
-	margin-bottom:-1px;
-	padding-bottom:1px;
+	height:90px;
 	background:#fff;
 	color:#acacac;
 	font-size:12px;
 	padding:10px 5px;
 }
 
-#Y_tagUl{
-	height:auto;
-	overflow:auto;
-	margin-bottom:-1px;
-	padding-bottom:1px;
-}
-#Y_tagUl li{
-	float:left;
-	padding:0 5px;
-	background:#E2EEEE;
-	border:1px solid #E6E6E6;
-	margin:0 5px 5px 0;
-	border-radius:2px;
-	color:#666;
-}
 
-.Y_remove {
-	padding-left:5px;
-	cursor:pointer;
-}
-
-.Y_remove:hover {
-	color:#000;
-	text-decoration:none;
-}
-
-#Y_tagForm input{
-	border:0;
-	outline:0;
-	width:100%;
-	color:#ccc;
-}
 #Y_addedTag{
-	height:auto;
-	overflow:auto;
-	padding-bottom:1px;
-	margin-bottom:1px;
 	background:#f7f7f7;
-	padding-bottom:20px;
 }
 
 #Y_addedTag h3{
-	width:50px;
-	margin-left:6px;
 	font-weight:normal;
 	color:#acacac;
 	font-size:12px;
-	padding-top:5px;
 }
 
-#Y_addedTag ul{
-	margin-top:5px;
-}
 #Y_addedTag li{
 	float:left;
 	background:#E2EEEE;
-	margin-left:6px;
-	margin-top:5px;
-	line-height:130%;
-	box-shadow:1px 1px 1px rgba(0,0,0,0.3);
-}
-
-#Y_addedTag a{
-	padding:0 20px;
-	font-size:12px;
-	color:#000;
-}
-
-#Y_addedTag a:hover{
-	text-decoration:none;
-}
-
-#Y_space{
-	height:20px;
 }
