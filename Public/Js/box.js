@@ -103,15 +103,17 @@ $(function () {
         // Open box template
         var openBox               = $("#openBox"),
             openBoxCancel         = $("#openBoxCancel"),
-            openBoxAuthorAvatar   = $("#openBoxAuthorAvatar");
-            openBoxAuthorName     = $("#openBoxAuthorName span");
-            openBoxContent        = $("#openBoxContentContent");
-            tags                  = $("#tags");
-            openBoxCommentNum     = $("#openBoxCommentNum");
-            openBoxColletNum      = $("#openBoxColletNum");
-            openBoxComment        = $("#openBoxComment");
-            openBoxCommentAddText = $("#openBoxCommentAddText");
-            openBoxCommentListul  = $("#openBoxCommentListul");
+            openBoxAuthorAvatar   = $("#openBoxAuthorAvatar"),
+            openBoxAuthorName     = $("#openBoxAuthorName span"),
+            openBoxTitle          = $("#openBoxTitle"),
+            openBoxContent        = $("#openBoxContentContent"),
+            tags                  = $("#tags"),
+            openBoxCommentNum     = $("#openBoxCommentNum"),
+            openBoxHot            = $("#openBoxHot"),
+            openBoxColletNum      = $("#openBoxColletNum"),
+            openBoxComment        = $("#openBoxComment"),
+            openBoxCommentAddText = $("#openBoxCommentAddText"),
+            openBoxCommentListul  = $("#openBoxCommentListul"),
             openBoxCommentButton  = $("#openBoxCommentButton");
 
         // Grid ID, and the box
@@ -129,6 +131,7 @@ $(function () {
                 var status = originDATA.status;
                 var info   = originDATA.info;
                 var DATA   = originDATA.data.grid;
+                var boxType= DATA.type;
                 var comment= originDATA.data.comment;
             } 
             catch(e) {
@@ -140,18 +143,33 @@ $(function () {
             // Data to template 
             var commentTemplate;
             var tagTemplate;
+            var contentTemplate;
+
+            // User Information
             openBoxAuthorAvatar.attr("src", DATA.avatar);
             openBoxAuthorName.text( DATA.author );
-            openBoxContent.html( DATA.content );
+
+            // Box content
+            if ( boxType == 1 ) {
+                openBoxTitle.text( DATA.title );
+                contentTemplate = '<div class="openBoxImg" ><img src="' + DATA.thumb + '" /></div>' + DATA.content;
+                openBoxContent.html( contentTemplate )
+            };
+
             // Todo : 标签
+            /*
             tags.append( DATA.tags )
             for ( var i in DATA.tag ) {
                 tagTemplate = '<a href="' + DATA.tag[i].url + '">#' + DATA.tag[i].name+ '</a>';
             };
+            */
+
             // Debug : 热度
-            openBoxHot.text( DATA.num_comment + DATA.num_collect + DATA.num_like );
+            var hotNum = eval(DATA.num_comment + DATA.num_collect + DATA.num_like)
+            openBoxHot.text( hotNum );
             openBoxCommentNum.text( DATA.num_comment );
             openBoxColletNum.text( DATA.num_collect );
+
             // Todo : 评论
             for ( var i in comment) {
                 commentTemplate = '<li><div></div class="openBoxAvatar"><a href="/home/home/index/id/' + comment[i].userid + '"><img src="' + comment[i].thumb + '" /></a><div class="openBoxCommentContent"><a class="author" href="/home/home/index/id/' + comment[i].userid + '/">' + comment[i].author + '</a><span>' + comment[i].content + '</span><a class="reply" author="' + comment[i].author + '" href="#">回复</a></div></li>';

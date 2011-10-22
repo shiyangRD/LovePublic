@@ -293,6 +293,11 @@
 #boxWrap {
     padding:30px 0;
     min-height:1200px;
+    padding-bottom:1px;
+    margin-bottom:-1px;
+    height:auto;
+    overflow:auto;
+    width:
 }
 
 .loading {
@@ -372,7 +377,31 @@
 
 #openBoxContent {
     min-height:300px;
+    /* Debug 
     background:url(../Images/ajax-loader-small.gif) no-repeat center;
+    */
+}
+
+#openBoxTitle {
+    font-size:16px;
+    text-align:center;
+    padding:10px;
+}
+
+.openBoxImg {
+    width:520px;
+    margin:0 auto;
+}
+
+.openBoxImg img {
+    max-width:520px;
+    display:block;
+    margin:0 auto;
+}
+
+#openBoxContentContent {
+    width:520px;
+    margin:0 auto;
 }
 
 #openBoxMenu {
