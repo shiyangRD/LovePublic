@@ -60,26 +60,21 @@ $(function () {
     // Handle all box behavior
     var boxWrap = $("#boxWrap");
     if ( boxWrap[0]) {
-        $.getScript("/Public/Js/plugin/jquery.masonry.min.js");
-        $.getScript("/Public/Js/box.js");
+        $.getScript("../Js/plugin/jquery.masonry.min.js");
+        $.getScript("../Js/box.js");
     }; 
 
     // Handle all box behavior
     var S_box = $("#S_box");
     if ( S_box[0]) {
-        $.getScript("/Public/Js/chat.js");
+        $.getScript("../Js/chat.js");
     }; 
 
     // Activity controller
     var Y_content = $("#Y_content");
     if ( Y_content[0]) {
-        $.getScript("/Public/Js/activity.js");
+        $.getScript("../Js/activity.js");
     };
 	
-	//load geziAddDiary.js
-	var Y_conDiary = $('#Y_conDiary');
-	if (Y_conDiary[0]) {
-		$.getScript("../Js/plugin/ckeditor/ckeditor.js");
-		$.getScript("../Js/geziAddDiary.js");
-	}
+	
 });
