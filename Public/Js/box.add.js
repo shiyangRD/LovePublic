@@ -94,7 +94,92 @@ $(function(){
 	
 })
 
+//ajax request
+$(function() {
+	var boxPost = function( uri, handler, method, getData ) {
+		var _this = this;
+		
+		this.method = method || "GET";
+		
+		this.uri = uri;
+		
+		this.handler = handler;
+		
+		this.sendReq = function ( option ) {
+			//solve IE cache question
+			var second = new Date();
+		
+			var thisUrl = _this.uri + option + "&null=" + second.getTime();
+			 
+			$.ajax({
+				type   : _this.method,
+				url    : thisUrl,
+				data   : getData,
+				success: function( textStatus ){
+					_this.handler( textStatus );
+				}
+			})
+		}
+	}
 
+	$(".Y_bg").click(function() {
+		
+		var clickButton = $('.Y_bg input');
+		clickButton.val('发布中')
+		
+		//get the title
+		var titleObj = $('#Y_diaAddTitle input')
+		var getTitle = titleObj.val();
+		
+		//get CKeditor's html
+		
+		var getHTML = CKEDITOR.instances.editor1.document.getBody().getText().toString();
+		
+		//get the tags
+		var getTags = [];
+		$('#Y_tagUl li span').each(function(){
+			var tagValue = $(this).text();
+			getTags.push( tagValue );	
+		})
+		var getTagString = getTags.toString();
+		
+		var postJsondata = "&title=" + getTitle + "&type=0" +"&content=" + getHTML +"&tag=" + getTagString;
+		
+		//send ajax request
+		
+		var postUri = "/grid/add/";
+		
+		//create callback function
+		
+		var answer = function( data ) {
+			var dataObj = $.parseJSON( data );
+			var answerStatus = dataObj.status;
+			var answerInfo = dataObj.info;
+			var answerData = dataObj.data;
+			
+			if ( answerStatus == 1){
+				
+				titleObj.val("");
+				CKEDITOR.instances.editor1.document.getBody().setText("");
+				clickButton.val('发布成功~正在跳转').delay(1000).queue( function() {
+					window.location.href = '/';
+				})
+			}else{
+				alert('阿哦，出现问题了~')
+			}
+		}
+		
+		var method = "POST";
+		
+		if (getHTML != "") {
+			var article = new boxPost(postUri, answer, method, postJsondata);
+			article.sendReq();
+		}else{
+			alert("请输入内容后在发布哦，亲~");
+		}
+		
+	})
+})
 /**
  +------------------------------------------------
  * geziAddImage part's js 
@@ -170,71 +255,11 @@ $(function(){
 		}
 	})
 	
+	//this page ajax request
+	
 })
 
-//ajax request
-$(function() {
-	var boxPost = function( uri, handler, method, getData ) {
-		var _this = this;
-		
-		this.method = method || "GET";
-		
-		this.sendReq = function ( option ) {
-			//solve IE cache question
-			var second = new Date();
-			
-			var thisUrl = uri + option + "&null=" + second;
-			 
-			$.ajax({
-				type   : _this.method,
-				url    : thisUrl,
-				data   : getData,
-				success:_this.handler(data)
-			})	
-		}
-	}
 
-	$(".Y_bg").click(function() {
-		
-		//get the title
-		var getTitle = $('#Y_diaAddTitle input').val();
-		
-		//get CKeditor's html
-		
-		var getHTML = CKEDITOR.instances.editor1.document.getBody().getText().toString();
-		
-		//get the tags
-		var getTags = [];
-		$('#Y_tagUl li span').each(function(){
-			var tagValue = $(this).text();
-			getTags.push( tagValue );	
-		})
-		var getTagString = getTags.toString();
-		
-		//turn data to json
-		var postData = {
-			title  : getTitle,
-			type   : '0',
-			content: getHTML,
-			tag    : getTags
-		}
-		
-		var postJsondata = JSON.stringify( postData );
-		
-		//send ajax request
-		
-		var postUri = "/grid/add/";
-		
-		//create callback function
-		
-		var answer = function() {
-			
-		}
-		
-		var method = "POST";
-		var article = new boxPost( postUri, answer, method, postJsondata);
-		article.sendReq();
-	})
-})
+
 
  
