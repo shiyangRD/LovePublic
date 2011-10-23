@@ -101,17 +101,23 @@ $(function(){
   $(".S_font1").click(function(){
   	  if($('#S_div_box').html()!=''){
 	  	 //ajax submit content
-		 /*$.ajax({
-			url:'',
+		 $.ajax({
+			url:'/chat/chatpage',
 			data:$('#S_div_box').html(),
 			type:'post',
-			success:function(){
-				//reault add DOM
-			}
-		 });*/
+			success:function(msg){
+		       var content= $('.S_t ul').find('.S_tc').clone(true);
+               content.find('S_tcBox').children('.S_Smid1').html(msg);
+            },
+            error:function(){
+                $('.S_font1').click();
+            }
+		 });
 	  }
   })
   
+  
+
   //handle top three items on chatPage
 	  //handle click
 	  function check(obj){
@@ -264,5 +270,28 @@ $(function(){
 	   });
    }
    /*End list_choose*/
+
+   //chat request
+   $('.S_button a').click(function(){
+     var _self=$(this);
+     $(this).text('正在请求...');
+      var id='54';
+      $.ajax({
+        url:'/chat/start',
+        data:id,
+        type:'post',
+        success:function(msg){
+           var msg=eval('('+msg+')');
+            if(msg.status=='0'){
+                alert('请求失败，请重新点击');
+                _self.text('请求聊天');
+            }
+
+        },
+        error:function(){
+           alert('请求出错了！(╯﹏╰）)'); 
+        }
+      })
+   })
 })
 

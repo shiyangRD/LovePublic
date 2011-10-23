@@ -40,19 +40,19 @@
     float:left;
     height:46px;
 }
-#S-BoxTop1{
+#S_BoxTop1{
     width:33%;
 }
-#S-BoxTop2{
+#S_BoxTop2{
     width:26%;
     margin:0 3px;
 }
-#S-BoxTop2 img{
+#S_BoxTop2 img{
     margin:50px;
     height:127px;
     width:157px;
 }
-#S-BoxTop3{
+#S_BoxTop3{
     width:39%;
 }
 .S_perBox{
@@ -400,7 +400,7 @@ a.S-bmBar{
 	z-index:8;
     background:url(../Images/barclick.png) no-repeat;
 }
-.S_bannerList ul li a:hover{
+.S_bannerList ul li a:hover {
 	text-decoration:none;
 	position:relative;
 	top:1px;
@@ -507,7 +507,7 @@ a.S-bmBar{
     float:right;
     margin-right:10px;
 }
-.S_record a:hover, .S_tbar li a:hover,.S_tbbar a:hover{
+.S_record a:hover, .S_tbar li a:hover,.S_tbbar a:hover {
     text-decoration:none;
     background-color:#0D5552;
 }
@@ -608,7 +608,7 @@ a.S-bmBar{
 	background-color:#ccc;
 	color:#fff;
 }
-.S_style a:hover{
+.S_style a:hover {
 	color:#fff;
 	background-color:#CCC;
 }
@@ -642,7 +642,7 @@ a.S-bmBar{
 	z-index:2;
 	margin-bottom:-2px;
 }
-.S_list_show_box p a:hover{
+.S_list_show_box p a:hover {
 	background-color:#58A39F;
 }
 .S_pershow .S_list_show_box img{
@@ -688,7 +688,7 @@ a.S-bmBar{
 	padding-left:1px;
 	font-family:"微软雅黑";
 }
-#S_list li a:hover{
+#S_list li a:hover {
 	text-decoration:none;
 	background:url(../Images/hoverxingge.png) no-repeat;
 	color:#fff;
@@ -708,7 +708,7 @@ a.S-bmBar{
 	border-radius:5px;
 	background-color:#a6c8c7;
 }
-.S_sub a:hover{
+.S_sub a:hover {
 	background-color:#58a39f;
 	text-decoration:none;
 }
@@ -872,7 +872,7 @@ a.S-bmBar{
 	font-family:"微软雅黑";
 	line-height:60px;
 }
-.S_more a:hover{
+.S_more a:hover {
 	position:relative;
 	top:1px;
 	left:1px;
