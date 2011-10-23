@@ -6,6 +6,10 @@
   background-color:#fff;
   height:510px;
 }
+#S_box2{
+  width:950px;
+  background-color:#fff;
+}
 .S_float{
     float:left;
     height:100%;
@@ -116,6 +120,7 @@
     display:block;
     height:100%;
     width:100px;
+	color:#fff;
     text-align:center;
     background:url("../Images/S_button.png") no-repeat;
 	filter:alpha(opacity=80);
@@ -128,8 +133,9 @@
 	-moz-opacity:1;
 	-khtml-opacity: 1;
 	opacity: 1;
+	text-decoration:none;
 }
-.S-downGreen{
+.S_downGreen{
 	color:#28837F;
 	font-size:16px;
 }
@@ -140,7 +146,7 @@
 	width:72%;
 	float:left;
 	margin-left:10px;
-	margin-top:-3px;
+
 }
 .S_perInfo p{
 	text-align:left;
@@ -826,7 +832,50 @@ a.S-bmBar{
 	font-weight:normal;
 	margin-left:5px;
 }
-#t_1
 /*End chat record*/
 
 /*End Content*/
+
+/**
+--list_choose.html style
+**/
+#chatList{
+	clear:both;
+}
+#chatList .S_itemslist{
+	height:70px;
+	line-height:38px;
+	margin-top:4px;
+}
+#chatList li img{
+	margin:10px;
+	width:50px;
+	height:50px;
+	float:left;
+}
+.S_font{
+	font-size:16px;
+}
+.S_downG{
+	color:#238580;
+	font-size:12px;
+}
+.S_more{
+	background-color:#006869;
+	height:60px;
+	width:100%;
+	text-align:center;
+	font-size:24px;
+}
+.S_more a{
+	color:#fff;
+	font-family:"微软雅黑";
+	line-height:60px;
+}
+.S_more a:hover{
+	position:relative;
+	top:1px;
+	left:1px;
+	text-decoration:none;
+}
+
