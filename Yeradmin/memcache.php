@@ -26,7 +26,6 @@ define('GRAPH_SIZE',200);
 define('MAX_ITEM_DUMP',50);
 
 $MEMCACHE_SERVERS[] = '127.0.0.1:11211'; // add more as an array
-$MEMCACHE_SERVERS[] = 'mymemcache-server2:11211'; // add more as an array
 
 
 ////////// END OF DEFAULT CONFIG AREA /////////////////////////////////////////////////////////////
