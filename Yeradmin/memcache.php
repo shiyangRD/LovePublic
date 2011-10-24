@@ -25,7 +25,7 @@ define('DATE_FORMAT','Y/m/d H:i:s');
 define('GRAPH_SIZE',200);
 define('MAX_ITEM_DUMP',50);
 
-$MEMCACHE_SERVERS[] = 'mymemcache-server1:11211'; // add more as an array
+$MEMCACHE_SERVERS[] = '127.0.0.1:11211'; // add more as an array
 
 
 ////////// END OF DEFAULT CONFIG AREA /////////////////////////////////////////////////////////////
@@ -53,7 +53,7 @@ function get_host_port_from_server($server){
 		return array($server, 0);
 	}
 	else {
-		return values;
+		return $values;
 	}
 }
 
