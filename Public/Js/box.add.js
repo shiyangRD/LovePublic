@@ -94,9 +94,8 @@ $(function(){
 	
 })
 
-//ajax request
-$(function() {
-	var boxPost = function( uri, handler, method, getData ) {
+//creat request model
+		var boxPost = function( uri, handler, method, getData ) {
 		var _this = this;
 		
 		this.method = method || "GET";
@@ -121,11 +120,13 @@ $(function() {
 			})
 		}
 	}
+	
+//fabu button ajax request
 
-	$(".Y_bg").click(function() {
-		
-		var clickButton = $('.Y_bg input');
-		clickButton.val('发布中')
+$(function() {
+	
+	var clickButton = $('#Y_sendArticle input');
+	clickButton.click(function() {
 		
 		//get the title
 		var titleObj = $('#Y_diaAddTitle input')
@@ -165,15 +166,17 @@ $(function() {
 					window.location.href = '/';
 				})
 			}else{
-				alert('阿哦，出现问题了~')
+				clickButton.val("发布错误哦，亲");
 			}
-		}
+			}
 		
 		var method = "POST";
 		
 		if (getHTML != "") {
 			var article = new boxPost(postUri, answer, method, postJsondata);
+			clickButton.val('发布中')
 			article.sendReq();
+
 		}else{
 			alert("请输入内容后在发布哦，亲~");
 		}
@@ -200,6 +203,8 @@ $(function(){
 	var addButton = $('#Y_imgNetInput a');
 	var netInput = imgNetInput.children();
 	var imgBoxP = $('#Y_imgSearchBox p');
+	var imgUpload = $('#Y_biaodan');
+	var imgShowUl = $('#Y_imgShow ul');
 	
 	//addTitle button click event
 	
@@ -225,8 +230,11 @@ $(function(){
 			return;
 	
 		// Create a new editor inside the <div id="editor">, setting its value to html
-		var config = {height:'76px;'};
-		editor = CKEDITOR.appendTo( 'Y_imgTextarea', config, html );
+		var config = {
+			height:'76px;'
+			};
+		editor = CKEDITOR.appendTo( 'Y_imgTextarea', config, html);
+ 
 	}
 
 	imgTitle2.click(function() {
@@ -244,19 +252,70 @@ $(function(){
 		$(this).val("").css('color','#474747');
 	})
 	
-	//picture address from net 
+	//create  RegExp object
+	
+	var regExp2 = new RegExp("(^.+\\.jpg$)|(^.+\\.png$)|(^.+\\.gif$)");
+	
+/*
+ +----------------------
+//picture address from net
+	
 	addButton.click(function(){
 		// RegExp match
-		var regExp2 = new RegExp("(^.+\\.jpg$)|(^.+\\.png$)|(^.+\\.gif$)");
-		if ( !regExp2.test(netInput.val()) ){
+		var imgNetUrl = netInput.val();
+		if ( !regExp2.test( imgNetUrl ) ){
 			imgBoxP.text("不支持的图片格式");
 		}else{
+			
+			var imgAddNet = '<li><img src="' + imgNetUrl + '"/><textarea width="557"></textarea><div class="Y_imgButtonDiv"><a class="Y_imgRm"></a><a class="Y_imgRe"></a></div></li>';
+			imgShowUl.prepend( imgAddNet );
 			imgBoxP.text("");
+			
 		}
 	})
++-----------------------
+*/	
+	//upload img button submit
+	var i =-1;
+	imgUpload.bind('change',function(e) {
+		//get upload image url
+		var imgUrl = imgUpload.val();		
+		
+		//append the template into imgShow Div
+		var imgTemplate = '<li><div class="Y_getImgDiv"></div><p>' + imgUrl + '</p></li>';
+		
+		if (regExp2.test( imgUrl )){
+			i += 1;
+			imgShowUl.append( imgTemplate );
+			$('#Y_formSubmit').submit();
+			$('#imgHidden').bind('load',function(){
+		
+				var imgGet = window.frames["imgHidden"].result;
+				var imgGetStatus = imgGet.status;
+				var imgGetInfo = imgGet.info;
+				var imgGetData = imgGet.data;
+				var imgAddTpl = '<img src="' + imgGetData + '"/><textarea width="557"></textarea><div class="Y_imgButtonDiv"><a class="Y_imgRm"></a><a class="Y_imgRe"></a></div>';
+				
+				if ( imgGetStatus == '1'){
+					imgShowUl.children().eq(i).empty().append( imgAddTpl );
+					}		
+			})	
+			
+		}else{
+			alert("上传的文件是不支持的图片格式哦，亲~");
+		}
+		
+	})
 	
-	//this page ajax request
 	
+	//bind click event to Y_imgRm button
+	$('#Y_imgShow').delegate('a','click',function() {
+		$(this).parent().parent().remove();
+	})
+	
+	//box.add.image.html fabu button's click event
+	
+	var imgSendButton = $('#Y_sendImg input');
 })
 
 
