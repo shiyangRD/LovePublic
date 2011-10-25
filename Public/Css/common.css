@@ -16,5 +16,6 @@
 @import url(activity.css);
 @import url(footer.css);
 @import url(chat.css);
-@import url(geziAddDiary.css);
+@import url(box.add.item.css);
+@import url(box.add.image.css);
 @import url(login.css);

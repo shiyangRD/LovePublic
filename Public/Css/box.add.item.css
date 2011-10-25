@@ -1,0 +1,333 @@
+/*
++-------------------------------------------------
+*gezi addDiary css
+*coded by smallfish
++-------------------------------------------------
+*/
+#Y_conDiary{
+	width:910px;
+	min-height:600px;
+	height:auto;
+	overflow:auto;
+	margin-bottom:1px;
+	padding-bottom:-1px;
+	margin:0 auto;
+	background:#fff;
+	border-radius:5px;
+	margin-top:50px;
+	padding:20px;
+}
+
+#Y_diaBanner{
+	height:40px;
+}
+#Y_diaBanner h1{
+	color:#5EBFBD;
+	width:200px;
+	font-weight:normal;
+	font-size:21px;
+	float:left;
+	text-shadow:1px 1px 1px #66cccc;
+}
+
+#Y_diaBanner ul{
+	width:150px;
+	float:left;
+	position:absolute;
+	right:0px;
+}
+
+#Y_diaBanner li{
+	float:left;
+	width:40px;
+	padding-left:10px;
+}
+
+#Y_diaBanner a{
+	font-size:12px;
+}
+
+#Y_diaBanner a:hover{
+	text-decoration:none;
+}
+#Y_diaAddTitle{
+	width:910px;
+	height:33px;
+	margin-top:20px;
+}
+
+#Y_diaAddTitle p{
+	width:auto;
+	padding-top:8px;
+	height:25px;
+	text-indent:0;
+}
+
+#Y_diaAddTitle p a{
+	background:#999;
+	border-radius:3px;
+	cursor:pointer;
+	color:#fff;
+	padding:2px 13px 3px 13px;	
+}
+#Y_diaAddTitle p a:hover{
+	background:#323232;
+	text-decoration:none;
+}
+
+/*
++-------------------------
+*add textarea after click
++-------------------------
+*/
+
+#Y_diaAddTitle input{
+	width:662px;
+	display:block;
+	padding:5px 10px;
+	height:23px;
+	border:none;
+	font-size:18px;
+	border:1px solid #ccc;
+	border-radius:3px;
+	display:none;
+}
+#Y_diaEitor{
+	margin-top:15px;
+}
+
+#Y_diaCkEidtor{
+	width:686px;
+	height:auto;
+	overflow:auto;
+	padding-bottom:1px;
+	margin-bottom:-1px;
+	padding-bottom:85px;
+	float:left;
+	position:relative;
+	overflow:hidden;
+}
+
+.Y_diaClass{
+	position:absolute;
+	height:30px;
+	margin-top:20px;
+	right:0;
+}
+.Y_diaClass li{
+	float:left;
+	height:26px;
+	line-height:26px;
+	margin:0 0 0 20px;
+}
+
+#Y_diaText{
+	min-width:686px;
+	min-height:434px;
+	background:url(../Images/ajax-loader-small.gif) no-repeat center;
+}
+.Y_green{
+	color:#8AD786;
+}
+.Y_bg{
+	padding:2px;
+	background:#8AD786;
+	border-radius:3px;
+}
+.Y_fabu{
+	border:none;
+	background:inherit;
+	border:1px solid #5AC655;
+	color:#fff;
+	font-size:18px;
+	padding:0 20px;
+	cursor:pointer;
+	font-family:"微软雅黑", "宋体",Verdana, Geneva, sans-serif;
+}
+.Y_bg:hover{
+	background:#63C95E;
+}
+.Y_fabu:hover{
+	border:1px solid #41B43C;
+}
+#Y_diaCkEidtor a:hover{
+	color:#63C95E;
+}
+#Y_diaTag{
+	width:207px;
+	height:auto;
+	overflow:auto;
+	margin-bottom:-1px;
+	padding-bottom:1px;
+	margin-left:15px;
+	float:left;
+}
+
+.Y_selectCommon{
+	height:21px;
+	padding:5px 10px 5px 8px;
+	font-size:12px;
+	line-height:21px;
+	border:1px solid #ccc;
+	background:url(../Images/Y_selectArrow.png) no-repeat;
+	background-position:95% center;
+}
+
+#Y_selectMenu1{
+	width:205px;
+	border:1px solid #ccc;
+	border-top:none;
+	height:auto;
+	overflow:auto;
+	margin-bottom:-1px;
+	padding-bottom:1px;	
+}
+
+#Y_searchBox{
+	width:205px;
+	height:30px;
+	background:#e6e6e6;
+}
+
+#Y_searchBox input{
+	display:block;
+	width:177px;
+	height:20px;
+	padding:0 10px;
+	margin:0 auto;
+	position:relative;
+	top:5px;
+	border:none;
+	background:#fff;
+	border-radius:10px;
+}
+
+#Y_searchBox img{
+	position:absolute;
+	right:10px;
+	top:9px;
+}
+#Y_selectBox2{
+	margin-top:15px;
+}
+#Y_diaTag p{
+	width:100px;
+	height:30px;
+	margin-top:20px;
+	text-indent:0;
+}
+
+#Y_diaTag p a{
+	padding:2px 13px;
+	background:#999;
+	border-radius:3px;
+	cursor:pointer;
+	color:#fff;
+}
+
+#Y_diaTag p a:hover{
+	text-decoration:none;
+	background:#323232;
+}
+
+#Y_creatTag{
+	width:205px;
+	height:auto;
+	overflow:auto;
+	padding-bottom:1px;
+	margin-bottom:1px;
+	border:1px solid #ccc;
+	display:none;
+	margin-top:20px;
+}
+
+
+#Y_tagInput{
+	border:none;
+	width:195px;
+	min-height:90px;
+	height:auto;
+	overflow:auto;
+	margin-bottom:-1px;
+	padding-bottom:1px;
+	background:#fff;
+	color:#acacac;
+	font-size:12px;
+	padding:10px 5px;
+}
+
+#Y_tagUl{
+	height:auto;
+	overflow:auto;
+	margin-bottom:-1px;
+	padding-bottom:1px;
+}
+#Y_tagUl li{
+	float:left;
+	padding:0 5px;
+	background:#E2EEEE;
+	border:1px solid #E6E6E6;
+	margin:0 5px 5px 0;
+	border-radius:2px;
+	color:#666;
+}
+
+.Y_remove {
+	padding-left:5px;
+	cursor:pointer;
+}
+
+.Y_remove:hover {
+	color:#000;
+	text-decoration:none;
+}
+
+#Y_tagForm input{
+	border:0;
+	outline:0;
+	width:100%;
+	color:#ccc;
+}
+#Y_addedTag{
+	height:auto;
+	overflow:auto;
+	padding-bottom:1px;
+	margin-bottom:1px;
+	background:#f7f7f7;
+	padding-bottom:20px;
+}
+
+#Y_addedTag h3{
+	width:50px;
+	margin-left:6px;
+	font-weight:normal;
+	color:#acacac;
+	font-size:12px;
+	padding-top:5px;
+}
+
+#Y_addedTag ul{
+	margin-top:5px;
+}
+#Y_addedTag li{
+	float:left;
+	background:#E2EEEE;
+	margin-left:6px;
+	margin-top:5px;
+	line-height:130%;
+	box-shadow:1px 1px 1px rgba(0,0,0,0.3);
+}
+
+#Y_addedTag a{
+	padding:0 20px;
+	font-size:12px;
+	color:#000;
+}
+
+#Y_addedTag a:hover{
+	text-decoration:none;
+}
+
+#Y_space{
+	height:20px;
+}

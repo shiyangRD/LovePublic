@@ -71,28 +71,34 @@ $(function () {
             });
 
             for ( var i in DATA) {
+                // Template of Text Box
+                if ( DATA[i].type == 0 ) {
+                    var templateText = '<div class="box"><span gridid="' + DATA[i].gridid + '" class="title" >' + DATA[i].title + '</span><div class="description">' + DATA[i].description + '</div><a href="' + DATA[i].homepage + '" class="author">' + DATA[i].author + '</a><span class="time">' + DATA[i].time_edit + '</span><span class="like"></span><span class="num_like">' + DATA[i].num_like + '</span></div>';
+                        templateText = $(templateText);
+                        boxWrap.append( templateText ).masonry('appended', templateText);
+                };
+
                 // Template of Image Box
-                if ( DATA[i].type = 1) {
-                    var templateImage = '<div class="box"><img gridid="' + DATA[i].gridid + '" src="' + DATA[i].thumb + '" /><span class="title">' + DATA[i].title + '</span><a href="' + DATA[i].homepage + '" class="author">' + DATA[i].author + '</a><span class="time">' + DATA[i].time_edit + '</span><span class="like"></span><span class="num_like">' + DATA[i].num_like + '</span></div>';
+                if ( DATA[i].type == 1 ) {
+                    var templateImage = '<div class="box"><img gridid="' + DATA[i].gridid + '" src="' + DATA[i].thumb + '" /><span gridid="' + DATA[i].gridid + '" class="title">' + DATA[i].title + '</span><a href="' + DATA[i].homepage + '" class="author">' + DATA[i].author + '</a><span class="time">' + DATA[i].time_edit + '</span><span class="like"></span><span class="num_like">' + DATA[i].num_like + '</span></div>';
                         templateImage = $(templateImage);
-                    boxWrap.append( templateImage ).masonry('appended', templateImage);
+                        boxWrap.append( templateImage ).masonry('appended', templateImage);
                 };
                 $(window).resize();
             };
-
         };
 
         // Instantiate Box
-        var page = 0;
+        var page = 1;
         var updateBox = new Box("/grid/showList/", renderBox);
-        updateBox.req("?page=0");
+        updateBox.req("/page/1/size/30");
 
         // Scroll control 
         $(window).scroll(function () {
             $(window).resize();
             if ( $(document).height() == $(window).scrollTop() + $(window).height()) {
                 page += 1;
-                updateBox.req("?page=" + page);
+                updateBox.req("/page/" + page + "/size/18");
             };
         });
 /**
@@ -103,15 +109,19 @@ $(function () {
         // Open box template
         var openBox               = $("#openBox"),
             openBoxCancel         = $("#openBoxCancel"),
-            openBoxAuthorAvatar   = $("#openBoxAuthorAvatar");
-            openBoxAuthorName     = $("#openBoxAuthorName span");
-            openBoxContent        = $("#openBoxContentContent");
-            tags                  = $("#tags");
-            openBoxCommentNum     = $("#openBoxCommentNum");
-            openBoxColletNum      = $("#openBoxColletNum");
-            openBoxComment        = $("#openBoxComment");
-            openBoxCommentAddText = $("#openBoxCommentAddText");
-            openBoxCommentListul  = $("#openBoxCommentListul");
+            openBoxAuthorAvatar   = $("#openBoxAuthorAvatar"),
+            openBoxAuthorName     = $("#openBoxAuthorName span"),
+            openBoxTitle          = $("#openBoxTitle"),
+            openBoxContent        = $("#openBoxContent"),
+            openBoxImg            = $("#openBoxImg"),
+            openBoxContentContent = $("#openBoxContentContent"),
+            tags                  = $("#tags"),
+            openBoxCommentNum     = $("#openBoxCommentNum"),
+            openBoxHot            = $("#openBoxHot"),
+            openBoxColletNum      = $("#openBoxColletNum"),
+            openBoxComment        = $("#openBoxComment"),
+            openBoxCommentAddText = $("#openBoxCommentAddText"),
+            openBoxCommentListul  = $("#openBoxCommentListul"),
             openBoxCommentButton  = $("#openBoxCommentButton");
 
         // Grid ID, and the box
@@ -129,6 +139,7 @@ $(function () {
                 var status = originDATA.status;
                 var info   = originDATA.info;
                 var DATA   = originDATA.data.grid;
+                var boxType= DATA.type;
                 var comment= originDATA.data.comment;
             } 
             catch(e) {
@@ -140,18 +151,40 @@ $(function () {
             // Data to template 
             var commentTemplate;
             var tagTemplate;
+            var contentTemplate;
+
+            // User Information
             openBoxAuthorAvatar.attr("src", DATA.avatar);
             openBoxAuthorName.text( DATA.author );
-            openBoxContent.html( DATA.content );
+
+            // Text Box content
+            if ( boxType == 0 ) {
+                openBoxTitle.text( DATA.title );
+                openBoxImg.text("");
+                openBoxContentContent.html( DATA.content )
+            };
+
+            // Images Box content
+            if ( boxType == 1 ) {
+                openBoxTitle.text( DATA.title );
+                contentTemplate = '<div class="openBoxImg" ><img src="' + DATA.thumb + '" /></div>' + DATA.content;
+                openBoxContent.html( contentTemplate )
+            };
+
             // Todo : 标签
+            /*
             tags.append( DATA.tags )
             for ( var i in DATA.tag ) {
                 tagTemplate = '<a href="' + DATA.tag[i].url + '">#' + DATA.tag[i].name+ '</a>';
             };
+            */
+
             // Debug : 热度
-            openBoxHot.text( DATA.num_comment + DATA.num_collect + DATA.num_like );
+            var hotNum = eval(DATA.num_comment + DATA.num_collect + DATA.num_like)
+            openBoxHot.text( hotNum );
             openBoxCommentNum.text( DATA.num_comment );
             openBoxColletNum.text( DATA.num_collect );
+
             // Todo : 评论
             for ( var i in comment) {
                 commentTemplate = '<li><div></div class="openBoxAvatar"><a href="/home/home/index/id/' + comment[i].userid + '"><img src="' + comment[i].thumb + '" /></a><div class="openBoxCommentContent"><a class="author" href="/home/home/index/id/' + comment[i].userid + '/">' + comment[i].author + '</a><span>' + comment[i].content + '</span><a class="reply" author="' + comment[i].author + '" href="#">回复</a></div></li>';
