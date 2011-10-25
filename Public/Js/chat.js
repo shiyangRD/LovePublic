@@ -121,7 +121,7 @@ $(function(){
   if($("#record_content")[0]){
    setInterval(function(){
      $.ajax({
-			url:'/chat/ajaxPushMessage',
+			url:'/chat/ajaxPullMessage',
 			data:'content=1',
 			type:'post',
 			success:function(msg){
