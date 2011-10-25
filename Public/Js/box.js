@@ -73,7 +73,7 @@ $(function () {
             for ( var i in DATA) {
                 // Template of Text Box
                 if ( DATA[i].type == 0 ) {
-                    var templateText = '<div class="box"><span gridid="' + DATA[i].gridid + '" class="title" >' + DATA[i].title + '</span><div class="description">' + DATA[i].description + '</div><a href="' + DATA[i].homepage + '" class="author">' + DATA[i].author + '</a><span class="time">' + DATA[i].time_edit + '</span><span class="like"></span><span class="num_like">' + DATA[i].num_like + '</span></div>';
+                    var templateText = '<div class="box"><span gridid="' + DATA[i].gridid + '" class="title titleBig" >' + DATA[i].title + '</span><div class="description">' + /* Debug descript  DATA[i].description + */'</div><a href="' + DATA[i].homepage + '" class="author">' + DATA[i].author + '</a><span class="time">' + DATA[i].time_edit + '</span><span class="like"></span><span class="num_like">' + DATA[i].num_like + '</span></div>';
                         templateText = $(templateText);
                         boxWrap.append( templateText ).masonry('appended', templateText);
                 };
@@ -160,15 +160,15 @@ $(function () {
             // Text Box content
             if ( boxType == 0 ) {
                 openBoxTitle.text( DATA.title );
-                openBoxImg.text("");
+                openBoxImg.html("");
                 openBoxContentContent.html( DATA.content )
             };
 
             // Images Box content
             if ( boxType == 1 ) {
                 openBoxTitle.text( DATA.title );
-                contentTemplate = '<div class="openBoxImg" ><img src="' + DATA.thumb + '" /></div>' + DATA.content;
-                openBoxContent.html( contentTemplate )
+                openBoxImg.html( '<img src="' + DATA.thumb + '" />' );
+                openBoxContentContent.html( DATA.content );
             };
 
             // Todo : 标签
