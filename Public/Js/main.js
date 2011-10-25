@@ -76,5 +76,19 @@ $(function () {
         $.getScript("../Js/activity.js");
     };
 	
-	
+    // User-Complete js
+    var L_compt = $("#L_compt");
+    if ( L_compt[0]) {
+        $.getScript("../Js/user-completed.js");
+    };
+    // Login js
+    var L_rgLink = $("#L_rgLink");
+    if ( L_rgLink[0]){
+        $.getScript("../Js/login.js");
+    };
+    // Forget js
+   // var L_send = $(".L_sented");
+   // if ( L_send[0]){
+     //   $.getScript("../Js/forget-password.js");
+   // };
 });
