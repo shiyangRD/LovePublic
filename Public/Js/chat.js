@@ -135,7 +135,7 @@ $(function(){
                 $('.S_font1').click();
             }
 		 });
-    },10); 
+    },1000); 
   } 
      	 
   //handle top three items on chatPage
