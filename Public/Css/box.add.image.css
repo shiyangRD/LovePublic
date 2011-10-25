@@ -5,7 +5,78 @@
 +---------------------------------------------
 */
 
+#Y_imgShow{
+	width:686px;
+	height:auto;	
+}
 
+#Y_imgShow li{
+	width:686px;
+	height:96px;
+	border:1px solid #ccc;
+	background:#f7f7f7;
+	margin-bottom:10px;
+}
+
+#Y_imgShow .Y_getImgDiv{
+	width:78px;
+	height:78px;
+	border:1px solid #ccc;
+	border-radius:7px;
+	background:url(../Images/s-loader.gif) no-repeat center;
+	position:relative;
+	top:8px;
+	left:8px;	
+	float:left;
+}
+
+#Y_imgShow li img{
+	width:78px;
+	height:78px;
+	margin-top:8px;
+	margin-left:8px;
+	float:left;
+	border:1px solid #ccc;
+}
+
+#Y_imgShow li p{
+	float:left;
+	text-indent:0;
+	width:400px;
+	color:#484848;
+	font-size:12px;
+	margin-top:35px;
+	margin-left:20px;
+}
+
+#Y_imgShow li textarea{
+	display:block;
+	width:557px;
+	height:77px;
+	border:1px solid #ccc;
+	margin-top:9px;
+	margin-left:8px;
+	float:left;
+}
+
+.Y_imgButtonDiv{
+	width:15px;
+	height:78px;
+	margin-top:9px;
+	margin-left:10px;
+	float:left;
+}
+
+.Y_imgButtonDiv a{
+	display:block;
+	float:left;
+}
+
+.Y_imgButtonDiv .Y_imgRe{
+	width:12px;
+	height:10px;
+	background:url(../Images/Y_imgRm.png) no-repeat;
+}
 #Y_imgUpload{
 	width:686px;
 	height:auto;
@@ -33,7 +104,7 @@
 	background:url(../Images/Y_addImg.png) no-repeat;
 	position:relative;
 	top:6px;
-	left:8px;
+	left:6px;
 }
 
 #Y_imgFile input{
@@ -86,7 +157,7 @@
 	height:33px;
 	position:relative;
 	top:33px;
-	left:10px;
+	left:8px;
 }
 
 #Y_imgNetInput{
@@ -179,4 +250,5 @@
 
 #Y_imgTextarea{
 	margin-top:10px;
+	background:url(../Images/ajax-loader-small.gif) no-repeat center;
 }
