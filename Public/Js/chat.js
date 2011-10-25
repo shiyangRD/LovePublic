@@ -102,7 +102,7 @@ $(function(){
   	  if($('#S_div_box').html()!=''){
 	  	 //ajax submit content
 		 $.ajax({
-			url:'/chat/chatpage',
+			url:'/chat/ajaxPushMessage',
 			data:$('#S_div_box').html(),
 			type:'post',
 			success:function(msg){
