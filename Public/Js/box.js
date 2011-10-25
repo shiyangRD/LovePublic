@@ -73,14 +73,14 @@ $(function () {
             for ( var i in DATA) {
                 // Template of Text Box
                 if ( DATA[i].type == 0 ) {
-                    var templateText = '<div style="position:relative;top:0;left:0;color:red;font-weight:bold;">' + DATA[i].type + '</div><!-- Debug --><div class="box"><span gridid="' + DATA[i].gridid + ' class="title" >' + DATA[i].title + '</span></span><div class="description">' + DATA[i].description + '</div><a href="' + DATA[i].homepage + '" class="author">' + DATA[i].author + '</a><span class="time">' + DATA[i].time_edit + '</span><span class="like"></span><span class="num_like">' + DATA[i].num_like + '</span></div>';
+                    var templateText = '<div class="box"><span gridid="' + DATA[i].gridid + ' class="title" >' + DATA[i].title + '</span></span><div class="description">' + DATA[i].description + '</div><a href="' + DATA[i].homepage + '" class="author">' + DATA[i].author + '</a><span class="time">' + DATA[i].time_edit + '</span><span class="like"></span><span class="num_like">' + DATA[i].num_like + '</span></div>';
                         templateText = $(templateText);
                         boxWrap.append( templateText ).masonry('appended', templateText);
                 };
 
                 // Template of Image Box
                 if ( DATA[i].type == 1 ) {
-                    var templateImage = '<div style="position:relative;top:0;left:0;color:red;font-weight:bold;">' + DATA[i].type + '</div><!-- Debug --><div class="box"><img gridid="' + DATA[i].gridid + '" src="' + DATA[i].thumb + '" /><span class="title">' + DATA[i].title + '</span><a href="' + DATA[i].homepage + '" class="author">' + DATA[i].author + '</a><span class="time">' + DATA[i].time_edit + '</span><span class="like"></span><span class="num_like">' + DATA[i].num_like + '</span></div>';
+                    var templateImage = 'div class="box"><img gridid="' + DATA[i].gridid + '" src="' + DATA[i].thumb + '" /><span class="title">' + DATA[i].title + '</span><a href="' + DATA[i].homepage + '" class="author">' + DATA[i].author + '</a><span class="time">' + DATA[i].time_edit + '</span><span class="like"></span><span class="num_like">' + DATA[i].num_like + '</span></div>';
                         templateImage = $(templateImage);
                         boxWrap.append( templateImage ).masonry('appended', templateImage);
                 };
@@ -91,14 +91,14 @@ $(function () {
         // Instantiate Box
         var page = 1;
         var updateBox = new Box("/grid/showList/", renderBox);
-        updateBox.req("?page=1");
+        updateBox.req("/page/1/size/30");
 
         // Scroll control 
         $(window).scroll(function () {
             $(window).resize();
             if ( $(document).height() == $(window).scrollTop() + $(window).height()) {
                 page += 1;
-                updateBox.req("?page=" + page + "&size=180");
+                updateBox.req("/page/" + page + "/size/18");
             };
         });
 /**
