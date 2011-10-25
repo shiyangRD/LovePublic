@@ -431,37 +431,37 @@ a.S-bmBar{
 .S_mc .S_tcBox{
     margin-left:22px;
 }
-.S_Stop1{
+.S_tc .S_Stop{
     height:6px;
     font-size:0px;
     overflow:hidden;
     background:url('../Images/tt1.png') no-repeat;
 }
-.S_Stop2{
+.S_mc .S_Stop{
     height:6px;
     font-size:0px;
     overflow:hidden;
     background:url('../Images/tt2.png') no-repeat;
 }
-.S_Smid1,.S_Smid2{
+.S_Smid{
     line-height:30px;
     *margin-top:-10px;
 }
-.S_Smid1{
+.S_tc .S_Smid{
     padding-left:20px;
     min-height:30px;
     background:url('../Images/tm1.png') repeat-y;
 }
-.S_Smid2{
+.S_mc .S_Smid{
     padding-left:20px;
     min-height:30px;
     background:url('../Images/tm2.png') repeat-y;
 }
-.S_Sbom1{
+.S_tc .S_Sbom{
     height:24px;
     background:url('../Images/tb1.png') no-repeat;
 }
-.S_Sbom2{
+.S_mc .S_Sbom{
     height:24px;
     background:url('../Images/tb2.png') no-repeat;
 }
@@ -497,6 +497,11 @@ a.S-bmBar{
 	filter:alpha(opacity=0);
 	-moz-opacity:0;
 	-khtml-opacity: 0;
+}
+.S_t{
+  height:300px;
+  overflow-y:scroll;
+  overflow-x:auto;
 }
 .S_tbar img {
     margin-top:5px;
@@ -833,7 +838,12 @@ a.S-bmBar{
 	margin-left:5px;
 }
 /*End chat record*/
-
+.items_hover{
+    background:'url("../Images/barhover.png") no-repeat';
+}
+.items_click {
+    background:'url("../Images/barclick.png") no-repeat';
+}
 /*End Content*/
 
 /**
