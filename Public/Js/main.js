@@ -54,6 +54,34 @@ $(function () {
 
 /**
 +----------------------------------------------------------------
+* Control the behavior of all the menu
++----------------------------------------------------------------
+*/
+    var avtLINK = $("#avtLINK");
+    var avtIMG  = $("#avtIMG");
+    var accMNAME= $("#accMNAME");
+
+    // Get Current User Information
+
+    $.ajax({
+        type    : "GET",
+        url     : "/home/user/currentinfo",
+        success : function (data) {
+            if ( data != "" ) var originDATA = $.parseJSON(data);
+            var status = originDATA.status;
+            var DATA   = originDATA.data;
+            var userID = originDATA.userid;
+            var nick   = DATA.nickname;
+            var avatar = DATA.thumb;
+
+            // Update avatar
+            avtIMG.attr("src", avatar);
+            accMNAME.text( nick );
+        }
+    });
+
+/**
++----------------------------------------------------------------
 * Load script by dependency
 +----------------------------------------------------------------
 */

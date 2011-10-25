@@ -229,6 +229,16 @@
     background:#eee;
 }
 
+.titleBig {
+    color:#484848;
+    font-size:20px;
+}
+
+.titleBig:hover {
+    color:#232323;
+    background:#eee;
+}
+
 .box .author {
     color:#484848;
     display:block;
@@ -408,18 +418,19 @@
     padding:10px;
 }
 
-.openBoxImg {
+#openBoxImg {
     width:520px;
     margin:0 auto;
 }
 
-.openBoxImg img {
+#openBoxImg img {
     max-width:520px;
     display:block;
     margin:0 auto;
 }
 
 #openBoxContentContent {
+    padding:10px;
     width:520px;
     margin:0 auto;
 }
