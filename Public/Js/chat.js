@@ -1,4 +1,4 @@
-/**
+/*
 +----------------------------------------------------------------
 * handle Chat Choose 
 +----------------------------------------------------------------
@@ -155,9 +155,9 @@ $(function(){
       //handle mouseover  on Top Three Items
 	  $('.S_bannerList li').each(function(i){
   	  	 $(this).hover(function(){
-	  	 	$(this).css({"background":"url(../Images/barhover.png) no-repeat"});
+	  	 	$(this).removeClass('items_click').addClass('items_hover');
 	  	 },function(){
-			 $(this).css({"background":"url(../Images/barclick.png) no-repeat"});
+			 $(this).removeClass('items_hover').addClass('items_click');
 		 })
   	  })
    
