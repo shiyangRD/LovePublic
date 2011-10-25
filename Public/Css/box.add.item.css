@@ -98,12 +98,20 @@
 
 #Y_diaCkEidtor{
 	width:686px;
+	height:auto;
+	overflow:auto;
+	padding-bottom:1px;
+	margin-bottom:-1px;
+	padding-bottom:85px;
 	float:left;
+	position:relative;
+	overflow:hidden;
 }
 
 .Y_diaClass{
-	margin-top:25px;
 	position:absolute;
+	height:30px;
+	margin-top:20px;
 	right:0;
 }
 .Y_diaClass li{
