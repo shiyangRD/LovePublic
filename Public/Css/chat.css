@@ -498,6 +498,9 @@ a.S-bmBar{
 	-moz-opacity:0;
 	-khtml-opacity: 0;
 }
+.S_t{
+  overflow:scroll;
+}
 .S_tbar img {
     margin-top:5px;
     display:block;
