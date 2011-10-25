@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+        <link media="all" rel="stylesheet" href="../Css/common.css" type="text/css" />
+        <title>叶儿芽注册页</title>
+    </head>
+    <body>
+        <!------------------------------------register------------------------------>
+        <div id="L_wrap-register">
+            <div id="L_content">
+                <div id="L_register-register">
+                    <button  class="L_show" type="image"></button>
+                    <a id="L_lgLink" href="login.html"><button class="L_login-button" type="image"></button></a>
+                </div>
+                <!----------form---------->
+                <form action="" method="post" id="L_register-form">
+                    <div class="L_rg-item">
+                        <label for="cemail" class="L_label-name">邮箱</label>
+                        <input  id="cemail" name="email" class="L_cdw" style="font-size:20px;margin-top:-23px;margin-left:4px" />
+                    </div>
+                    <div class="L_rg-item">
+                        <label for="password" class="L_label-name">密码</label>
+                        <input id="password" name="password" class="L_cdw" type="password" style="font-size:20px;margin-top:-23px;margin-left:4px"  />
+                    </div>
+
+                    <div class="L_rg-item">
+                        <label for="cname" class="L_label-name">昵称</label>
+                        <input id="cname" name="name" class="L_cdw"  style="font-size:20px;margin-top:-23px;margin-left:4px" />
+                    </div>
+                    <div id="L_register-check-box">
+                        <label for="woman" id="L_woman-name">
+                            <input id="L_woman" type="radio" name="sex" />女生
+                        </label>
+                        <label for="man">
+                            <input id="L_man" type="radio" name="sex" />男生
+                        </label>
+                    </div>
+                    <div class="L_register-form-item">
+                        <button id="L_register-submit" tabindex="3" type="submit"></button>
+                    </div>
+                </form>
+            </div>
+        </div> 
+        <!-------------------------------------------------------------------------->
+        <script type="text/javascript" src="../Js/core/jquery.js"></script>
+        <script type="text/javascript" src="../Js/plugin/jquery.validate.js"></script>
+        <script type="text/javascript" src="../Js/register.js"></script>
+        <script src="../Js/plugin/jquery.pageslide-0.2.js"type="text/javascript"></script>
+    </body>
+</html>

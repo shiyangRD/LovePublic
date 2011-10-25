@@ -1,0 +1,131 @@
+/********************************************************************
+ * this is the page for user to complete their information's css
+ * */
+html{
+    background:#000;
+}
+#L_comp{
+    width:832px;
+    min-height:439px;
+    background:#fff;
+    padding:34px 0 0 120px;
+    -moz-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+#L_comp h1{
+    font-size:25px;
+    font-weight:normal;
+    color:#454545;
+}
+.L_warp{
+    width:720px;
+    height:340px;
+    border-top:1px #ccc solid;
+}
+.L_left{
+   width:153px;
+  height:340px;
+  border-right:1px #ccc solid;
+  float:left;
+}
+.L_left ul{
+    display:inline;
+}
+.L_left li{
+    list-style-type:none;
+    text-align:center;
+}
+.L_left li .L_li{
+    font-size:15px;
+    border-bottom:1px #ccc solid;
+    height:35px;
+    width:115px;
+}
+.L_left .L_a{
+     width:125px;
+    color:#28837f;
+    height:36px;
+    display:block;
+    padding-top:7px;
+    text-decoration:none;
+    cursor:pointer;
+}
+.L_left a:hover {
+    color:#fff;
+    background:url(../Images/index-buttons.png) no-repeat -21px -407px;
+   }
+.L_left li .L_active{
+    color:#fff;
+    width:125px;
+    height:36px;
+    background:url(../Images/index-buttons.png) no-repeat -21px -407px;
+
+}
+.L_right{
+    width:558px;
+    min-height:270px;
+    float:left;
+    margin-left:8px;
+}
+.L_right-top{
+    width:558px;
+    min-height:175px;
+    border-bottom:1px #ccc solid;
+    float:left;
+}
+.L_right-top #L_change{
+   width:560px;
+  height:225px; 
+  float:left;
+  font-size:15px;
+  color:#454545;
+  padding:36px 0 0 57px;
+}
+.L_right-top #L_change .L_div{
+    width:520px;
+    height:62px;
+    float:left;
+}
+
+.L_right-top #L_change label {
+    float:left;
+    padding-top:10px;
+}
+.L_right-top #L_change input{
+    width:270px;
+    height:35px;
+}
+.L_right-top #L_yinsi{
+    width:560px;
+    height:140px;
+    float:left;
+    font-size:15px;
+    color:#454545;
+    padding:43px 0 0 63px;
+}
+.L_right-top #L_yinsi h2{
+    font-weight:500;
+    font-size:15px;
+}
+.L_right-top #L_yinsi .L_bg{
+    padding-left:65px;
+    padding-bottom:15px;
+}
+.L_right-down{
+    width:558px;
+    height:100px;
+   float:left;
+}
+.L_right-down-bu{
+    background:url(../Images/index-buttons.png) no-repeat -159px -404px;
+    border:0;
+    width:122px;
+    height:41px;
+    margin:30px 0 0 350px;
+    cursor:pointer;
+}
+.L_d{
+    display:none;
+}    
