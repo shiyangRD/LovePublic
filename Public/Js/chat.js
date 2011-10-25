@@ -103,11 +103,13 @@ $(function(){
 	  	 //ajax submit content
 		 $.ajax({
 			url:'/chat/ajaxPushMessage',
-			data:$('#S_div_box').html(),
+			data:'content='+$('#S_div_box').html(),
 			type:'post',
 			success:function(msg){
-		       var content= $('.S_t ul').find('.S_tc').clone(true);
-               content.find('S_tcBox').children('.S_Smid1').html(msg);
+		       var content= $('.S_t ul').find('.S_mc').eq(0).clone(true);
+               var obj=eval("("+msg+")");
+               content.find('.S_tcBox').children('.S_Smid').html(obj.data.text);
+               content.appendTo($(".S_t ul"));
             },
             error:function(){
                 $('.S_font1').click();
