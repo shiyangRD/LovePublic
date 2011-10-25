@@ -110,6 +110,7 @@ $(function(){
                var obj=eval("("+msg+")");
                content.find('.S_tcBox').children('.S_Smid').html(obj.data.text);
                content.appendTo($(".S_t ul"));
+               document.getElementById('record_content').scrollHeight+=content.height();
             },
             error:function(){
                 $('.S_font1').click();
