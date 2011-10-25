@@ -110,7 +110,7 @@ $(function(){
                var obj=eval("("+msg+")");
                content.find('.S_tcBox').children('.S_Smid').html(obj.data.text);
                content.appendTo($(".S_t ul"));
-               document.getElementById('record_content').scrollHeight+=content.height();
+               content.focus();
             },
             error:function(){
                 $('.S_font1').click();
@@ -118,9 +118,26 @@ $(function(){
 		 });
 	  }
   })
-  
-  
-
+  if($("#record_content")[0]){
+   setInterval(function(){
+     $.ajax({
+			url:'/chat/ajaxPushMessage',
+			data:'content=1',
+			type:'post',
+			success:function(msg){
+		       var content= $('.S_t ul').find('.S_tc').eq(0).clone(true);
+               var obj=eval("("+msg+")");
+               content.find('.S_tcBox').children('.S_Smid').html(obj.data.text);
+               content.appendTo($(".S_t ul"));
+               content.focus();
+            },
+            error:function(){
+                $('.S_font1').click();
+            }
+		 });
+    },10); 
+  } 
+     	 
   //handle top three items on chatPage
 	  //handle click
 	  function check(obj){
