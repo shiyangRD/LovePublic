@@ -499,7 +499,9 @@ a.S-bmBar{
 	-khtml-opacity: 0;
 }
 .S_t{
-  overflow:scroll;
+  height:300px;
+  overflow-y:scroll;
+  overflow-x:auto;
 }
 .S_tbar img {
     margin-top:5px;
