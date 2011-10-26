@@ -46,8 +46,12 @@ $(function () {
     if ( boxWrap[0]) {
         // Initial Render Page
         var renderBox = function (data) {
-            //Determine the box 
-            //if ( box.id == 'boxWrap') return false;
+            // Loading 
+            var MSG = $("#blankBlock");
+            MSG.animate(function () {
+                height: "90px"
+            });
+            
 
             // Parse box data
             var originDATA = $.parseJSON(data) || null;
@@ -57,6 +61,10 @@ $(function () {
                 var info   = originDATA.info;
                 var DATA   = originDATA.data;
                 var comment= originDATA.data.comment;
+
+                if ( status == 0 ) {
+                    
+                };
             } 
             catch(e) {
                 // Todo
@@ -65,10 +73,12 @@ $(function () {
             };
 
             // Render the box
-            boxWrap.masonry({
-                itemSelector : '.box',
-                isAnimated   : true
-            });
+            boxWrap.imagesLoaded( function () {
+                boxWrap.masonry({
+                    itemSelector : '.box',
+                    isAnimated   : true
+                });
+            } );
 
             for ( var i in DATA) {
                 // Template of Text Box
@@ -98,7 +108,7 @@ $(function () {
             $(window).resize();
             if ( $(document).height() == $(window).scrollTop() + $(window).height()) {
                 page += 1;
-                updateBox.req("/page/" + page + "/size/18");
+                updateBox.req("/page/" + page + "/size/12");
             };
         });
 /**
@@ -167,7 +177,7 @@ $(function () {
             // Images Box content
             if ( boxType == 1 ) {
                 openBoxTitle.text( DATA.title );
-                openBoxImg.html( '<img src="' + DATA.thumb + '" />' );
+                /* Debug *///openBoxImg.html( '<img src="' + DATA.thumb + '" />' );
                 openBoxContentContent.html( DATA.content );
             };
 

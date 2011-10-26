@@ -104,7 +104,7 @@
 }
 
 #avt {
-    background:url(../Images/defAVT.png) no-repeat;
+    background:url(../Images/ajax-loader-small.gif) no-repeat center;
 }
 
 #accM {
@@ -327,12 +327,11 @@
     margin-bottom:-1px;
     height:auto;
     overflow:auto;
-    width:
+    width:960px;
 }
 
 .loading {
-    width:960px;
-    background:url(../Images/ajax-loader-big.gif) no-repeat center;
+    background:url(../Images/ajax-loader-big.gif) no-repeat center top;
 }
 
 #openBox {

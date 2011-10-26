@@ -75,7 +75,13 @@ $(function () {
             var LinkToHomePage = "/home/home/index/id/" + userID; 
 
             // Update avatar
-            avtIMG.attr("src", avatar);
+            if ( avatar != "" ) {
+                avtIMG.attr("src", avatar);
+                avtIMG.show();
+            } else {
+                avtIMG.hide();
+            };
+
             accMNAME.text( nick );
             accMNAME.attr("href", LinkToHomePage );
 
