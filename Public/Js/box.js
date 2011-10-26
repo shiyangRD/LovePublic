@@ -47,7 +47,7 @@ $(function () {
         // Initial Render Page
         var renderBox = function (data) {
             // Loading 
-            var MSG = $("#blankBlock");
+            var MSG = $("#msg");
             MSG.addClass("loading");
             MSG.animate({
                 height: "30",
@@ -75,9 +75,9 @@ $(function () {
                 };
             } 
             catch(e) {
-                // Todo
-
-                //alert("网络错误，数据不可用");
+                MSG.removeClass("loading");
+                MSG.text("Network Error!");
+                return false;
             };
 
             // Render the box
@@ -91,7 +91,7 @@ $(function () {
             for ( var i in DATA) {
                 // Template of Text Box
                 if ( DATA[i].type == 0 ) {
-                    var templateText = '<div class="box"><span gridid="' + DATA[i].gridid + '" class="title titleBig" >' + DATA[i].title + '</span><div class="description">' + /* Debug descript  DATA[i].description + */'</div><a href="' + DATA[i].homepage + '" class="author">' + DATA[i].author + '</a><span class="time">' + DATA[i].time_edit + '</span><span class="like"></span><span class="num_like">' + DATA[i].num_like + '</span></div>';
+                    var templateText = '<div class="box"><span gridid="' + DATA[i].gridid + '" class="title titleBig" >' + DATA[i].title + '</span><div class="description">' + DATA[i].description + '</div><a href="/home/home/index/id/' + DATA[i].userid + '" class="author">' + DATA[i].author + '</a><span class="time">' + DATA[i].time_edit + '</span><span class="like"></span><span class="num_like">' + DATA[i].num_like + '</span></div>';
                         templateText = $(templateText);
                         boxWrap.append( templateText ).masonry('appended', templateText);
                 };
@@ -177,6 +177,9 @@ $(function () {
             var tagTemplate;
             var contentTemplate;
 
+            // Clear Tags
+            tags.html("");
+
             // User Information
             openBoxAuthorAvatar.attr("src", DATA.avatar);
             openBoxAuthorName.text( DATA.author );
@@ -195,13 +198,13 @@ $(function () {
                 openBoxContentContent.html( DATA.content );
             };
 
-            // Todo : 标签
-            /*
-            tags.append( DATA.tags )
-            for ( var i in DATA.tag ) {
-                tagTemplate = '<a href="' + DATA.tag[i].url + '">#' + DATA.tag[i].name+ '</a>';
+            // 标签
+            if ( DATA.tags != "" ) {
+                for ( var i in DATA.tags ) {
+                    tagTemplate = '<a href="' + DATA.tags[i].url + '">' + DATA.tags[i].name+ '</a>';
+                    tags.append( tagTemplate );
+                };
             };
-            */
 
             // Debug : 热度
             var hotNum = eval(DATA.num_comment + DATA.num_collect + DATA.num_like)
