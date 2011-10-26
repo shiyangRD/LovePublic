@@ -122,13 +122,13 @@ $(function () {
         // Instantiate Box
         var page = 1;
         var updateBox = new Box("/grid/showList/", renderBox);
-        updateBox.req("/page/1/size/30");
+        updateBox.req("page/1/size/30");
 
         // Scroll control 
         $(window).scroll(function () {
             if ( $(document).height() == $(window).scrollTop() + $(window).height()) {
                 page += 1;
-                updateBox.req("/page/" + page + "/size/12");
+                updateBox.req("page/" + page + "/size/12");
             };
         });
 /**
