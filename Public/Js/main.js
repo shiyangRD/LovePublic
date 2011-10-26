@@ -69,7 +69,7 @@ $(function () {
             if ( data != "" ) var originDATA = $.parseJSON(data);
             var status = originDATA.status;
             var DATA   = originDATA.data;
-            var userID = originDATA.userid;
+            var userID = DATA.userid;
             var nick   = DATA.nickname;
             var avatar = DATA.thumb;
             var LinkToHomePage = "/home/home/index/id/" + userID; 
