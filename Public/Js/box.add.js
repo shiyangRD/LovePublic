@@ -266,7 +266,7 @@ $(function(){
 	
 	var regExp2 = new RegExp("(^.+\\.jpg$)|(^.+\\.png$)|(^.+\\.gif$)");
 	
-/*
+/**
  +----------------------
 //picture address from net
 	
@@ -286,7 +286,7 @@ $(function(){
 +-----------------------
 */	
 	//upload img button submit
-	var i =-1;
+	
 	imgUpload.bind('change',function(e) {
 		//get upload image url
 		var imgUrl = imgUpload.val();		
@@ -295,8 +295,8 @@ $(function(){
 		var imgTemplate = '<li><div class="Y_getImgDiv"></div><p>' + imgUrl + '</p></li>';
 		
 		if (regExp2.test( imgUrl )){
-			i += 1;
-			imgShowUl.append( imgTemplate );
+			
+			imgShowUl.prepend( imgTemplate );
 			$('#Y_formSubmit').submit();
 			$('#imgHidden').bind('load',function(){
 		
@@ -304,10 +304,11 @@ $(function(){
 				var imgGetStatus = imgGet.status;
 				var imgGetInfo = imgGet.info;
 				var imgGetData = imgGet.data;
-				var imgAddTpl = '<img src="' + imgGetData + '"/><textarea width="557"></textarea><div class="Y_imgButtonDiv"><a class="Y_imgRm"></a><a class="Y_imgRe"></a></div>';
+				var imgGetId = imgGet.attachid;
+				var imgAddTpl = '<img src="' + imgGetData + '" id="' + imgGetId +'"/><textarea width="557"></textarea><div class="Y_imgButtonDiv"><a class="Y_imgRm"></a><a class="Y_imgRe"></a></div>';
 				
 				if ( imgGetStatus == '1'){
-					imgShowUl.children().eq(i).empty().append( imgAddTpl );
+					imgShowUl.children().eq(0).empty().append( imgAddTpl );
 					}		
 			})	
 			
@@ -336,6 +337,16 @@ $(function(){
 		
 		var imgGetHtml = editor.document.getBody().getText().toString();
 		
+		//get picture's thumb url
+		
+		var imgThumbVal = [];
+		$('#Y_imgShow li img').each(function() {
+			var thisId = $(this).attr("id");
+			imgThumbVal.push( thisId );
+		})
+		
+		var imgThumbString = JSON.stringify( imgThumbVal );
+		
 		//get picture's tag value
 		
 		var imgTagVal = [];
@@ -351,20 +362,6 @@ $(function(){
 			imgTagString = JSON.stringify( imgTagVal );
 		}
 		
-		//get picture's thumb url
-		
-		var imgThumbVal = [];
-		$('#Y_imgShow li img').each(function() {
-			var thisSrc = $(this).attr("src");
-			imgThumbVal.push( thisSrc );
-		})
-		
-		var imgThumbString;
-		if( imgTagVal == ""){
-			imgThumbString = imgThumbVal.toString();
-		}else{
-			imgThumbString = JSON.stringify( imgThumbVal );
-		}
 
 		//post url
 		
@@ -372,7 +369,8 @@ $(function(){
 		
 		//post data
 		
-		var imgPostData = "&title=" + imgTitleVal + "&type=1" + "&thumb=" + imgThumbString + "&content=" + imgGetHtml + "&tag=" + imgTagString;
+		var imgPostData = "&title=" + imgTitleVal + "&type=1" + "&content=" + imgGetHtml + "&tag=" + imgTagString + "&thumb=" + imgThumbString;
+		console.dir( imgPostData );
 		
 		//callback function after send request
 		
@@ -398,6 +396,8 @@ $(function(){
 			alert('请填写内容再发布哦，亲')
 		}else if ( imgTitleVal == ""){
 			alert('还未填写标题哦，亲')
+		}else if ( imgThumbVal == ""){
+			alert('还没有上传图片哦，亲')
 		}else{
 			var imgObj = new boxPost( imgPostUri, imgCallFun, imgPostMethod, imgPostData);
 			imgObj.sendReq();
@@ -408,6 +408,40 @@ $(function(){
 })
 
 
+/**
+ +------------------------------------------------
+ * geziAddVedio part's js 
+ * coded by smallfish
+ +------------------------------------------------
+ */
 
-
+$(function() {
+	
+	var vedioSearch = $('#Y_vedioAdd input');
+	var vedioButton = $('#Y_vedioAdd a');
+	var vedioInfo = $('#Y_vedioInfo');
+		
+	vedioSearch.click(function() {
+		vedioSearch.val('').css('color','#474747');
+		vedioButton.fadeIn();
+	})
+	
+	vedioButton.click(function() {
+		vedioInfo.show();
+		
+		//create RegExp object
+		var regexp3 = new RegExp('^.+\\.swf$');
+		if ( !regexp3.test( vedioSearch.val() ) ){
+			
+			$('#Y_vedioInfo p').text('不支持的视频地址').css('color','#ff0000');
+		}else{
+			$('#Y_vedioInfo p').text('正在搜索视频').css('color','#464646');
+		}
+		
+	})
+	
+	var editor3 = CKEDITOR.replace('editor2',{
+		height:'100'
+	})
+})
  
