@@ -49,6 +49,9 @@ $(function () {
                 $("#addBa").removeClass("addBDown");
                 $("#makeBoption").hide();
             };
+
+            // Clear Message Block
+            $("#blankBlock").fadeOut();
         });
 
 /**

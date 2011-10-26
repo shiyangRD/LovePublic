@@ -48,10 +48,10 @@ $(function () {
         var renderBox = function (data) {
             // Loading 
             var MSG = $("#blankBlock");
-            MSG.animate(function () {
-                height: "90px"
-            });
-            
+            MSG.addClass("loading");
+            MSG.animate({
+                height: "30",
+            },300);
 
             // Parse box data
             var originDATA = $.parseJSON(data) || null;
@@ -63,7 +63,15 @@ $(function () {
                 var comment= originDATA.data.comment;
 
                 if ( status == 0 ) {
-                    
+                    MSG.removeClass("loading");
+                    MSG.text("Network Error!");
+                    return false;
+                };
+
+                if ( DATA == "" || DATA == null || DATA == undefined ) {
+                    MSG.removeClass("loading");
+                    MSG.text("No More");
+                    return false;
                 };
             } 
             catch(e) {
@@ -96,6 +104,12 @@ $(function () {
                 };
                 $(window).resize();
             };
+
+            // Clear Loading Message
+            MSG.animate({
+                height: "0",
+            },130);
+
         };
 
         // Instantiate Box
