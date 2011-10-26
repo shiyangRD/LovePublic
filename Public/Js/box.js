@@ -98,7 +98,7 @@ $(function () {
 
                 // Template of Image Box
                 if ( DATA[i].type == 1 ) {
-                    var templateImage = '<div class="box"><img gridid="' + DATA[i].gridid + '" src="' + DATA[i].thumb + '" /><span gridid="' + DATA[i].gridid + '" class="title">' + DATA[i].title + '</span><a href="' + DATA[i].homepage + '" class="author">' + DATA[i].author + '</a><span class="time">' + DATA[i].time_edit + '</span><span class="like"></span><span class="num_like">' + DATA[i].num_like + '</span></div>';
+                    var templateImage = '<div class="box"><img gridid="' + DATA[i].gridid + '" src="' + DATA[i].thumb + '" /><span gridid="' + DATA[i].gridid + '" class="title">' + DATA[i].title + '</span><a href="/home/home/index/id/' + DATA[i].userid + '" class="author">' + DATA[i].author + '</a><span class="time">' + DATA[i].time_edit + '</span><span class="like"></span><span class="num_like">' + DATA[i].num_like + '</span></div>';
                         templateImage = $(templateImage);
                         boxWrap.append( templateImage ).masonry('appended', templateImage);
                 };
@@ -159,6 +159,7 @@ $(function () {
             // Clear Input
             openBoxCommentAddText.val("");
             openBoxCommentButton.text("写好了");
+            openBoxCommentListul.html("");
             
             // Parse box data
             var originDATA = $.parseJSON(data) || null;
@@ -168,7 +169,7 @@ $(function () {
                 var info   = originDATA.info;
                 var DATA   = originDATA.data.grid;
                 var boxType= DATA.type;
-                var comment= originDATA.DATA.comment;
+                var comment= originDATA.data.comment;
             } 
             catch(e) {
                 // Todo
@@ -219,7 +220,7 @@ $(function () {
             // 评论
             if ( comment != "" ) {
                 for ( var i in comment ) {
-                    commentTemplate = '<li><div></div class="openBoxAvatar"><a href="/home/home/index/id/' + comment[i].userid + '"><img src="' + comment[i].thumb + '" /></a><div class="openBoxCommentContent"><a class="author" href="/home/home/index/id/' + comment[i].userid + '/">' + comment[i].author + '</a><span>' + comment[i].content + '</span><a class="reply" author="' + comment[i].author + '" href="#">回复</a></div></li>';
+                    commentTemplate = '<li><div class="openBoxAvatar"><a href="/home/home/index/id/' + comment[i].userid + '"><img src="' + comment[i].avatar + '" /></a></div><div class="openBoxCommentContent"><a class="author" href="/home/home/index/id/' + comment[i].userid + '">' + comment[i].author + '</a>&nbsp;:&nbsp;&nbsp;&nbsp;<span>' + comment[i].content + '</span><br /><a style="/* Todo */display:none;" class="reply" author="' + comment[i].author + '">回复</a></div></li>';
                     openBoxCommentListul.append( commentTemplate );
                 };
             };
@@ -287,12 +288,17 @@ $(function () {
 
             if ( status == 1) {
                 // Todo 成功  插入当前评论到评论列表中
-                var addData = openBoxCommentAddText.text();
-                // Todo 获得当前用户的头像，昵称，个人主页地址
-                // Todo 插入评论
+                var addData         = openBoxCommentAddText.val();
+                var currentAvtLink  = $("#avtIMG").attr("src");
+                var currentUserLink = $("#accMNAME").attr("src");
+                var currentUserName = $("#accMNAME").text();
 
-                // 清空输入框
-                openBoxCommentAddText.text("");
+                // Add comment
+                commentTemplate = '<li><div class="openBoxAvatar"><a href="' + currentUserLink + '"><img src="' + currentAvtLink + '" /></a></div><div class="openBoxCommentContent"><a class="author" href="' + currentUserLink + '">' + currentUserName + '</a>&nbsp;:&nbsp;&nbsp;&nbsp;<span>' + addData + '</span><br /><a style="/* Todo */display:none;" class="reply" author="' + currentUserName + '">回复</a></div></li>';
+                openBoxCommentListul.append( commentTemplate );
+
+                // Clear Comment Input 
+                openBoxCommentAddText.val("");
                 return false;
                 
             } else {
