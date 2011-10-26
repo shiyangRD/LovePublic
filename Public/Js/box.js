@@ -164,7 +164,7 @@ $(function () {
                 var info   = originDATA.info;
                 var DATA   = originDATA.data.grid;
                 var boxType= DATA.type;
-                var comment= originDATA.data.comment;
+                var comment= originDATA.DATA.comment;
             } 
             catch(e) {
                 // Todo
@@ -212,10 +212,12 @@ $(function () {
             openBoxCommentNum.text( DATA.num_comment );
             openBoxColletNum.text( DATA.num_collect );
 
-            // Todo : 评论
-            for ( var i in comment) {
-                commentTemplate = '<li><div></div class="openBoxAvatar"><a href="/home/home/index/id/' + comment[i].userid + '"><img src="' + comment[i].thumb + '" /></a><div class="openBoxCommentContent"><a class="author" href="/home/home/index/id/' + comment[i].userid + '/">' + comment[i].author + '</a><span>' + comment[i].content + '</span><a class="reply" author="' + comment[i].author + '" href="#">回复</a></div></li>';
-                openBoxCommentListul.append( commentTemplate );
+            // 评论
+            if ( comment != "" ) {
+                for ( var i in comment ) {
+                    commentTemplate = '<li><div></div class="openBoxAvatar"><a href="/home/home/index/id/' + comment[i].userid + '"><img src="' + comment[i].thumb + '" /></a><div class="openBoxCommentContent"><a class="author" href="/home/home/index/id/' + comment[i].userid + '/">' + comment[i].author + '</a><span>' + comment[i].content + '</span><a class="reply" author="' + comment[i].author + '" href="#">回复</a></div></li>';
+                    openBoxCommentListul.append( commentTemplate );
+                };
             };
             
             // Current box offset
@@ -287,10 +289,11 @@ $(function () {
 
                 // 清空输入框
                 openBoxCommentAddText.text("");
+                return false;
                 
             } else {
                 // Todo 评论失败，网络连接失败
-                openBoxCommentButton.val("可能由于网络原因，提交失败了，请重试");
+                openBoxCommentButton.text("可能由于网络原因，提交失败了，请重试");
                 return false;
             };
         };
@@ -319,7 +322,6 @@ $(function () {
         
         // Handle : send the reply
         openBoxCommentButton.click(function () {
-        alert(openBoxCommentAddText.val())
             var commentDATA = openBoxCommentAddText.val();
             if ( commentDATA != "" ) {
                 var paraments = "?gridid=" + gridid + "&comment=" + commentDATA ;

@@ -51,7 +51,7 @@ $(function () {
             };
 
             // Clear Message Block
-            $("#blankBlock").fadeOut();
+            $("#msg").fadeOut();
         });
 
 /**
