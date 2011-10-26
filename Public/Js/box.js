@@ -42,6 +42,7 @@ $(function () {
 * Control all box action
 +----------------------------------------------------------------
 */
+    var content = $("#content");
     var boxWrap = $("#boxWrap");
     if ( boxWrap[0]) {
         // Initial Render Page
@@ -228,7 +229,13 @@ $(function () {
             // Current box offset
             var top   = $(box).offset().top,
                 left  = $(box).offset().left,
-                width = $(window).width();
+                width = $(window).width(),
+                contentHeight;
+
+            // 使外容器高度自适应
+            contentHeight = top + openBox.height() + 500 + 'px';
+
+            content.css( { "min-height" : contentHeight } )
 
             // Scroll page to the box
             $("html, body").animate({ scrollTop : top - 40 }, 130);
@@ -366,6 +373,17 @@ $(function () {
     var addB        = $("#addB a");
 
     if ( boxTool[0]) {
+        //Toggle the Box Tool
+        boxTool.hover( function () {
+            boxTool.stop().animate({
+            bottom : 0 
+            },130 );
+        }, function () {
+            boxTool.stop().animate({
+            bottom : -60
+            },130 );
+        });
+
         // Customize block Submenu control
         makeB.click(function () {
             makeB.addClass("makeBDown");
