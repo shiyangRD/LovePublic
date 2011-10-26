@@ -434,6 +434,12 @@
     margin:0 auto;
 }
 
+#openBoxContentContent img {
+    max-width:520px!important;
+    margin:0 auto!important;
+    display:block;
+}
+
 #openBoxMenu {
     width:566px;
     font-size:12px;
