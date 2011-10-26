@@ -126,7 +126,6 @@ $(function () {
 
         // Scroll control 
         $(window).scroll(function () {
-            $(window).resize();
             if ( $(document).height() == $(window).scrollTop() + $(window).height()) {
                 page += 1;
                 updateBox.req("/page/" + page + "/size/12");
