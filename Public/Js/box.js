@@ -47,11 +47,11 @@ $(function () {
         // Initial Render Page
         var renderBox = function (data) {
             // Loading 
-            var MSG = $("#blankBlock");
-            MSG.animate(function () {
-                height: "90px"
-            });
-            
+            var MSG = $("#msg");
+            MSG.addClass("loading");
+            MSG.animate({
+                height: "30",
+            },300);
 
             // Parse box data
             var originDATA = $.parseJSON(data) || null;
@@ -63,13 +63,21 @@ $(function () {
                 var comment= originDATA.data.comment;
 
                 if ( status == 0 ) {
-                    
+                    MSG.removeClass("loading");
+                    MSG.text("Network Error!");
+                    return false;
+                };
+
+                if ( DATA == "" || DATA == null || DATA == undefined ) {
+                    MSG.removeClass("loading");
+                    MSG.text("No More");
+                    return false;
                 };
             } 
             catch(e) {
-                // Todo
-
-                //alert("网络错误，数据不可用");
+                MSG.removeClass("loading");
+                MSG.text("Network Error!");
+                return false;
             };
 
             // Render the box
@@ -83,7 +91,7 @@ $(function () {
             for ( var i in DATA) {
                 // Template of Text Box
                 if ( DATA[i].type == 0 ) {
-                    var templateText = '<div class="box"><span gridid="' + DATA[i].gridid + '" class="title titleBig" >' + DATA[i].title + '</span><div class="description">' + /* Debug descript  DATA[i].description + */'</div><a href="' + DATA[i].homepage + '" class="author">' + DATA[i].author + '</a><span class="time">' + DATA[i].time_edit + '</span><span class="like"></span><span class="num_like">' + DATA[i].num_like + '</span></div>';
+                    var templateText = '<div class="box"><span gridid="' + DATA[i].gridid + '" class="title titleBig" >' + DATA[i].title + '</span><div class="description">' + DATA[i].description + '</div><a href="/home/home/index/id/' + DATA[i].userid + '" class="author">' + DATA[i].author + '</a><span class="time">' + DATA[i].time_edit + '</span><span class="like"></span><span class="num_like">' + DATA[i].num_like + '</span></div>';
                         templateText = $(templateText);
                         boxWrap.append( templateText ).masonry('appended', templateText);
                 };
@@ -96,6 +104,12 @@ $(function () {
                 };
                 $(window).resize();
             };
+
+            // Clear Loading Message
+            MSG.animate({
+                height: "0",
+            },130);
+
         };
 
         // Instantiate Box
@@ -150,7 +164,7 @@ $(function () {
                 var info   = originDATA.info;
                 var DATA   = originDATA.data.grid;
                 var boxType= DATA.type;
-                var comment= originDATA.data.comment;
+                var comment= originDATA.DATA.comment;
             } 
             catch(e) {
                 // Todo
@@ -162,6 +176,9 @@ $(function () {
             var commentTemplate;
             var tagTemplate;
             var contentTemplate;
+
+            // Clear Tags
+            tags.html("");
 
             // User Information
             openBoxAuthorAvatar.attr("src", DATA.avatar);
@@ -181,13 +198,13 @@ $(function () {
                 openBoxContentContent.html( DATA.content );
             };
 
-            // Todo : 标签
-            /*
-            tags.append( DATA.tags )
-            for ( var i in DATA.tag ) {
-                tagTemplate = '<a href="' + DATA.tag[i].url + '">#' + DATA.tag[i].name+ '</a>';
+            // 标签
+            if ( DATA.tags != "" ) {
+                for ( var i in DATA.tags ) {
+                    tagTemplate = '<a href="' + DATA.tags[i].url + '">' + DATA.tags[i].name+ '</a>';
+                    tags.append( tagTemplate );
+                };
             };
-            */
 
             // Debug : 热度
             var hotNum = eval(DATA.num_comment + DATA.num_collect + DATA.num_like)
@@ -195,10 +212,12 @@ $(function () {
             openBoxCommentNum.text( DATA.num_comment );
             openBoxColletNum.text( DATA.num_collect );
 
-            // Todo : 评论
-            for ( var i in comment) {
-                commentTemplate = '<li><div></div class="openBoxAvatar"><a href="/home/home/index/id/' + comment[i].userid + '"><img src="' + comment[i].thumb + '" /></a><div class="openBoxCommentContent"><a class="author" href="/home/home/index/id/' + comment[i].userid + '/">' + comment[i].author + '</a><span>' + comment[i].content + '</span><a class="reply" author="' + comment[i].author + '" href="#">回复</a></div></li>';
-                openBoxCommentListul.append( commentTemplate );
+            // 评论
+            if ( comment != "" ) {
+                for ( var i in comment ) {
+                    commentTemplate = '<li><div></div class="openBoxAvatar"><a href="/home/home/index/id/' + comment[i].userid + '"><img src="' + comment[i].thumb + '" /></a><div class="openBoxCommentContent"><a class="author" href="/home/home/index/id/' + comment[i].userid + '/">' + comment[i].author + '</a><span>' + comment[i].content + '</span><a class="reply" author="' + comment[i].author + '" href="#">回复</a></div></li>';
+                    openBoxCommentListul.append( commentTemplate );
+                };
             };
             
             // Current box offset
@@ -270,10 +289,11 @@ $(function () {
 
                 // 清空输入框
                 openBoxCommentAddText.text("");
+                return false;
                 
             } else {
                 // Todo 评论失败，网络连接失败
-                openBoxCommentButton.val("可能由于网络原因，提交失败了，请重试");
+                openBoxCommentButton.text("可能由于网络原因，提交失败了，请重试");
                 return false;
             };
         };
@@ -302,7 +322,6 @@ $(function () {
         
         // Handle : send the reply
         openBoxCommentButton.click(function () {
-        alert(openBoxCommentAddText.val())
             var commentDATA = openBoxCommentAddText.val();
             if ( commentDATA != "" ) {
                 var paraments = "?gridid=" + gridid + "&comment=" + commentDATA ;
