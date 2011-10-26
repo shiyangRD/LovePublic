@@ -6,6 +6,10 @@
 */
 #mainWrap {
     background:#298380;
+    padding-bottom:1px;
+    margin-bottom:-1px;
+    height:auto;
+    overflow:auto;
 }
 
 #header {
@@ -187,9 +191,11 @@
 }
 
 .box {
-    background:#f0f4f2 url(../Images/ajax-loader-small.gif) no-repeat center;
+    background:#f0f4f2;
     width:162px;
+    /* Degub
     min-height:200px;
+    */
     border:none;
     border-radius:6px;
     opacity:1;
@@ -209,10 +215,28 @@
     opacity:0.9;
 }
 
-.box .title {
+.title {
     color:#484848;
     font-size:12px;
-    float:left;
+    display:block;
+    cursor:pointer;
+    clear:both;
+    _display:inline;
+}
+
+.title:hover {
+    color:#232323;
+    background:#eee;
+}
+
+.titleBig {
+    color:#484848;
+    font-size:20px;
+}
+
+.titleBig:hover {
+    color:#232323;
+    background:#eee;
 }
 
 .box .author {
@@ -253,7 +277,11 @@
 }
 
 .box .like {
+/* Debug 
     display:block;
+    */
+    /* Debug */
+    display:none;
     width:10px;
     height:8px;
     background:url(../Images/like.png) no-repeat 8px 0;
@@ -276,6 +304,8 @@
 }
 
 .box .num_like {
+    /* Debug */
+    display:none!important;
     font-size:12px;
     color:#d83e3e;
     display:block;
@@ -388,18 +418,19 @@
     padding:10px;
 }
 
-.openBoxImg {
+#openBoxImg {
     width:520px;
     margin:0 auto;
 }
 
-.openBoxImg img {
+#openBoxImg img {
     max-width:520px;
     display:block;
     margin:0 auto;
 }
 
 #openBoxContentContent {
+    padding:10px;
     width:520px;
     margin:0 auto;
 }

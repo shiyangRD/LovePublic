@@ -71,28 +71,34 @@ $(function () {
             });
 
             for ( var i in DATA) {
+                // Template of Text Box
+                if ( DATA[i].type == 0 ) {
+                    var templateText = '<div class="box"><span gridid="' + DATA[i].gridid + '" class="title titleBig" >' + DATA[i].title + '</span><div class="description">' + /* Debug descript  DATA[i].description + */'</div><a href="' + DATA[i].homepage + '" class="author">' + DATA[i].author + '</a><span class="time">' + DATA[i].time_edit + '</span><span class="like"></span><span class="num_like">' + DATA[i].num_like + '</span></div>';
+                        templateText = $(templateText);
+                        boxWrap.append( templateText ).masonry('appended', templateText);
+                };
+
                 // Template of Image Box
-                if ( DATA[i].type = 1) {
-                    var templateImage = '<div class="box"><img gridid="' + DATA[i].gridid + '" src="' + DATA[i].thumb + '" /><span class="title">' + DATA[i].title + '</span><a href="' + DATA[i].homepage + '" class="author">' + DATA[i].author + '</a><span class="time">' + DATA[i].time_edit + '</span><span class="like"></span><span class="num_like">' + DATA[i].num_like + '</span></div>';
+                if ( DATA[i].type == 1 ) {
+                    var templateImage = '<div class="box"><img gridid="' + DATA[i].gridid + '" src="' + DATA[i].thumb + '" /><span gridid="' + DATA[i].gridid + '" class="title">' + DATA[i].title + '</span><a href="' + DATA[i].homepage + '" class="author">' + DATA[i].author + '</a><span class="time">' + DATA[i].time_edit + '</span><span class="like"></span><span class="num_like">' + DATA[i].num_like + '</span></div>';
                         templateImage = $(templateImage);
-                    boxWrap.append( templateImage ).masonry('appended', templateImage);
+                        boxWrap.append( templateImage ).masonry('appended', templateImage);
                 };
                 $(window).resize();
             };
-
         };
 
         // Instantiate Box
-        var page = 0;
+        var page = 1;
         var updateBox = new Box("/grid/showList/", renderBox);
-        updateBox.req("?page=0");
+        updateBox.req("/page/1/size/30");
 
         // Scroll control 
         $(window).scroll(function () {
             $(window).resize();
             if ( $(document).height() == $(window).scrollTop() + $(window).height()) {
                 page += 1;
-                updateBox.req("?page=" + page);
+                updateBox.req("/page/" + page + "/size/18");
             };
         });
 /**
@@ -106,7 +112,9 @@ $(function () {
             openBoxAuthorAvatar   = $("#openBoxAuthorAvatar"),
             openBoxAuthorName     = $("#openBoxAuthorName span"),
             openBoxTitle          = $("#openBoxTitle"),
-            openBoxContent        = $("#openBoxContentContent"),
+            openBoxContent        = $("#openBoxContent"),
+            openBoxImg            = $("#openBoxImg"),
+            openBoxContentContent = $("#openBoxContentContent"),
             tags                  = $("#tags"),
             openBoxCommentNum     = $("#openBoxCommentNum"),
             openBoxHot            = $("#openBoxHot"),
@@ -149,11 +157,18 @@ $(function () {
             openBoxAuthorAvatar.attr("src", DATA.avatar);
             openBoxAuthorName.text( DATA.author );
 
-            // Box content
+            // Text Box content
+            if ( boxType == 0 ) {
+                openBoxTitle.text( DATA.title );
+                openBoxImg.html("");
+                openBoxContentContent.html( DATA.content )
+            };
+
+            // Images Box content
             if ( boxType == 1 ) {
                 openBoxTitle.text( DATA.title );
-                contentTemplate = '<div class="openBoxImg" ><img src="' + DATA.thumb + '" /></div>' + DATA.content;
-                openBoxContent.html( contentTemplate )
+                openBoxImg.html( '<img src="' + DATA.thumb + '" />' );
+                openBoxContentContent.html( DATA.content );
             };
 
             // Todo : 标签

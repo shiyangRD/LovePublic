@@ -50,7 +50,45 @@ $(function () {
                 $("#makeBoption").hide();
             };
         });
+
+/**
++----------------------------------------------------------------
+* Get Current User Information
++----------------------------------------------------------------
+*/
+    var avtLINK = $("#avtLINK");
+    var avtIMG  = $("#avtIMG");
+    var accMNAME= $("#accMNAME");
+
+    // Get Current User Information
+
+    $.ajax({
+        type    : "GET",
+        url     : "/home/user/currentinfo",
+        success : function (data) {
+            if ( data != "" ) var originDATA = $.parseJSON(data);
+            var status = originDATA.status;
+            var DATA   = originDATA.data;
+            var userID = DATA.userid;
+            var nick   = DATA.nickname;
+            var avatar = DATA.thumb;
+            var LinkToHomePage = "/home/home/index/id/" + userID; 
+
+            // Update avatar
+            avtIMG.attr("src", avatar);
+            accMNAME.text( nick );
+            accMNAME.attr("href", LinkToHomePage );
+
+            // Link to home page
+            avtLINK.attr("href", LinkToHomePage );
+
+
+            if ( status ==0 ) window.location.href="/user/login";
+        }
+    });
+
     };
+
 
 /**
 +----------------------------------------------------------------
@@ -76,5 +114,19 @@ $(function () {
         $.getScript("../Js/activity.js");
     };
 	
-	
+    // User-Complete js
+    var L_compt = $("#L_compt");
+    if ( L_compt[0]) {
+        $.getScript("../Js/user-completed.js");
+    };
+    // Login js
+    var L_rgLink = $("#L_rgLink");
+    if ( L_rgLink[0]){
+        $.getScript("../Js/login.js");
+    };
+    // Forget js
+   // var L_send = $(".L_sented");
+   // if ( L_send[0]){
+     //   $.getScript("../Js/forget-password.js");
+   // };
 });

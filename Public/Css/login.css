@@ -1,19 +1,56 @@
-@import url(./core/global.css);
-input,a, a:hover {
+/*
+ *-------------------------------------------------------------------------
+ *login css
+ *coded by lifang
+ *-------------------------------------------------------------------------
+ */
+/*-------------------some common set------------*/
+.L_cdw:focus {
+    transition:border linear .2s,box-shadow linear .5s;
+    -moz-transition:border linear .2s,-moz-box-shadow linear .5s;
+    -webkit-transition:border linear .2s,-webkit-box-shadow linear .5s;
+    outline:none;border-color:rgba(246,240,246,.75);
+    box-shadow:0 0 8px rgba(246,240,260,.5);
+    -moz-box-shadow:0 0 8px rgba(246,240,232,.5);
+    -webkit-box-shadow:0 0 8px rgba(246,240,232,10);
+    background:#ffd;
+} 
+
+.L_label-name{
+    top:15px;
+    position:relative;
+    color:#ccc;
+    z-index:1;
+    font-size:20px;
+    left:1em;
+}
+.L_rg-item{
+    width:320px;
+    height:55px;
+    margin-bottom:30px;
+    background:url(../Images/index-buttons.png) no-repeat -12px -68px;
+    z-index:2;
+}
+.L_highlight{
+    color:#ffd;
+    z-index:-9999;
+}
+/*---------login and register 's wrap------------*/
+#L_bg{
+    background:url(../Images/L_lgbg.png) repeat;
+    min-width:1280px;
+    height:800px;
+    overflow-x:hidden;
+}
+#L_bg input,a,a:hover {
     outline:none;
     text-decoration:none;
 }
-html{
-    background:url(../Images/bg-repeat.png) repeat;
-}
-/*----------index-----------*/
-
 #L_wrap{
-    background:url(../Images/index-bg.png) no-repeat ;
+    background:url(../Images/login-bg.png) no-repeat 190px 179px;
     min-width:1280px;
     min-height:800px;
     _height:800px;
-    overflow:hidden;
     position:relative;
 }
 .L_logo{
@@ -23,10 +60,13 @@ html{
 }
 #L_content{
     width:1069px;
-    margin:209px 149px;
+    padding:209px 149px;
     position:relative;
     height:458px;
 }
+
+/*----------------------the login page--------------*/
+/*------------------------the left------------------*/
 #L_login-register{
     width:52%;
     float:left;
@@ -51,8 +91,8 @@ html{
     width:39px;
     height:38px;
     position:absolute;
-    top:243px;
-    left:250px;
+    top:261px;
+    left:221px;
     background:url(../Images/index-buttons.png) no-repeat -36px -196px;
     cursor:pointer;
     border:0;
@@ -60,7 +100,7 @@ html{
 #L_login-register .L_login-button:hover {
     background:url(../Images/index-buttons.png) no-repeat -82px -199px;
 }
-/*-----form------*/
+/*---------------------------the right form-----------------------*/
 #L_login-form{
     float:right;
     width:43%;
@@ -145,29 +185,12 @@ html{
 }
 
 
-#footer{
-    position: relative;
-    margin-top: -148px;
-    height: 20px;
-    clear: both;
-    width: 100%;
-    text-align:center;
-    font-size:12px;
-}
-#footer a{
-    color:#333;
-    padding-right:12px;
-}
-#footer a:hover {
-    color:#fff;
-}
-/*-----------------register-------------*/
+/*-----------------register page-------------*/
 #L_wrap-register{
-    background:url(../Images/register-bg.png) no-repeat;
+    background:url(../Images/L_rg.png) no-repeat 641px 101px;
     min-width:1280px;
     min-height:800px;
     _height:800px;
-    overflow:hidden;
     position:relative;
 }
 #L_register-register{
@@ -261,33 +284,74 @@ html{
     border:0;
     background-color:transparent;
 }
-.L_cdw:focus {
-    transition:border linear .2s,box-shadow linear .5s;
-    -moz-transition:border linear .2s,-moz-box-shadow linear .5s;
-    -webkit-transition:border linear .2s,-webkit-box-shadow linear .5s;
-    outline:none;border-color:rgba(246,240,246,.75);
-    box-shadow:0 0 8px rgba(246,240,260,.5);
-    -moz-box-shadow:0 0 8px rgba(246,240,232,.5);
-    -webkit-box-shadow:0 0 8px rgba(246,240,232,10);
-    background:#ffd;
-} 
 
-.L_label-name{
-    top:15px;
-    position:relative;
-    color:#ccc;
-    z-index:1;
-    font-size:20px;
-    left:1em;
+/*--------------------forget password-----------------*/
+#L_forget{
+    width:660px;
+    height:263px;
+    color:#454545; 
+    background:#ccc;
+    padding:8px 0 0 60px;
+    -moz-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
 }
-.L_rg-item{
-    width:320px;
-    height:55px;
-    margin-bottom:30px;
-    background:url(../Images/index-buttons.png) no-repeat -12px -68px;
+#L_forget h1{
+   font-size:30px;
+   font-weight:normal;
+}
+#L_forget p{
+    font-size:15px;
+}
+.L_fg-item{
+    width:454px;
+    height:50px;
+}
+.L_fg-input{
+    width:310px;
+    height:42px;
+ background:url(../Images/index-buttons.png) no-repeat -15px -359px;
+    float:left;
     z-index:2;
+
 }
-.L_highlight{
-    color:#ffd;
-    z-index:-9999;
+.L_fg-input2{
+    width:306px;
+    height:35px;
+    font-size:20px;
+    border:0;
+    margin:2px 0 0 2px;
+    }
+.L_send-item{
+    position:relative;
+    width:120px;
+    height:40px;
+    float:right;
+    margin-top:2px;
+}
+#L_send-submit{
+ background:url(../Images/index-buttons.png) no-repeat -80px -310px;
+    width:120px;
+    height:40px;
+    cursor:pointer;
+    border:0;
+   
+}
+
+.L_sented{
+   font-size:15px; 
+   color:#454545;
+   width:508px;
+   height:79px;
+}
+.L_sented p{
+    line-height:1.5em;
+
+}
+.L_sented a{
+    color:#28837f;
+}
+.L_disp{
+    display:none;
 }

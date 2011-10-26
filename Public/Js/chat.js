@@ -1,4 +1,4 @@
-/**
+/*
 +----------------------------------------------------------------
 * handle Chat Choose 
 +----------------------------------------------------------------
@@ -102,12 +102,15 @@ $(function(){
   	  if($('#S_div_box').html()!=''){
 	  	 //ajax submit content
 		 $.ajax({
-			url:'/chat/chatpage',
-			data:$('#S_div_box').html(),
+			url:'/chat/ajaxPushMessage',
+			data:'content='+$('#S_div_box').html(),
 			type:'post',
 			success:function(msg){
-		       var content= $('.S_t ul').find('.S_tc').clone(true);
-               content.find('S_tcBox').children('.S_Smid1').html(msg);
+		       var content= $('.S_t ul').find('.S_mc').eq(0).clone(true);
+               var obj=eval("("+msg+")");
+               content.find('.S_tcBox').children('.S_Smid').html(obj.data.text);
+               content.appendTo($(".S_t ul"));
+               content.focus();
             },
             error:function(){
                 $('.S_font1').click();
@@ -115,9 +118,26 @@ $(function(){
 		 });
 	  }
   })
-  
-  
-
+  if($("#record_content")[0]){
+   setInterval(function(){
+     $.ajax({
+			url:'/chat/ajaxPullMessage',
+			data:'content=1',
+			type:'post',
+			success:function(msg){
+		       var content= $('.S_t ul').find('.S_tc').eq(0).clone(true);
+               var obj=eval("("+msg+")");
+               content.find('.S_tcBox').children('.S_Smid').html(obj.data.text);
+               content.appendTo($(".S_t ul"));
+               content.focus();
+            },
+            error:function(){
+                $('.S_font1').click();
+            }
+		 });
+    },1000); 
+  } 
+     	 
   //handle top three items on chatPage
 	  //handle click
 	  function check(obj){
@@ -155,9 +175,9 @@ $(function(){
       //handle mouseover  on Top Three Items
 	  $('.S_bannerList li').each(function(i){
   	  	 $(this).hover(function(){
-	  	 	$(this).css({"background":"url(../Images/barhover.png) no-repeat"});
+	  	 	$(this).removeClass('items_click').addClass('items_hover');
 	  	 },function(){
-			 $(this).css({"background":"url(../Images/barclick.png) no-repeat"});
+			 $(this).removeClass('items_hover').addClass('items_click');
 		 })
   	  })
    
