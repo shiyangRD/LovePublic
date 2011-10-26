@@ -207,7 +207,7 @@ $(function () {
                 width = $(window).width();
 
             // Scroll page to the box
-            $("html, body").animate({ scrollTop : top - 40 }, 650);
+            $("html, body").animate({ scrollTop : top - 40 }, 130);
 
             // Open box position
             if ( left < width/2 ) {
