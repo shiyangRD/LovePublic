@@ -242,9 +242,6 @@ $(function(){
 			name:'eidtor2'
 			};
 		editor = CKEDITOR.appendTo( 'Y_imgTextarea', config, html);
-		
-		
- 
 	}
 
 	imgTitle2.click(function() {
@@ -333,19 +330,15 @@ $(function(){
 		
 		var imgTitleVal = $('.Y_imgInput input').val();
 		
-		//get picture's content value
-		
-		var imgGetHtml = editor.document.getBody().getText().toString();
-		
 		//get picture's thumb url
 		
-		var imgThumbVal = [];
+		var imgPicVal = [];
 		$('#Y_imgShow li img').each(function() {
 			var thisId = $(this).attr("id");
-			imgThumbVal.push( thisId );
+			imgPicVal.push( thisId );
 		})
 		
-		var imgThumbString = JSON.stringify( imgThumbVal );
+		var imgPicString = JSON.stringify( imgPicVal );
 		
 		//get picture's tag value
 		
@@ -362,14 +355,25 @@ $(function(){
 			imgTagString = JSON.stringify( imgTagVal );
 		}
 		
+		//get the first picture's id
+		var imgThumbString = $('#Y_imgShow li img').eq(0).attr('id');
 
+		//get picture's content value
+		
+		if ( editor ){
+			var imgGetHtml = editor.document.getBody().getText().toString();
+		}else{
+			alert('亲，你还没有添加文字内容呢！');
+		}
+		
+		
 		//post url
 		
 		var imgPostUri = "/grid/add/";
 		
 		//post data
 		
-		var imgPostData = "&title=" + imgTitleVal + "&type=1" + "&content=" + imgGetHtml + "&tag=" + imgTagString + "&thumb=" + imgThumbString;
+		var imgPostData = "&title=" + imgTitleVal + "&type=1" + "&content=" + imgGetHtml + "&tag=" + imgTagString  + "&thumb=" + imgThumbString + "&picture=" + imgPicString ;
 		console.dir( imgPostData );
 		
 		//callback function after send request
@@ -394,12 +398,8 @@ $(function(){
 		//create new ajax request
 		var imgPostMethod = "POST";
 		
-		if ( imgGetHtml == ""){
-			alert('请填写内容再发布哦，亲')
-		}else if ( imgTitleVal == ""){
-			alert('还未填写标题哦，亲')
-		}else if ( imgThumbVal == ""){
-			alert('还没有上传图片哦，亲')
+		if ( imgPicVal == "" || imgTitleVal == "" || imgGetHtml == "" ){
+			imgSendButton.val("亲，没填完整信息~");
 		}else{
 			var imgObj = new boxPost( imgPostUri, imgCallFun, imgPostMethod, imgPostData);
 			imgObj.sendReq();
@@ -442,8 +442,11 @@ $(function() {
 		
 	})
 	
-	var editor3 = CKEDITOR.replace('editor2',{
-		height:'100'
-	})
+	var vedioDiv = $('#vedioDiv');
+	if ( vedioDiv[0] ){
+		var editor3 = CKEDITOR.replace('editor2',{
+			height:'100'
+		})
+	}
 })
  
