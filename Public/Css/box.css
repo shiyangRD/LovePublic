@@ -344,6 +344,7 @@
     width:566px;
     height:auto;
     overflow:auto;
+    overflow-x:hidden;
     padding-bottom:1px;
     margin-bottom:-1px;
     background:#fff;
@@ -515,14 +516,14 @@
     transition: all 0.13s ease-in-out;
 }
 
-#openBoxCommentAddText:focus {
-    width:506px;
-    height:60px;
-    padding:5px;
-    font-size:14px;
-    color:#232323;
-    box-shadow:0 0 5px rgba(0, 0, 0, 0.2);
-    outline:none;
+.openBoxCommentAddTextHas {
+    width:506px!important;
+    height:60px!important;
+    padding:5px!important;
+    font-size:14px!important;
+    color:#232323!important;
+    box-shadow:0 0 5px rgba(0, 0, 0, 0.2)!important;
+    outline:none!important;
 }
 
 #openBoxCommentButton {

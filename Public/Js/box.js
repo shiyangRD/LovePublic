@@ -155,6 +155,10 @@ $(function () {
         var openBoxRender = function ( data) {
             // Determine the box
             if ( $(box).attr('id') == "boxWrap") return false;
+
+            // Clear Input
+            openBoxCommentAddText.val("");
+            openBoxCommentButton.text("写好了");
             
             // Parse box data
             var originDATA = $.parseJSON(data) || null;
@@ -293,7 +297,8 @@ $(function () {
                 
             } else {
                 // Todo 评论失败，网络连接失败
-                openBoxCommentButton.text("可能由于网络原因，提交失败了，请重试");
+                openBoxCommentButton.css({ "left" : "250px" }).text("可能由于网络原因，提交失败了，请重试！");
+                setTimeout("$('#openBoxCommentButton').css( { 'left' : '460px' } ).text('重试')", 2000);
                 return false;
             };
         };
@@ -310,8 +315,16 @@ $(function () {
             });
 
             // Textarea button Action
-            openBoxCommentAddText.focus(function () {
+            openBoxCommentAddText.click(function () {
+                $(this).addClass( "openBoxCommentAddTextHas" );
                 openBoxCommentButton.fadeIn("fast");
+            });
+
+            openBoxCommentAddText.blur(function () {
+                if ( $(this).val() == "" ) {
+                    $(this).removeClass( "openBoxCommentAddTextHas" );
+                    openBoxCommentButton.hide();
+                };
             });
 
         };
