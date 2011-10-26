@@ -384,7 +384,9 @@ $(function(){
 			if ( imgStatus == '0'){
 				imgSendButton.val("亲，出现问题了")
 			}else{
-				imgSendButton.val("亲，上传成功了 ，鼓掌~")
+				imgSendButton.val("亲，上传成功了 ，鼓掌~").delay(1000).queue(function(){
+					window.location.href="/";
+				})
 			}
 			 
 		}
