@@ -50,11 +50,10 @@ $(function () {
                 $("#makeBoption").hide();
             };
         });
-    };
 
 /**
 +----------------------------------------------------------------
-* Control the behavior of all the menu
+* Get Current User Information
 +----------------------------------------------------------------
 */
     var avtLINK = $("#avtLINK");
@@ -73,12 +72,23 @@ $(function () {
             var userID = originDATA.userid;
             var nick   = DATA.nickname;
             var avatar = DATA.thumb;
+            var LinkToHomePage = "/home/home/index/id/" + userID; 
 
             // Update avatar
             avtIMG.attr("src", avatar);
             accMNAME.text( nick );
+            accMNAME.attr("href", LinkToHomePage );
+
+            // Link to home page
+            avtLINK.attr("href", LinkToHomePage );
+
+
+            if ( status ==0 ) window.location.href="/user/login";
         }
     });
+
+    };
+
 
 /**
 +----------------------------------------------------------------
