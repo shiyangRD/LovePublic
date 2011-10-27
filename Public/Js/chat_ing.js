@@ -9,9 +9,8 @@ $(function(){
 			success:function(msg){
                var obj=eval('('+msg+')');
                if(obj!=null){
-		          var content= $('.S_t ul').find('.S_mc').eq(0).clone(true);
-                  content.find('S_tcBox').children('.S_Smid').html($('#S_div_box').html());
-                  content.appendTo('.S_t ul');
+		          var content= $('.S_t ul').find('.S_mc').eq(0).clone().appendTo($(".S_t ul"));
+                  content.find('.S_tcBox').children('.S_Smid').html($("#S_div_box").html());
                   content.focus();
                   $("#S_div_box").html('');
                }
