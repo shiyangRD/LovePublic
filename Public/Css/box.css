@@ -104,7 +104,7 @@
 }
 
 #avt {
-    background:url(../Images/ajax-loader-small.gif) no-repeat center;
+    background:url(../Images/defAVT.png) no-repeat;
 }
 
 #accM {
@@ -185,10 +185,9 @@
     padding:15px 0 0 0;
     margin:0 auto;
     margin-bottom:-1px;
-    padding-bottom:1px!important;
+    padding-bottom:1px;
     height:auto;
-    overflow-x:hidden;
-    overflow-y:auto;
+    overflow:auto;
 }
 
 .box {
@@ -197,10 +196,9 @@
     /* Degub
     min-height:200px;
     */
-    float:left;
     border:none;
     border-radius:6px;
-    opacity:0;
+    opacity:1;
     margin:5px;
     padding:10px;
     text-shadow:1px 1px 1px #fff;
@@ -229,20 +227,6 @@
 .title:hover {
     color:#232323;
     background:#eee;
-}
-
-.titleBig {
-    color:#484848;
-    font-size:20px;
-}
-
-.titleBig:hover {
-    color:#232323;
-    background:#eee;
-}
-
-.description {
-    color:#999;
 }
 
 .box .author {
@@ -328,15 +312,18 @@
 
 #boxWrap {
     padding:30px 0;
-    min-height:1000px;
-    padding-bottom:1px!important;
+    min-height:3200px;
+    padding-bottom:1px;
     margin-bottom:-1px;
     height:auto;
-    overflow-y:auto;
-    overflow-x:hidden;
-    width:960px;
+    overflow:auto;
+    width:
 }
 
+.loading {
+    width:960px;
+    background:url(../Images/ajax-loader-big.gif) no-repeat center;
+}
 
 #openBox {
     display:none;
@@ -347,7 +334,6 @@
     width:566px;
     height:auto;
     overflow:auto;
-    overflow-x:hidden;
     padding-bottom:1px;
     margin-bottom:-1px;
     background:#fff;
@@ -422,27 +408,20 @@
     padding:10px;
 }
 
-#openBoxImg {
+.openBoxImg {
     width:520px;
     margin:0 auto;
 }
 
-#openBoxImg img {
+.openBoxImg img {
     max-width:520px;
     display:block;
     margin:0 auto;
 }
 
 #openBoxContentContent {
-    padding:10px;
     width:520px;
     margin:0 auto;
-}
-
-#openBoxContentContent img {
-    max-width:520px!important;
-    margin:0 auto!important;
-    display:block;
 }
 
 #openBoxMenu {
@@ -464,29 +443,6 @@
 #tags {
     position:relative;
     left:18px;
-}
-
-#tags a {
-    color:#444;
-    cursor:pointer;
-    border-radius:2px;
-    border:1px solid #AAA;
-    padding:3px;
-    margin-left:3px;
-    box-shadow:0 1px 3px rgba(0, 0, 0, 0.1);
-	background:#ebebeb -webkit-gradient(linear, 0 0, 0 100%, from(#fafafa), to(#e5e5e5));
-	background:#ebebeb -moz-linear-gradient(top, #fafafa,#e5e5e5);
-    -webkit-transition: all 0.13s ease-in-out;
-    -moz-transition: all 0.13s ease-in-out;
-    -o-transition: all 0.13s ease-in-out;
-    transition: all 0.13s ease-in-out;
-}
-
-#tags a:hover {
-    color:#222;
-	background:#ebebeb -webkit-gradient(linear, 0 0, 0 100%, from(#fefefe), to(#e9e9e9));
-	background:#ebebeb -moz-linear-gradient(top, #fefefe,#e9e9e9);
-    box-shadow:0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 #openBoxLike {
@@ -519,14 +475,14 @@
     transition: all 0.13s ease-in-out;
 }
 
-.openBoxCommentAddTextHas {
-    width:506px!important;
-    height:60px!important;
-    padding:5px!important;
-    font-size:14px!important;
-    color:#232323!important;
-    box-shadow:0 0 5px rgba(0, 0, 0, 0.2)!important;
-    outline:none!important;
+#openBoxCommentAddText:focus {
+    width:506px;
+    height:60px;
+    padding:5px;
+    font-size:14px;
+    color:#232323;
+    box-shadow:0 0 5px rgba(0, 0, 0, 0.2);
+    outline:none;
 }
 
 #openBoxCommentButton {
@@ -583,26 +539,18 @@
     float:left;
 }
 
-#msg {
+#blankBlock {
     _display:none;
-    position:fixed;
-    bottom:70px;
+    position:relative;
+    padding-top:3px;
+    bottom:0;
     width:100%;
-    height:30px;
+    height:70px;
     text-align:center;
     font-weight:bold;
     color:#000;
     text-shadow:-1px -1px 1px #6DBCBA;
-}
-
-.loading {
-    background:url(../Images/ajax-loader-small.gif) no-repeat center;
-}
-
-.blankBlock {
-    height:70px;
-    width:100%;
-    clear:both;
+    background:#298380;
 }
 
 #botBar {
@@ -619,8 +567,6 @@
     background:url(../Images/boxTool.png) left no-repeat;
     background-color:#0D5552;
     z-index:15;
-    /* Debug */
-    bottom:-60px;
 }
 
 #boxTool div, #boxTool li {

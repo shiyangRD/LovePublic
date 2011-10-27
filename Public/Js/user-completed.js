@@ -1,5 +1,5 @@
 $(document).ready(function(){
-        $('#L_compt').show();
+        $('#L_comp').show();
         $('.L_tabs li:first').addClass('L_active');
         $('.L_tabs li a').each(function(e){
             $(this).click(function(e){

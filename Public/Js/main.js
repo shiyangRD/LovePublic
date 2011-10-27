@@ -49,55 +49,8 @@ $(function () {
                 $("#addBa").removeClass("addBDown");
                 $("#makeBoption").hide();
             };
-
-            // Clear Message Block
-            $("#msg").fadeOut();
         });
-
-/**
-+----------------------------------------------------------------
-* Get Current User Information
-+----------------------------------------------------------------
-*/
-    var avtLINK = $("#avtLINK");
-    var avtIMG  = $("#avtIMG");
-    var accMNAME= $("#accMNAME");
-
-    // Get Current User Information
-
-    $.ajax({
-        type    : "GET",
-        url     : "/home/user/currentinfo",
-        success : function (data) {
-            if ( data != "" ) var originDATA = $.parseJSON(data);
-            var status = originDATA.status;
-            var DATA   = originDATA.data;
-            var userID = DATA.userid;
-            var nick   = DATA.nickname;
-            var avatar = DATA.thumb;
-            var LinkToHomePage = "/home/home/index/id/" + userID; 
-
-            // Update avatar
-            if ( avatar != "" ) {
-                avtIMG.attr("src", avatar);
-                avtIMG.show();
-            } else {
-                avtIMG.hide();
-            };
-
-            accMNAME.text( nick );
-            accMNAME.attr("href", LinkToHomePage );
-
-            // Link to home page
-            avtLINK.attr("href", LinkToHomePage );
-
-
-            if ( status ==0 ) window.location.href="/user/login";
-        }
-    });
-
     };
-
 
 /**
 +----------------------------------------------------------------
@@ -124,8 +77,8 @@ $(function () {
     };
 	
     // User-Complete js
-    var L_compt = $("#L_compt");
-    if ( L_compt[0]) {
+    var L_comp = $("#L_comp");
+    if ( L_comp[0]) {
         $.getScript("../Js/user-completed.js");
     };
     // Login js
@@ -134,8 +87,8 @@ $(function () {
         $.getScript("../Js/login.js");
     };
     // Forget js
-   // var L_send = $(".L_sented");
-   // if ( L_send[0]){
-     //   $.getScript("../Js/forget-password.js");
-   // };
+    var L_send = $(".L_sented");
+    if ( L_send[0]){
+        $.getScript("../Js/forget-password.js");
+    };
 });
