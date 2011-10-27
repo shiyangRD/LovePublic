@@ -187,7 +187,8 @@
     margin-bottom:-1px;
     padding-bottom:1px!important;
     height:auto;
-    overflow:auto;
+    overflow-x:hidden;
+    overflow-y:auto;
 }
 
 .box {
@@ -196,9 +197,10 @@
     /* Degub
     min-height:200px;
     */
+    float:left;
     border:none;
     border-radius:6px;
-    opacity:1;
+    opacity:0;
     margin:5px;
     padding:10px;
     text-shadow:1px 1px 1px #fff;
@@ -330,7 +332,8 @@
     padding-bottom:1px!important;
     margin-bottom:-1px;
     height:auto;
-    overflow:auto;
+    overflow-y:auto;
+    overflow-x:hidden;
     width:960px;
 }
 
@@ -616,6 +619,8 @@
     background:url(../Images/boxTool.png) left no-repeat;
     background-color:#0D5552;
     z-index:15;
+    /* Debug */
+    bottom:-60px;
 }
 
 #boxTool div, #boxTool li {

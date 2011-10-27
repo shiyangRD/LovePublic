@@ -42,6 +42,7 @@ $(function () {
 * Control all box action
 +----------------------------------------------------------------
 */
+    var content = $("#content");
     var boxWrap = $("#boxWrap");
     if ( boxWrap[0]) {
         // Initial Render Page
@@ -80,30 +81,36 @@ $(function () {
                 return false;
             };
 
-            // Render the box
-            boxWrap.imagesLoaded( function () {
-                boxWrap.masonry({
-                    itemSelector : '.box',
-                    isAnimated   : true
-                });
-            } );
+            // Template of Box
+            var templateBox = '';
 
             for ( var i in DATA) {
                 // Template of Text Box
                 if ( DATA[i].type == 0 ) {
-                    var templateText = '<div class="box"><span gridid="' + DATA[i].gridid + '" class="title titleBig" >' + DATA[i].title + '</span><div class="description">' + DATA[i].description + '</div><a href="/home/home/index/id/' + DATA[i].userid + '" class="author">' + DATA[i].author + '</a><span class="time">' + DATA[i].time_edit + '</span><span class="like"></span><span class="num_like">' + DATA[i].num_like + '</span></div>';
-                        templateText = $(templateText);
-                        boxWrap.append( templateText ).masonry('appended', templateText);
+                    templateBox += '<div class="box"><span gridid="' + DATA[i].gridid + '" class="title titleBig" >' + DATA[i].title + '</span><div class="description">' + DATA[i].description + '</div><a href="/home/home/index/id/' + DATA[i].userid + '" class="author">' + DATA[i].author + '</a><span class="time">' + DATA[i].time_edit + '</span><span class="like"></span><span class="num_like">' + DATA[i].num_like + '</span></div>';
                 };
 
                 // Template of Image Box
                 if ( DATA[i].type == 1 ) {
-                    var templateImage = '<div class="box"><img gridid="' + DATA[i].gridid + '" src="' + DATA[i].thumb + '" /><span gridid="' + DATA[i].gridid + '" class="title">' + DATA[i].title + '</span><a href="' + DATA[i].homepage + '" class="author">' + DATA[i].author + '</a><span class="time">' + DATA[i].time_edit + '</span><span class="like"></span><span class="num_like">' + DATA[i].num_like + '</span></div>';
-                        templateImage = $(templateImage);
-                        boxWrap.append( templateImage ).masonry('appended', templateImage);
+                    templateBox += '<div class="box"><img gridid="' + DATA[i].gridid + '" src="' + DATA[i].thumb + '" /><span gridid="' + DATA[i].gridid + '" class="title">' + DATA[i].title + '</span><a href="/home/home/index/id/' + DATA[i].userid + '" class="author">' + DATA[i].author + '</a><span class="time">' + DATA[i].time_edit + '</span><span class="like"></span><span class="num_like">' + DATA[i].num_like + '</span></div>';
                 };
-                $(window).resize();
             };
+
+            // Render the box
+            boxWrap.imagesLoaded( function () {
+                boxWrap.masonry({
+                    itemSelector : '.box',
+                    columnWidth : 1,
+                    isAnimated : true
+                });
+            });
+
+            // Append Into boxWrap
+            templateBox = $( templateBox );
+            templateBox.imagesLoaded( function () {
+                templateBox.animate( { opacity : 1 } );
+                boxWrap.append( templateBox ).masonry( 'appended', templateBox );
+            });
 
             // Clear Loading Message
             MSG.animate({
@@ -115,14 +122,13 @@ $(function () {
         // Instantiate Box
         var page = 1;
         var updateBox = new Box("/grid/showList/", renderBox);
-        updateBox.req("/page/1/size/30");
+        updateBox.req("page/1/size/30");
 
         // Scroll control 
         $(window).scroll(function () {
-            $(window).resize();
-            if ( $(document).height() == $(window).scrollTop() + $(window).height()) {
+            if ( $(document).height() < $(window).scrollTop() + $(window).height() + 300) {
                 page += 1;
-                updateBox.req("/page/" + page + "/size/12");
+                updateBox.req("page/" + page + "/size/12");
             };
         });
 /**
@@ -159,6 +165,7 @@ $(function () {
             // Clear Input
             openBoxCommentAddText.val("");
             openBoxCommentButton.text("写好了");
+            openBoxCommentListul.html("");
             
             // Parse box data
             var originDATA = $.parseJSON(data) || null;
@@ -168,7 +175,7 @@ $(function () {
                 var info   = originDATA.info;
                 var DATA   = originDATA.data.grid;
                 var boxType= DATA.type;
-                var comment= originDATA.DATA.comment;
+                var comment= originDATA.data.comment;
             } 
             catch(e) {
                 // Todo
@@ -219,7 +226,7 @@ $(function () {
             // 评论
             if ( comment != "" ) {
                 for ( var i in comment ) {
-                    commentTemplate = '<li><div></div class="openBoxAvatar"><a href="/home/home/index/id/' + comment[i].userid + '"><img src="' + comment[i].thumb + '" /></a><div class="openBoxCommentContent"><a class="author" href="/home/home/index/id/' + comment[i].userid + '/">' + comment[i].author + '</a><span>' + comment[i].content + '</span><a class="reply" author="' + comment[i].author + '" href="#">回复</a></div></li>';
+                    commentTemplate = '<li><div class="openBoxAvatar"><a href="/home/home/index/id/' + comment[i].userid + '"><img src="' + comment[i].avatar + '" /></a></div><div class="openBoxCommentContent"><a class="author" href="/home/home/index/id/' + comment[i].userid + '">' + comment[i].author + '</a>&nbsp;:&nbsp;&nbsp;&nbsp;<span>' + comment[i].content + '</span><br /><a style="/* Todo */display:none;" class="reply" author="' + comment[i].author + '">回复</a></div></li>';
                     openBoxCommentListul.append( commentTemplate );
                 };
             };
@@ -227,7 +234,13 @@ $(function () {
             // Current box offset
             var top   = $(box).offset().top,
                 left  = $(box).offset().left,
-                width = $(window).width();
+                width = $(window).width(),
+                contentHeight;
+
+            // 使外容器高度自适应
+            contentHeight = top + openBox.height() + 500 + 'px';
+
+            content.css( { "min-height" : contentHeight } )
 
             // Scroll page to the box
             $("html, body").animate({ scrollTop : top - 40 }, 130);
@@ -287,12 +300,17 @@ $(function () {
 
             if ( status == 1) {
                 // Todo 成功  插入当前评论到评论列表中
-                var addData = openBoxCommentAddText.text();
-                // Todo 获得当前用户的头像，昵称，个人主页地址
-                // Todo 插入评论
+                var addData         = openBoxCommentAddText.val();
+                var currentAvtLink  = $("#avtIMG").attr("src");
+                var currentUserLink = $("#accMNAME").attr("src");
+                var currentUserName = $("#accMNAME").text();
 
-                // 清空输入框
-                openBoxCommentAddText.text("");
+                // Add comment
+                commentTemplate = '<li><div class="openBoxAvatar"><a href="' + currentUserLink + '"><img src="' + currentAvtLink + '" /></a></div><div class="openBoxCommentContent"><a class="author" href="' + currentUserLink + '">' + currentUserName + '</a>&nbsp;:&nbsp;&nbsp;&nbsp;<span>' + addData + '</span><br /><a style="/* Todo */display:none;" class="reply" author="' + currentUserName + '">回复</a></div></li>';
+                openBoxCommentListul.append( commentTemplate );
+
+                // Clear Comment Input 
+                openBoxCommentAddText.val("");
                 return false;
                 
             } else {
@@ -360,6 +378,17 @@ $(function () {
     var addB        = $("#addB a");
 
     if ( boxTool[0]) {
+        //Toggle the Box Tool
+        boxTool.hover( function () {
+            boxTool.stop().animate({
+            bottom : 0 
+            },130 );
+        }, function () {
+            boxTool.stop().animate({
+            bottom : -60
+            },130 );
+        });
+
         // Customize block Submenu control
         makeB.click(function () {
             makeB.addClass("makeBDown");
