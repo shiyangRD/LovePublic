@@ -25,14 +25,16 @@ $(function(){
 			success:function(msg){
 		       var content= $('.S_t ul').find('.S_tc').eq(0).clone(true);
                var obj=eval("("+msg+")");
-               content.find('.S_tcBox').children('.S_Smid').html(obj.data.text);
-               content.appendTo($(".S_t ul"));
-               content.focus();
+               if(obj!=null){
+                 content.find('.S_tcBox').children('.S_Smid').html(obj.data.text);
+                 content.appendTo($(".S_t ul"));
+                 content.focus();
+               }
             },
             error:function(){
                 $('.S_font1').click();
             }
 		 });
     },1000); 
-  } 
+  }; 
 })
