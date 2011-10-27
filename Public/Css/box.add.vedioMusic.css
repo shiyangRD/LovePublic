@@ -72,6 +72,13 @@
 	color:#464646;
 }
 
+#Y_vedioTextarea,#Y_musicTextarea{
+	display:block;
+	border:none;
+	width:686px;
+	height:150px;
+	background:url(../Images/ajax-loader-small.gif) no-repeat center;
+}
 /*
 +--------------------------------------
 * box.add.vedio.html part css
@@ -83,7 +90,7 @@
 	width:557px;
 	height:33px;
 	float:left;
-	padding-top:10px;
+	margin-top:10px;
 	margin-left:10px;
 }
 

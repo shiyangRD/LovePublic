@@ -1,6 +1,6 @@
 /**
  +------------------------------------------------
- * geziAddDiary part's js 
+ * box.add.item.html part's js 
  * coded by smallfish
  +------------------------------------------------
  */
@@ -196,7 +196,7 @@ $(function() {
 })
 /**
  +------------------------------------------------
- * geziAddImage part's js 
+ * box.add.image.html part's js 
  * coded by smallfish
  +------------------------------------------------
  */
@@ -246,7 +246,7 @@ $(function(){
 
 	imgTitle2.click(function() {
 		$(this).hide();
-		createEditor();
+		$('#Y_imgTextarea').show().queue( createEditor() );
 	})
 	
 	//netUpload button click event
@@ -508,7 +508,13 @@ $(function() {
 	var musicImgHeight = parseInt($('#Y_musicShow img').css('height'));
 	var musicMargin = musicImgHeight - 23;
 	
-	$('#Y_musicFlash').css({"padding-top":musicMargin + "px"});
+	$('#Y_musicFlash').css({"margin-top":musicMargin + "px"});
+	
+	//bind click event to the button Y_imgRm at the add_music.html
+	
+	$('#Y_musicShow').delegate('a','click',function() {
+		$(this).parent().parent().remove();
+	})
 	 
 	//when the add_music html is loaded,load the CKEDITOR
 	var musicDiv = $('#Y_musicDiv');

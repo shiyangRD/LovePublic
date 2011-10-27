@@ -253,5 +253,9 @@
 
 #Y_imgTextarea{
 	margin-top:10px;
+	width:686px;
+	height:150px;
+	display:none;
 	background:url(../Images/ajax-loader-small.gif) no-repeat center;
+	
 }
