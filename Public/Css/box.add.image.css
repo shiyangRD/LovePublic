@@ -5,14 +5,18 @@
 +---------------------------------------------
 */
 
-#Y_imgShow{
+#Y_imgShow,#Y_vedioShow,#Y_musicShow{
 	width:686px;
 	height:auto;	
 }
 
-#Y_imgShow li{
-	width:686px;
-	height:96px;
+#Y_imgShow li,#Y_vedioShow li,#Y_musicShow li{
+	width:684px;
+	height:auto;
+	overflow:auto;
+	margin-bottom:-1px;
+	padding-bottom:1px;
+	padding-bottom:10px;
 	border:1px solid #ccc;
 	background:#f7f7f7;
 	margin-bottom:10px;
@@ -24,22 +28,20 @@
 	border:1px solid #ccc;
 	border-radius:7px;
 	background:url(../Images/s-loader.gif) no-repeat center;
-	position:relative;
-	top:8px;
-	left:8px;	
+	margin-left:8px;
+	margin-top:8px;	
 	float:left;
 }
 
-#Y_imgShow li img{
+#Y_imgShow li img,#Y_vedioShow li img,#Y_musicShow li img{
 	width:78px;
-	height:78px;
 	margin-top:8px;
 	margin-left:8px;
 	float:left;
 	border:1px solid #ccc;
 }
 
-#Y_imgShow li p{
+#Y_imgShow li p,#Y_vedioShow li p{
 	float:left;
 	text-indent:0;
 	width:400px;
@@ -49,7 +51,7 @@
 	margin-left:20px;
 }
 
-#Y_imgShow li textarea{
+#Y_imgShow li textarea,#Y_vedioShow li textarea{
 	display:block;
 	width:537px;
 	height:57px;
@@ -251,5 +253,9 @@
 
 #Y_imgTextarea{
 	margin-top:10px;
+	width:686px;
+	height:150px;
+	display:none;
 	background:url(../Images/ajax-loader-small.gif) no-repeat center;
+	
 }

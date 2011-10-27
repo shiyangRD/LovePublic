@@ -1,0 +1,176 @@
+/*
++--------------------------------------
+* box.add.vedio.html part css
++--------------------------------------
+*/
+
+
+.Y_vedioMus{
+	width:686px;
+	height:auto;
+}
+
+.Y_vedioMusAdd{
+	width:684px;
+	height:33px;
+	border:1px solid #ccc;
+	border-radius:5px;
+	margin-bottom:10px;
+}
+
+.Y_vedioMusAdd input{
+	width:610px;
+	display:block;
+	padding:5px 10px 5px 5px;
+	height:23px;
+	border:none;
+	font-size:12px;
+	color:#acacac;
+	margin-left:5px;
+	float:left;
+}
+
+.Y_vedioMusAdd a{
+	padding:0px 7px 1px 7px;
+	border:1px solid #aaa;
+	border-radius:3px;
+	color:#484848;
+	background:-webkit-gradient(linear, 0 0, 0 100%, from(#fff), to(#e9e9e9));
+	background:-moz-linear-gradient(top, #fff,#e9e9e9);
+	position:relative;
+	top:6px;
+	left:5px;
+	display:none;
+}
+
+#Y_vedioAddText{
+	width:686px;
+	height:20px;
+	position:relative;
+}
+#Y_vedioAddText p{
+	font-size:12px;
+	color:#acacac;
+	text-indent:0;
+	float:left;
+	padding-left:5px;
+}
+
+
+#Y_vedioInfo{
+	float:left;
+	position:absolute;
+	right:5px;
+	display:none;
+}
+#Y_vedioInfo img{
+	float:left;
+}
+
+#Y_vedioInfo p{
+	margin-left:10px;
+	color:#464646;
+}
+
+#Y_vedioTextarea,#Y_musicTextarea{
+	display:block;
+	border:none;
+	width:686px;
+	height:150px;
+	background:url(../Images/ajax-loader-small.gif) no-repeat center;
+}
+/*
++--------------------------------------
+* box.add.vedio.html part css
++--------------------------------------
+*/
+
+#Y_musicFlash{
+	display:block;
+	width:557px;
+	height:33px;
+	float:left;
+	margin-top:10px;
+	margin-left:10px;
+}
+
+.Y_musicRm{
+	display:block;
+	float:left;
+	width:12px;
+	height:10px;
+	margin-top:10px;
+	margin-left:10px;
+	background:url(../Images/Y_imgRm.png) no-repeat;
+}
+
+#Y_musicList{
+	width:684px;
+	height:300px;
+	position:relative;
+	border:1px solid #ccc;
+}
+
+#Y_musicList ul{
+	width:684px;
+}
+
+#Y_musicList .Y_musicSpe{
+	background:#e6e6e6;
+}
+
+#Y_musicList .Y_musicSpe:hover{
+	background-image:none;
+}
+#Y_musicList li{
+	height:auto;
+	overflow:auto;
+	margin-bottom:-1px;
+	padding-bottom:1px;
+}
+
+#Y_musicList li:hover{
+	background-color:#e6e6e6;
+	background-image:url(../Images/Y_smallSearch.png);
+	background-repeat:no-repeat;
+	background-position:99% center;
+}
+#Y_musicList li a{
+	display:block;
+	width:172px;
+	line-height:25px;
+	padding-left:10px;
+	padding-right:46px;
+	float:left;
+	font-size:12px;
+	color:#464646;
+}
+
+#Y_musicList #Y_musicPageRow{
+	width:674px;
+	height:25px;
+	background:#e6e6e6;
+	padding-left:10px;
+}
+
+#Y_musicPageRow p{
+	float:left;
+	height:25px;
+	line-height:25px;
+	font-size:12px;
+	color:#484848;
+	text-indent:0;
+}
+
+#Y_musicPageRow .Y_musicPage{
+	position:absolute;
+	right:5px;
+}
+#Y_musicList .Y_musicPage a{
+	display:inline;
+	width:50px;
+	float:none;
+	padding:0;
+	padding:0 5px;
+	margin:0;
+}

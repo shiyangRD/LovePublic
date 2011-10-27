@@ -1,6 +1,6 @@
 /**
  +------------------------------------------------
- * geziAddDiary part's js 
+ * box.add.item.html part's js 
  * coded by smallfish
  +------------------------------------------------
  */
@@ -196,7 +196,7 @@ $(function() {
 })
 /**
  +------------------------------------------------
- * geziAddImage part's js 
+ * box.add.image.html part's js 
  * coded by smallfish
  +------------------------------------------------
  */
@@ -246,7 +246,7 @@ $(function(){
 
 	imgTitle2.click(function() {
 		$(this).hide();
-		createEditor();
+		$('#Y_imgTextarea').show().queue( createEditor() );
 	})
 	
 	//netUpload button click event
@@ -291,12 +291,15 @@ $(function(){
 		//append the template into imgShow Div
 		var imgTemplate = '<li><div class="Y_getImgDiv"></div><p>' + imgUrl + '</p></li>';
 		
-		if (regExp2.test( imgUrl )){
-			
+		if (regExp2.test( imgUrl )){			
 			imgShowUl.prepend( imgTemplate );
 			$('#Y_formSubmit').submit();
+			
+			//the iframe refresh
+			
 			$('#imgHidden').bind('load',function(){
-		
+				//get the callback result
+				
 				var imgGet = window.frames["imgHidden"].result;
 				var imgGetStatus = imgGet.status;
 				var imgGetInfo = imgGet.info;
@@ -412,7 +415,7 @@ $(function(){
 
 /**
  +------------------------------------------------
- * geziAddVedio part's js 
+ * box.add.vedio part's js 
  * coded by smallfish
  +------------------------------------------------
  */
@@ -422,31 +425,103 @@ $(function() {
 	var vedioSearch = $('#Y_vedioAdd input');
 	var vedioButton = $('#Y_vedioAdd a');
 	var vedioInfo = $('#Y_vedioInfo');
-		
-	vedioSearch.click(function() {
+	
+	//when you focus this input,trigger the event below	
+	vedioSearch.focus(function() {
 		vedioSearch.val('').css('color','#474747');
 		vedioButton.fadeIn();
 	})
 	
+	//when you click  this button,trigger the event below
 	vedioButton.click(function() {
 		vedioInfo.show();
 		
 		//create RegExp object
-		var regexp3 = new RegExp('^.+\\.swf$');
+		var regexp3 = new RegExp('^.+\\.html$');
+		
 		if ( !regexp3.test( vedioSearch.val() ) ){
-			
 			$('#Y_vedioInfo p').text('不支持的视频地址').css('color','#ff0000');
 		}else{
 			$('#Y_vedioInfo p').text('正在搜索视频').css('color','#464646');
+			$('#Y_vedioSubmit').submit();
+			
+			// iframe reload event
+			
+			$('#vedioHidden').bind('load',function(){
+				
+				var imgGet = window.frames["vedioHidden"].result;
+				var imgGetStatus = imgGet.status;
+				var imgGetInfo = imgGet.info;
+				var imgGetData = imgGet.data;
+				var imgGetId = imgGet.attachid;
+				var imgAddTpl = '<img src="' + imgGetData + '" id="' + imgGetId +'"/><textarea width="557"></textarea><div class="Y_imgButtonDiv"><a class="Y_imgRm"></a><a class="Y_imgRe"></a></div>';
+				
+				if ( imgGetStatus == '1'){
+					imgShowUl.children().eq(0).empty().append( imgAddTpl );
+					}
+			})
 		}
 		
 	})
 	
-	var vedioDiv = $('#vedioDiv');
+	// when load the add_vedio html,load the CKEDITOR
+	var vedioDiv = $('#Y_vedioDiv');
 	if ( vedioDiv[0] ){
 		var editor3 = CKEDITOR.replace('editor2',{
-			height:'100'
+			height:'76px'
 		})
 	}
+	
+	
+	//bind click event to the button Y_imgRm at the add_vedio.html
+	
+	$('#Y_vedioShow').delegate('a','click',function() {
+		$(this).parent().parent().remove();
+	})
 })
  
+ 
+ /**
+ +------------------------------------------------
+ * box.add.music part's js 
+ * coded by smallfish
+ +------------------------------------------------
+ */
+
+
+$(function() {
+	var musicSearch = $('#Y_musicAdd input');
+	var musicButton = $('#Y_musicAdd a');
+	
+	//when you focus this input, trigger the event below
+	musicSearch.focus(function() {
+		musicSearch.val('').css('color','#474747');
+		musicButton.fadeIn();
+	})
+	
+	musicSearch.bind('keypress',function() {
+			
+	})
+	
+	//locate the music flash's position
+	
+	var musicImgHeight = parseInt($('#Y_musicShow img').css('height'));
+	var musicMargin = musicImgHeight - 23;
+	
+	$('#Y_musicFlash').css({"margin-top":musicMargin + "px"});
+	
+	//bind click event to the button Y_imgRm at the add_music.html
+	
+	$('#Y_musicShow').delegate('a','click',function() {
+		$(this).parent().parent().remove();
+	})
+	 
+	//when the add_music html is loaded,load the CKEDITOR
+	var musicDiv = $('#Y_musicDiv');
+	if ( musicDiv[0] ){
+		var editor4 = CKEDITOR.replace('editor4',{
+			height:'76px'
+		})
+	}
+	
+})
