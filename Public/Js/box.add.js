@@ -1,6 +1,6 @@
 /**
  +------------------------------------------------
- * box.add.item.html part's js 
+ * geziAddDiary part's js 
  * coded by smallfish
  +------------------------------------------------
  */
@@ -196,7 +196,7 @@ $(function() {
 })
 /**
  +------------------------------------------------
- * box.add.image.html part's js 
+ * geziAddImage part's js 
  * coded by smallfish
  +------------------------------------------------
  */
@@ -242,11 +242,14 @@ $(function(){
 			name:'eidtor2'
 			};
 		editor = CKEDITOR.appendTo( 'Y_imgTextarea', config, html);
+		
+		
+ 
 	}
 
 	imgTitle2.click(function() {
 		$(this).hide();
-		$('#Y_imgTextarea').show().queue( createEditor() );
+		createEditor();
 	})
 	
 	//netUpload button click event
@@ -263,7 +266,7 @@ $(function(){
 	
 	var regExp2 = new RegExp("(^.+\\.jpg$)|(^.+\\.png$)|(^.+\\.gif$)");
 	
-/**
+/*
  +----------------------
 //picture address from net
 	
@@ -283,7 +286,7 @@ $(function(){
 +-----------------------
 */	
 	//upload img button submit
-	
+	var i =-1;
 	imgUpload.bind('change',function(e) {
 		//get upload image url
 		var imgUrl = imgUpload.val();		
@@ -291,24 +294,20 @@ $(function(){
 		//append the template into imgShow Div
 		var imgTemplate = '<li><div class="Y_getImgDiv"></div><p>' + imgUrl + '</p></li>';
 		
-		if (regExp2.test( imgUrl )){			
-			imgShowUl.prepend( imgTemplate );
+		if (regExp2.test( imgUrl )){
+			i += 1;
+			imgShowUl.append( imgTemplate );
 			$('#Y_formSubmit').submit();
-			
-			//the iframe refresh
-			
 			$('#imgHidden').bind('load',function(){
-				//get the callback result
-				
+		
 				var imgGet = window.frames["imgHidden"].result;
 				var imgGetStatus = imgGet.status;
 				var imgGetInfo = imgGet.info;
 				var imgGetData = imgGet.data;
-				var imgGetId = imgGet.attachid;
-				var imgAddTpl = '<img src="' + imgGetData + '" id="' + imgGetId +'"/><textarea width="557"></textarea><div class="Y_imgButtonDiv"><a class="Y_imgRm"></a><a class="Y_imgRe"></a></div>';
+				var imgAddTpl = '<img src="' + imgGetData + '"/><textarea width="557"></textarea><div class="Y_imgButtonDiv"><a class="Y_imgRm"></a><a class="Y_imgRe"></a></div>';
 				
 				if ( imgGetStatus == '1'){
-					imgShowUl.children().eq(0).empty().append( imgAddTpl );
+					imgShowUl.children().eq(i).empty().append( imgAddTpl );
 					}		
 			})	
 			
@@ -333,15 +332,9 @@ $(function(){
 		
 		var imgTitleVal = $('.Y_imgInput input').val();
 		
-		//get picture's thumb url
+		//get picture's content value
 		
-		var imgPicVal = [];
-		$('#Y_imgShow li img').each(function() {
-			var thisId = $(this).attr("id");
-			imgPicVal.push( thisId );
-		})
-		
-		var imgPicString = JSON.stringify( imgPicVal );
+		var imgGetHtml = editor.document.getBody().getText().toString();
 		
 		//get picture's tag value
 		
@@ -358,26 +351,28 @@ $(function(){
 			imgTagString = JSON.stringify( imgTagVal );
 		}
 		
-		//get the first picture's id
-		var imgThumbString = $('#Y_imgShow li img').eq(0).attr('id');
-
-		//get picture's content value
+		//get picture's thumb url
 		
-		if ( editor ){
-			var imgGetHtml = editor.document.getBody().getText().toString();
+		var imgThumbVal = [];
+		$('#Y_imgShow li img').each(function() {
+			var thisSrc = $(this).attr("src");
+			imgThumbVal.push( thisSrc );
+		})
+		
+		var imgThumbString;
+		if( imgTagVal == ""){
+			imgThumbString = imgThumbVal.toString();
 		}else{
-			alert('亲，你还没有添加文字内容呢！');
+			imgThumbString = JSON.stringify( imgThumbVal );
 		}
-		
-		
+
 		//post url
 		
 		var imgPostUri = "/grid/add/";
 		
 		//post data
 		
-		var imgPostData = "&title=" + imgTitleVal + "&type=1" + "&content=" + imgGetHtml + "&tag=" + imgTagString  + "&thumb=" + imgThumbString + "&picture=" + imgPicString ;
-		console.dir( imgPostData );
+		var imgPostData = "&title=" + imgTitleVal + "&type=1" + "&thumb=" + imgThumbString + "&content=" + imgGetHtml + "&tag=" + imgTagString;
 		
 		//callback function after send request
 		
@@ -391,9 +386,7 @@ $(function(){
 			if ( imgStatus == '0'){
 				imgSendButton.val("亲，出现问题了")
 			}else{
-				imgSendButton.val("亲，上传成功了 ，鼓掌~").delay(1000).queue(function(){
-					window.location.href="/";
-				})
+				imgSendButton.val("亲，上传成功了 ，鼓掌~")
 			}
 			 
 		}
@@ -401,8 +394,10 @@ $(function(){
 		//create new ajax request
 		var imgPostMethod = "POST";
 		
-		if ( imgPicVal == "" || imgTitleVal == "" || imgGetHtml == "" ){
-			imgSendButton.val("亲，没填完整信息~");
+		if ( imgGetHtml == ""){
+			alert('请填写内容再发布哦，亲')
+		}else if ( imgTitleVal == ""){
+			alert('还未填写标题哦，亲')
 		}else{
 			var imgObj = new boxPost( imgPostUri, imgCallFun, imgPostMethod, imgPostData);
 			imgObj.sendReq();
@@ -413,115 +408,6 @@ $(function(){
 })
 
 
-/**
- +------------------------------------------------
- * box.add.vedio part's js 
- * coded by smallfish
- +------------------------------------------------
- */
 
-$(function() {
-	
-	var vedioSearch = $('#Y_vedioAdd input');
-	var vedioButton = $('#Y_vedioAdd a');
-	var vedioInfo = $('#Y_vedioInfo');
-	
-	//when you focus this input,trigger the event below	
-	vedioSearch.focus(function() {
-		vedioSearch.val('').css('color','#474747');
-		vedioButton.fadeIn();
-	})
-	
-	//when you click  this button,trigger the event below
-	vedioButton.click(function() {
-		vedioInfo.show();
-		
-		//create RegExp object
-		var regexp3 = new RegExp('^.+\\.html$');
-		
-		if ( !regexp3.test( vedioSearch.val() ) ){
-			$('#Y_vedioInfo p').text('不支持的视频地址').css('color','#ff0000');
-		}else{
-			$('#Y_vedioInfo p').text('正在搜索视频').css('color','#464646');
-			$('#Y_vedioSubmit').submit();
-			
-			// iframe reload event
-			
-			$('#vedioHidden').bind('load',function(){
-				
-				var imgGet = window.frames["vedioHidden"].result;
-				var imgGetStatus = imgGet.status;
-				var imgGetInfo = imgGet.info;
-				var imgGetData = imgGet.data;
-				var imgGetId = imgGet.attachid;
-				var imgAddTpl = '<img src="' + imgGetData + '" id="' + imgGetId +'"/><textarea width="557"></textarea><div class="Y_imgButtonDiv"><a class="Y_imgRm"></a><a class="Y_imgRe"></a></div>';
-				
-				if ( imgGetStatus == '1'){
-					imgShowUl.children().eq(0).empty().append( imgAddTpl );
-					}
-			})
-		}
-		
-	})
-	
-	// when load the add_vedio html,load the CKEDITOR
-	var vedioDiv = $('#Y_vedioDiv');
-	if ( vedioDiv[0] ){
-		var editor3 = CKEDITOR.replace('editor2',{
-			height:'76px'
-		})
-	}
-	
-	
-	//bind click event to the button Y_imgRm at the add_vedio.html
-	
-	$('#Y_vedioShow').delegate('a','click',function() {
-		$(this).parent().parent().remove();
-	})
-})
+
  
- 
- /**
- +------------------------------------------------
- * box.add.music part's js 
- * coded by smallfish
- +------------------------------------------------
- */
-
-
-$(function() {
-	var musicSearch = $('#Y_musicAdd input');
-	var musicButton = $('#Y_musicAdd a');
-	
-	//when you focus this input, trigger the event below
-	musicSearch.focus(function() {
-		musicSearch.val('').css('color','#474747');
-		musicButton.fadeIn();
-	})
-	
-	musicSearch.bind('keypress',function() {
-			
-	})
-	
-	//locate the music flash's position
-	
-	var musicImgHeight = parseInt($('#Y_musicShow img').css('height'));
-	var musicMargin = musicImgHeight - 23;
-	
-	$('#Y_musicFlash').css({"margin-top":musicMargin + "px"});
-	
-	//bind click event to the button Y_imgRm at the add_music.html
-	
-	$('#Y_musicShow').delegate('a','click',function() {
-		$(this).parent().parent().remove();
-	})
-	 
-	//when the add_music html is loaded,load the CKEDITOR
-	var musicDiv = $('#Y_musicDiv');
-	if ( musicDiv[0] ){
-		var editor4 = CKEDITOR.replace('editor4',{
-			height:'76px'
-		})
-	}
-	
-})

@@ -1,4 +1,4 @@
-/**
+/*
 +----------------------------------------------------------------
 * handle Chat Choose 
 +----------------------------------------------------------------
@@ -75,11 +75,11 @@ $(function(){
   $('.S_talkper').hover(function(){
      $(this).find('.S_all').css({'background-color':'#A6c8c7',width:'240px'});
       $('.S_hiddenBox').show();
-      $(this).find('.S_banner').removeClass('S_banner').addClass('S_bannerhover');
+      $(this).find('.S_banner').css('background','url("../Images/ownBg.png") no-repeat');
   },function(){
       $(this).find('.S_all').css({'background-color':'#58A39F',width:'170px'});
       $('.S_hiddenBox').hide();
-      $(this).find('.S_bannerhover').removeClass('S_bannerhover').addClass('S_banner');
+      $(this).find('.S_banner').css('background','url("../Images/originstatus.png") no-repeat');
   })
   
   //handle show submit style
@@ -96,6 +96,28 @@ $(function(){
 	 })  
   });
   
+  //handle submit talk contents
+  
+  $(".S_font1").click(function(){
+  	  if($('#S_div_box').html()!=''){
+	  	 //ajax submit content
+		 $.ajax({
+			url:'/chat/ajaxPushMessage',
+			data:$('#S_div_box').html(),
+			type:'post',
+			success:function(msg){
+		       var content= $('.S_t ul').find('.S_tc').clone(true);
+               content.find('S_tcBox').children('.S_Smid1').html(msg);
+            },
+            error:function(){
+                $('.S_font1').click();
+            }
+		 });
+	  }
+  })
+  
+  
+
   //handle top three items on chatPage
 	  //handle click
 	  function check(obj){
@@ -133,9 +155,9 @@ $(function(){
       //handle mouseover  on Top Three Items
 	  $('.S_bannerList li').each(function(i){
   	  	 $(this).hover(function(){
-	  	 	$(this).removeClass('S_items').addClass('S_itemsHover');
+	  	 	$(this).removeClass('items_click').addClass('items_hover');
 	  	 },function(){
-			 $(this).removeClass('S_itemsHover').addClass('S_items');
+			 $(this).removeClass('items_hover').addClass('items_click');
 		 })
   	  })
    
