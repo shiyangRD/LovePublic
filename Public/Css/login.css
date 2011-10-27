@@ -37,7 +37,7 @@
 }
 /*---------login and register 's wrap------------*/
 #L_bg{
-    background:url(../Images/L_lgbg.png) repeat;
+    background:#298381;
     min-width:1280px;
     height:800px;
     overflow-x:hidden;
