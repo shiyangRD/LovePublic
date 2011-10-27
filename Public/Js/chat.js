@@ -75,11 +75,11 @@ $(function(){
   $('.S_talkper').hover(function(){
      $(this).find('.S_all').css({'background-color':'#A6c8c7',width:'240px'});
       $('.S_hiddenBox').show();
-      $(this).find('.S_banner').css('background','url("../Images/ownBg.png") no-repeat');
+      $(this).find('.S_banner').removeClass('S_banner').addClass('S_bannerhover');
   },function(){
       $(this).find('.S_all').css({'background-color':'#58A39F',width:'170px'});
       $('.S_hiddenBox').hide();
-      $(this).find('.S_banner').css('background','url("../Images/originstatus.png") no-repeat');
+      $(this).find('.S_bannerhover').removeClass('S_bannerhover').addClass('S_banner');
   })
   
   //handle show submit style
@@ -133,9 +133,9 @@ $(function(){
       //handle mouseover  on Top Three Items
 	  $('.S_bannerList li').each(function(i){
   	  	 $(this).hover(function(){
-	  	 	$(this).css({"background":"url(../Images/barhover.png) no-repeat"});
+	  	 	$(this).removeClass('S_items').addClass('S_itemsHover');
 	  	 },function(){
-			 $(this).css({"background":"url(../Images/barclick.png) no-repeat"});
+			 $(this).removeClass('S_itemsHover').addClass('S_items');
 		 })
   	  })
    

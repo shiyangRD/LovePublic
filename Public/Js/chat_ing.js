@@ -26,7 +26,7 @@ $(function(){
 		       var content= $('.S_t ul').find('.S_tc').eq(0).clone(true);
                var obj=eval("("+msg+")");
                if(obj!=null){
-                 content.find('.S_tcBox').children('.S_Smid').html(obj.data.text);
+                 content.find('.S_tcBox').children('.S_Smid').html(obj.data);
                  content.appendTo($(".S_t ul"));
                  content.focus();
                }

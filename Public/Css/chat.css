@@ -327,6 +327,12 @@ a.S-bmBar{
     height:55px;
     background:url('../Images/originstatus.png') no-repeat;
 }
+.S_bannerhover{
+    float:left;
+    width:31px;
+    height:55px;
+    background:url('../Images/ownBg.png') no-repeat;
+}
 .S_banner img{
     height:55px;
 }
@@ -389,7 +395,7 @@ a.S-bmBar{
 	position:relative;
 	z-index:6;
 }
-.S_bannerList ul li{
+.S_bannerList ul li {
     display:inline-block;
     width:82px;
     float:left;
@@ -398,7 +404,12 @@ a.S-bmBar{
     position:relative;
     height:100%;
 	z-index:8;
+}
+.S_bannerList ul .S_items{
     background:url(../Images/barclick.png) no-repeat;
+}
+.S_itemsHover{
+     background:url(../Images/barhover.png) no-repeat;
 }
 .S_bannerList ul li a:hover {
 	text-decoration:none;
@@ -838,12 +849,6 @@ a.S-bmBar{
 	margin-left:5px;
 }
 /*End chat record*/
-.items_hover{
-    background:'url("../Images/barhover.png") no-repeat';
-}
-.items_click {
-    background:'url("../Images/barclick.png") no-repeat';
-}
 /*End Content*/
 
 /**
