@@ -19,7 +19,7 @@
 }
 
 #Y_diaBanner{
-	height:55px;
+	height:40px;
 }
 #Y_diaBanner h1{
 	color:#5EBFBD;
@@ -126,7 +126,6 @@
 	min-height:434px;
 	background:url(../Images/ajax-loader-small.gif) no-repeat center;
 }
-
 .Y_green{
 	color:#8AD786;
 }

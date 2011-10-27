@@ -14,6 +14,7 @@
     -moz-box-shadow:0 0 8px rgba(246,240,232,.5);
     -webkit-box-shadow:0 0 8px rgba(246,240,232,10);
     background:#ffd;
+    margin-top:3px;
 } 
 
 .L_label-name{
@@ -37,21 +38,16 @@
 }
 /*---------login and register 's wrap------------*/
 #L_bg{
-    background:url(../Images/L_lgbg.png) repeat;
-    min-width:1280px;
-    height:800px;
-    overflow-x:hidden;
+    background:#298381;
+    overflow-y:hidden;
+    min-width:1024px;
 }
 #L_bg input,a,a:hover {
     outline:none;
     text-decoration:none;
 }
 #L_wrap{
-    background:url(../Images/login-bg.png) no-repeat 190px 179px;
-    min-width:1280px;
-    min-height:800px;
-    _height:800px;
-    position:relative;
+        position:relative;
 }
 .L_logo{
     width:310px;
@@ -59,10 +55,11 @@
     float:left;
 }
 #L_content{
-    width:1069px;
-    padding:209px 149px;
+    background:url(../Images/login-bg.png) no-repeat 50px -30px;
+    width:1024px;
     position:relative;
-    height:458px;
+    height:500px;
+    margin-top:100px;
 }
 
 /*----------------------the login page--------------*/
@@ -187,14 +184,14 @@
 
 /*-----------------register page-------------*/
 #L_wrap-register{
-    background:url(../Images/L_rg.png) no-repeat 641px 101px;
-    min-width:1280px;
-    min-height:800px;
-    _height:800px;
+    width:1024px;
+    height:500px;
     position:relative;
+    margin-top:100px;
 }
 #L_register-register{
     width:52%;
+    background:url(../Images/L_rg.png) no-repeat -14px -110px;
     float:right;
     height:458px;
 }
@@ -279,7 +276,7 @@
     text-indent:1em;
     font-family:"微软雅黑";
     width:306px;
-    height:46px;
+    height:48px;
 
     border:0;
     background-color:transparent;

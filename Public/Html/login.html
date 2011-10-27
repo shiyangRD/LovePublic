@@ -17,12 +17,10 @@
             <!--------------------------form------------------------->
             <form action="#" method="post" id="L_login-form">
                 <div class="L_rg-item">
-                    <label for="cemail" class="L_label-name">邮箱</label>
-                    <input  id="L_cemail" name="email" class=" L_required email cdw" style="font-size:20px;margin-top:-23px;margin-left:4px" />
+                    <input  id="L_cemail" name="email" class=" L_required email L_cdw" style="font-size:20px;margin-left:4px" placeholder="邮箱"/>
                 </div>
                 <div class="L_rg-item">
-                    <label for="password" class="L_label-name">密码</label>
-                    <input id="L_password" name="password" class="L_cdw" type="password" style="font-size:20px;margin-top:-23px;margin-left:4px"  />
+                    <input id="L_password" name="password" class="L_cdw" type="password" style="font-size:20px;margin-left:4px" placeholder="密码"  />
                 </div>
                 <p class="L_login-setting">
                 <label for="remember-login">
@@ -39,7 +37,6 @@
     <!-------------------------------------------------------------------------------------->
     <!------------------------------------register------------------------------>
         <div id="L_wrap-register">
-            <div id="L_content">
                 <div id="L_register-register">
                     <button  class="L_show" type="image"></button>
                     <a id="L_lgLink"><button class="L_login-button" type="image"></button></a>
@@ -47,21 +44,22 @@
                 <!----------form---------->
                 <form action="" method="post" id="L_register-form">
                     <div class="L_rg-item">
-                        <label for="cemail" class="L_label-name">邮箱</label>
-                        <input  id="cemail" name="email" class="L_cdw" style="font-size:20px;margin-top:-23px;margin-left:4px" />
+                        <input  id="cemail" name="email" class="L_cdw" style="font-size:20px;margin-left:4px" placeholder="邮箱" />
                     </div>
                     <div class="L_rg-item">
-                        <label for="password" class="L_label-name">密码</label>
-                        <input id="password" name="password" class="L_cdw" type="password" style="font-size:20px;margin-top:-23px;margin-left:4px"  />
+                        <input id="password" name="password" class="L_cdw" type="password" style="font-size:20px;margin-left:4px" placeholder="密码"  />
+                    </div>
+                    <div class="L_rg-item">
+                        <input id="confirm_password" name="confirm_password" class="L_cdw" type="password" style="font-size:20px;margin-left:4px" placeholder="确认密码"  />
                     </div>
 
+
                     <div class="L_rg-item">
-                        <label for="cname" class="L_label-name">昵称</label>
-                        <input id="cname" name="name" class="L_cdw"  style="font-size:20px;margin-top:-23px;margin-left:4px" />
+                        <input id="cname" name="name" class="L_cdw"  style="font-size:20px;margin-left:4px" placeholder="昵称" />
                     </div>
                     <div id="L_register-check-box">
                         <label for="woman" id="L_woman-name">
-                            <input id="L_woman" type="radio" name="sex" />女生
+                            <input id="L_woman" type="radio" name="sex" class="{required:true}" />女生
                         </label>
                         <label for="man">
                             <input id="L_man" type="radio" name="sex" />男生
@@ -71,7 +69,6 @@
                         <button id="L_register-submit" tabindex="3" type="submit"></button>
                     </div>
                 </form>
-            </div>
         </div> 
         <!-------------------------------------------------------------------------->
 <script src="../Js/core/jquery.js" type="text/javascript"></script>
