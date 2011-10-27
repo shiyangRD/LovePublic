@@ -1,15 +1,19 @@
 $(function(){
-  if($("#record_content")[0]){
   $(".S_font1").click(function(){
   	  if($('#S_div_box').html()!=''){
 	  	 //ajax submit content
 		 $.ajax({
-			url:'/chat/chatpage',
-			data:$('#S_div_box').html(),
+			url:'/chat/ajaxPushMessage',
+			data:"content="+$('#S_div_box').html(),
 			type:'post',
 			success:function(msg){
-		       var content= $('.S_t ul').find('.S_tc').clone(true);
-               content.find('S_tcBox').children('.S_Smid1').html(msg);
+               var obj=eval('('+msg+')');
+               if(obj!=null){
+		          var content= $('.S_t ul').find('.S_mc').eq(0).clone().appendTo($(".S_t ul"));
+                  content.find('.S_tcBox').children('.S_Smid').html($("#S_div_box").html());
+                  content.focus();
+                  $("#S_div_box").html('');
+               }
             },
             error:function(){
                 $('.S_font1').click();
@@ -17,7 +21,7 @@ $(function(){
 		 });
 	  }
   });
-   setInterval(function(){
+  /* setInterval(function(){
      $.ajax({
 			url:'/chat/ajaxPullMessage',
 			data:'content=1',
@@ -36,5 +40,5 @@ $(function(){
             }
 		 });
     },1000); 
-  }; 
+  }; */
 })
